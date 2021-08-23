@@ -1,5 +1,5 @@
 //
-//  CouncilWidget.swift
+//  MobilWidget.swift
 //  DingensKirchen
 //
 //  Created by Pascal Schönthier on 23.08.21.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct CouncilWidget: View {
+struct MobilWidget: View {
     
-    let title: String = "Rathaus"
+    let title: String = "Mobil"
     
-    @State var desc: String = "OnlineServices, Müllkalender"
+    @State var desc: String = "ÖPNV, Bürgerbus, LiMo, Carsharing Linde"
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -29,8 +29,8 @@ struct CouncilWidget: View {
     }
 }
 
-struct CouncilWidget_Previews: PreviewProvider {
+struct MobilWidget_Previews: PreviewProvider {
     static var previews: some View {
-        CouncilWidget()
+        MobilWidget()
     }
 }

@@ -9,30 +9,27 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
 
     var body: some View {
         NavigationView {
+
             VStack(alignment: .leading) {
-                NewsWidget(date: "01.01.1970",
-                           newsTitle: "Letzte Nachricht",
-                           newsDesc: "Lorem Ipsum dolor sit amet, consetetur...")
-                VillageWidget()
-                HStack {
-                    
+                ScrollView(.vertical) {
+                    NewsWidget(date: "01.01.1970",
+                               newsTitle: "Letzte Nachricht",
+                               newsDesc: "Lorem Ipsum dolor sit amet, consetetur...")
+                    VillageWidget()
+                    HStack {
+                        CouncilWidget()
+                        MobilWidget()
+                    }
+                    EventWidget(date: "01.01.1970",
+                                eventTitle: "Beispieltermin",
+                                eventDesc: "Kurzbeschreibung...")
                 }
-                EventWidget(date: "01.01.1970",
-                            eventTitle: "Beispieltermin",
-                            eventDesc: "Kurzbeschreibung...")
-                
             }
         }
-        
+        .navigationBarTitle("DingensKirchen")
     }
 }
 
