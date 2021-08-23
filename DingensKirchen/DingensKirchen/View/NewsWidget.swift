@@ -34,9 +34,6 @@ struct NewsWidget: View {
         .background(Color.gray)
         .cornerRadius(5)
         .padding(5)
-        
-        
-        
     }
 }
 
