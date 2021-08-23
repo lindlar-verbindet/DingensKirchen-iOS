@@ -28,8 +28,8 @@ struct ContentView: View {
                                 eventDesc: "Kurzbeschreibung...")
                 }
             }
+            .navigationBarTitle("DingensKirchen")
         }
-        .navigationBarTitle("DingensKirchen")
     }
 }
 
