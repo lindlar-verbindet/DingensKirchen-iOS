@@ -23,6 +23,9 @@ struct ContentView: View {
                            newsTitle: "Letzte Nachricht",
                            newsDesc: "Lorem Ipsum dolor sit amet, consetetur...")
                 VillageWidget()
+                HStack {
+                    
+                }
                 EventWidget(date: "01.01.1970",
                             eventTitle: "Beispieltermin",
                             eventDesc: "Kurzbeschreibung...")
