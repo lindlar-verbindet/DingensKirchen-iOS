@@ -17,21 +17,12 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-            }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
-
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
+        NavigationView{
+            VStack(alignment: .leading) {
+                NewsWidget(date: "01.01.1970", newsTitle: "Letzte Nachricht", newsDesc: "Lorem Ipsum dolor sit amet, consetetur...")
             }
         }
+        
     }
 
     private func addItem() {
