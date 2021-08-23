@@ -22,9 +22,7 @@ struct CouncilWidget: View {
                 .widgetText()
                 .padding(EdgeInsets(top: 30, leading: 10, bottom: 10, trailing: 10))
         }
-        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 100, maxHeight: 100, alignment: .leading)
-        .background(Color.primaryBackground)
-        .cornerRadius(5)
+        .smallWidget()
         .padding(5)
     }
 }

@@ -23,9 +23,7 @@ struct VillageWidget: View {
                 .widgetText()
                 .padding(EdgeInsets(top: 30, leading: 10, bottom: 10, trailing: 10))
         }
-        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-        .background(Color.primaryHighlight)
-        .cornerRadius(5)
+        .widget(background: Color.primaryHighlight)
         .padding(5)
     }
 }

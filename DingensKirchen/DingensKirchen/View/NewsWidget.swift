@@ -30,9 +30,7 @@ struct NewsWidget: View {
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 10))
                 
         }
-        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-        .background(Color.primaryBackground)
-        .cornerRadius(5)
+        .widget()
         .padding(5)
     }
 }

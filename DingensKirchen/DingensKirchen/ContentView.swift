@@ -9,10 +9,8 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-
     var body: some View {
         NavigationView {
-
             VStack(alignment: .leading) {
                 ScrollView(.vertical) {
                     NewsWidget(date: "01.01.1970",
