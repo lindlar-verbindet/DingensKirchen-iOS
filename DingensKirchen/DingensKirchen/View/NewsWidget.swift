@@ -31,7 +31,7 @@ struct NewsWidget: View {
                 
         }
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-        .background(Color.gray)
+        .background(Color.primaryBackground)
         .cornerRadius(5)
         .padding(5)
     }

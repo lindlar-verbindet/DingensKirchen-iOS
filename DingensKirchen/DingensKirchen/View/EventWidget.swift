@@ -18,20 +18,20 @@ struct EventWidget: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .modifier(WidgetText(isTitle: true))
+                .widgetText(isTitle: true)
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
             Text(date)
-                .modifier(WidgetText())
+                .widgetText()
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
             Text(eventTitle)
-                .modifier(WidgetText(isTitle: true))
+                .widgetText(isTitle: true)
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             Text(eventDesc)
-                .modifier(WidgetText())
+                .widgetText()
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
         }
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-        .background(Color.green)
+        .background(Color.primaryHighlight)
         .cornerRadius(5)
         .padding(5)
     }

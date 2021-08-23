@@ -17,11 +17,12 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-        NavigationView{
+        NavigationView {
             VStack(alignment: .leading) {
                 NewsWidget(date: "01.01.1970",
                            newsTitle: "Letzte Nachricht",
                            newsDesc: "Lorem Ipsum dolor sit amet, consetetur...")
+                VillageWidget()
                 EventWidget(date: "01.01.1970",
                             eventTitle: "Beispieltermin",
                             eventDesc: "Kurzbeschreibung...")

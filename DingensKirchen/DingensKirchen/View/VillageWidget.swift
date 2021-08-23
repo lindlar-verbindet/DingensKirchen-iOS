@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct VillageWidget: View {
+    
+    let title: String = "Dorfleben"
+    
+    @State var desc: String = "Suche&Finde, DigitalBegleitung, Nachbarschaftshilfe, Taschengeldbörse"
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading) {
+            Text(title)
+                .widgetText(isTitle: true)
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+            Text(desc)
+                .widgetText()
+                .padding(EdgeInsets(top: 30, leading: 10, bottom: 10, trailing: 10))
+        }
+        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+        .background(Color.primaryHighlight)
+        .cornerRadius(5)
+        .padding(5)
     }
 }
 
