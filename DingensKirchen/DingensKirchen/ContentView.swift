@@ -8,26 +8,61 @@
 import SwiftUI
 import CoreData
 
+enum NavigationAction {
+    case news
+    case village
+    case council
+    case mobil
+    case event
+}
+
 struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 ScrollView(.vertical) {
-                    NewsWidget(date: "01.01.1970",
-                               newsTitle: "Letzte Nachricht",
-                               newsDesc: "Lorem Ipsum dolor sit amet, consetetur...")
-                    VillageWidget()
-                    HStack {
-                        CouncilWidget()
-                        MobilWidget()
+                    NavigationLink(destination: NewsView()) {
+                        NewsWidget(date: "01.01.1970",
+                                   newsTitle: "Letzte Nachricht",
+                                   newsDesc: "Lorem Ipsum dolor sit amet, consetetur...")
                     }
-                    EventWidget(date: "01.01.1970",
-                                eventTitle: "Beispieltermin",
-                                eventDesc: "Kurzbeschreibung...")
+                    NavigationLink(destination: VillageView()) {
+                        VillageWidget()
+                    }
+                    HStack {
+                        NavigationLink(destination: CouncilView()){
+                            CouncilWidget()
+                        }
+                        NavigationLink(destination: MobilView()) {
+                            MobilWidget()
+                        }
+                    }
+                    NavigationLink(destination: EventView()) {
+                        EventWidget(date: "01.01.1970",
+                                    eventTitle: "Beispieltermin",
+                                    eventDesc: "Kurzbeschreibung...")
+                    }
+                    
                 }
             }
             .navigationBarTitle("DingensKirchen")
         }
+    }
+    
+    @ViewBuilder func switchView(action:NavigationAction) -> some View {
+        switch action {
+        case .news:
+            NewsWidget()
+        case .village:
+            VillageWidget()
+        case .mobil:
+            MobilWidget()
+        case .event:
+            EventWidget()
+        case .council:
+            CouncilWidget()
+        }
+        
     }
 }
 
