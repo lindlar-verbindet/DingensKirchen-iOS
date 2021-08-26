@@ -9,7 +9,19 @@ import SwiftUI
 
 struct CouncilView: View {
     var body: some View {
-        Text("Council to be done!")
+        VStack(alignment: .leading) {
+            ScrollView(.vertical) {
+                Image("ic_village_head")
+                    .resizable()
+                    .frame(maxWidth: .infinity)
+                    .scaledToFill()
+                CouncilCellTrash()
+                    .padding(5)
+                CouncilCell(title: "Beantragung einer Meldebescheinigung", buttonTitle: "Jetzt online beantragen", index: 0)
+                    .padding(5)
+            }
+            Spacer()
+        }
     }
 }
 

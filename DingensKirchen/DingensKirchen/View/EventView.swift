@@ -22,7 +22,6 @@ struct EventView: View {
             }
             Spacer()
         }
-        
     }
 }
 
