@@ -6,10 +6,28 @@
 //
 
 import SwiftUI
+import MapboxMaps
+
+struct MapboxMap: UIViewControllerRepresentable {
+        
+    typealias UIViewControllerType = MapViewController
+    
+    func makeUIViewController(context: Context) -> MapViewController {
+        MapViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: MapViewController, context: Context) {
+        
+    }
+    
+}
 
 struct MobilView: View {
     var body: some View {
-        Text("mobil to be done!")
+        MapboxMap()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .edgesIgnoringSafeArea(.all)
+            .navigationBarTitle("Mobil", displayMode: .inline)
     }
 }
 
