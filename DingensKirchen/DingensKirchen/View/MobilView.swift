@@ -23,11 +23,28 @@ struct MapboxMap: UIViewControllerRepresentable {
 }
 
 struct MobilView: View {
+    
+    @State private var bottomSheetShown = false
+    
     var body: some View {
-        MapboxMap()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .edgesIgnoringSafeArea(.all)
-            .navigationBarTitle("Mobil", displayMode: .inline)
+        ZStack {
+            MapboxMap()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .edgesIgnoringSafeArea(.all)
+                .navigationBarTitle("Mobil", displayMode: .inline)
+            MapBottomSheetView(isOpen: self.$bottomSheetShown, maxHeight: 400) {
+                VStack(alignment: .leading) {
+                    Text("Heading")
+                        .font(.title)
+                        .padding(5)
+                    Text("Description")
+                        .font(.callout)
+                        .padding(5)
+                    Spacer()
+                        .frame(maxWidth: .infinity)
+                }
+            }
+        }
     }
 }
 
