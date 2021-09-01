@@ -11,9 +11,16 @@ import MapboxMaps
 struct MapboxMap: UIViewControllerRepresentable {
         
     typealias UIViewControllerType = MapViewController
+    var parent: MobilView
+    
+    init(parent: MobilView) {
+        self.parent = parent
+    }
     
     func makeUIViewController(context: Context) -> MapViewController {
-        MapViewController()
+        let viewController = MapViewController()
+        viewController.mobilView = self.parent
+        return viewController
     }
     
     func updateUIViewController(_ uiViewController: MapViewController, context: Context) {
@@ -25,19 +32,21 @@ struct MapboxMap: UIViewControllerRepresentable {
 struct MobilView: View {
     
     @State private var bottomSheetShown = false
+    @State var contextTitle: String = ""
+    @State var contextDesc: String = ""
     
     var body: some View {
         ZStack {
-            MapboxMap()
+            MapboxMap(parent: self)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
                 .navigationBarTitle("Mobil", displayMode: .inline)
             MapBottomSheetView(isOpen: self.$bottomSheetShown, maxHeight: 400) {
                 VStack(alignment: .leading) {
-                    Text("Heading")
+                    Text(contextTitle)
                         .font(.title)
                         .padding(5)
-                    Text("Description")
+                    Text(contextDesc)
                         .font(.callout)
                         .padding(5)
                     Spacer()

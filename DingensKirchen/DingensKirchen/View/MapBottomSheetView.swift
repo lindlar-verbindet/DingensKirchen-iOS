@@ -43,7 +43,7 @@ struct MapBottomSheetView<Content: View>: View {
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
             .background(Color(.secondarySystemBackground))
-            .cornerRadius(5)
+            .cornerRadius(15, corners: [.topLeft, .topRight])
             .frame(height: geometry.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
             .animation(.interactiveSpring(), value: isOpen)
