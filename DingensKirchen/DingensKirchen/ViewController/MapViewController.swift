@@ -57,50 +57,67 @@ class MapViewController: UIViewController {
         return mapView
     }
     
+    fileprivate func queryStop(sender: UITapGestureRecognizer) {
+        map?.mapboxMap.queryRenderedFeatures(at: sender.location(in: map), options: RenderedQueryOptions(layerIds: [stopsID], filter: .none)) { result in
+            var title = ""
+            do {
+                try result.get().forEach { feature in
+                    print("\(self.stopsID): \(feature.feature.properties)")
+                    if let name = feature.feature.properties["name"] {
+                        if title == "" {
+                            title.append(name as! String)
+                        } else {
+                            title.append("\n\(name as! String)")
+                        }
+                    }
+                }
+                self.mobilView?.contextTitle = title
+            } catch {
+                print(error)
+                self.mobilView?.contextTitle = "DEFAULT VALUE HERE"
+            }
+        }
+    }
+    
+    private func getDeparturePlan(_ busID: String) -> String {
+        return "<a href=https://www.vrs.de/his/minifahrplan/de:vrs:\(busID)>\(busID)</a>"
+    }
+    
+    fileprivate func queryLineInfo(sender: UITapGestureRecognizer) {
+        let point = sender.location(in: map)
+        map?.mapboxMap.queryRenderedFeatures(in: CGRect(x: point.x-25, y: point.y-25, width: 50, height: 50), options: RenderedQueryOptions(layerIds: [routesID], filter: .none)) { result in
+            var desc = ""
+            do {
+                try result.get().forEach { feature in
+                    print("\(self.routesID): \(feature.feature.properties)")
+                    if let ref = feature.feature.properties["ref"] as? String {
+                        let busLink = self.getDeparturePlan(ref)
+                        let from = feature.feature.properties["from"] as! String
+                        let to = feature.feature.properties["to"] as! String
+                        if desc == "" {
+                            desc.append("\(busLink): \(from) -> \(to)")
+                        } else {
+                            desc.append("<br>\(busLink): \(from) -> \(to)")
+                        }
+                    }
+                    
+                }
+                self.mobilView?.contextDesc = desc
+            } catch {
+                print(error)
+                self.mobilView?.contextDesc = "DEFAULT VALUE HERE"
+            }
+        }
+    }
+    
     @objc func mapTaped(sender: UITapGestureRecognizer) {
         print(sender.location(in: map))
         
         mobilView?.contextTitle = "Greetings..."
         mobilView?.contextDesc = "from MapViewController"
-        
-        let point = sender.location(in: map)
-        map?.mapboxMap.queryRenderedFeatures(at: sender.location(in: map)) { result in
-            do {
-                guard let name = try result.get().first?.feature.properties["name"] else {
-                    self.mobilView?.contextTitle = "Nicht das richtige gefunden?"
-                    return
-                }
-                print(name as! String)
-                self.mobilView?.contextTitle = name as! String
-            } catch {
-                self.mobilView?.contextTitle = "Nicht das richtige gefunden?"
-                print(error)
-            }
-        }
-        map?.mapboxMap.queryRenderedFeatures(in: CGRect(x: point.x-5, y: point.y-5, width: 10, height: 10)) { result in
-            try! result.get().forEach { feature in
-                print(feature.feature.properties)
-            }
-        }
-        
-        map?.mapboxMap.queryRenderedFeatures(in: CGRect(x: point.x-25, y: point.y-25, width: 50, height: 50), options: RenderedQueryOptions(layerIds: [routesID], filter: .none)) { result in
-            do {
-                var desc = ""
-                try result.get().forEach { feature in
-                    print("\(self.stopsID): \(feature.feature.properties)")
-                    if let name = feature.feature.properties["name"] {
-                        if desc == "" {
-                            desc.append(name as! String)
-                        } else {
-                            desc.append("\n\(name as! String)")
-                        }
-                    }
-                }
-                self.mobilView?.contextDesc = desc
-            } catch {
-                print(error)
-            }
-        }
+                
+        queryStop(sender: sender)
+        queryLineInfo(sender: sender)
     }
 }
 

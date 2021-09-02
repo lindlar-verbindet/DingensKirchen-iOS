@@ -6,7 +6,38 @@
 //
 
 import SwiftUI
+import WebKit
 import MapboxMaps
+
+struct AttributedText: UIViewRepresentable {
+    
+    let text: String
+    
+    init(_ text: String) {
+        self.text = text
+    }
+    
+    func makeUIView(context: Context) -> UITextView {
+        let textView = UITextView()
+        
+        textView.allowsEditingTextAttributes = false
+                
+        textView.isEditable = false
+        textView.isSelectable = true
+        textView.textAlignment = .natural
+        textView.dataDetectorTypes = [.phoneNumber, .link]
+                
+        textView.backgroundColor = UIColor.clear
+        return textView
+    }
+    
+    func updateUIView(_ uiView: UITextView, context: Context) {
+        uiView.attributedText = try! NSAttributedString(data: text.data(using: .unicode)!,
+                                                   options: [.documentType: NSAttributedString.DocumentType.html],
+                                                   documentAttributes: nil)
+        uiView.font = UIFont.systemFont(ofSize: 14)
+    }
+}
 
 struct MapboxMap: UIViewControllerRepresentable {
         
@@ -35,6 +66,9 @@ struct MobilView: View {
     @State var contextTitle: String = ""
     @State var contextDesc: String = ""
     
+    @State var defaultTitle = "Lindlar Mobil"
+    @State var defaultDesc = "<b>Nicht die richtige Mitfahrgelegenheit gefunden?</b> \nVersuchen Sie es doch mit unserem LiMo-Service: \n <a href=tel:+4922664407204>+49 2266 440 72 04</a>"
+    
     var body: some View {
         ZStack {
             MapboxMap(parent: self)
@@ -43,12 +77,10 @@ struct MobilView: View {
                 .navigationBarTitle("Mobil", displayMode: .inline)
             MapBottomSheetView(isOpen: self.$bottomSheetShown, maxHeight: 400) {
                 VStack(alignment: .leading) {
-                    Text(contextTitle)
+                    Text(contextTitle == "" ? defaultTitle : contextTitle)
                         .font(.title)
                         .padding(5)
-                    Text(contextDesc)
-                        .font(.callout)
-                        .padding(5)
+                    AttributedText(contextTitle == "" ? defaultDesc : contextDesc)
                     Spacer()
                         .frame(maxWidth: .infinity)
                 }
