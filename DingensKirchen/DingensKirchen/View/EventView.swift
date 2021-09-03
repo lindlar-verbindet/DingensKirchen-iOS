@@ -22,6 +22,7 @@ struct EventView: View {
             }
             Spacer()
         }
+        .navigationBarTitle("Veranstaltungen&Termine", displayMode: .inline)
     }
 }
 

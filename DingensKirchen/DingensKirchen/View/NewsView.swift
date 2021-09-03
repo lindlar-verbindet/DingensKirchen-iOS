@@ -10,6 +10,7 @@ import SwiftUI
 struct NewsView: View {
     var body: some View {
         Text("News to be done!")
+            .navigationBarTitle("Lindlarer News", displayMode: .inline)
     }
 }
 

@@ -74,7 +74,6 @@ struct MobilView: View {
             MapboxMap(parent: self)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
-                .navigationBarTitle("Mobil", displayMode: .inline)
             MapBottomSheetView(isOpen: self.$bottomSheetShown, maxHeight: 370) {
                 VStack(alignment: .leading) {
                     Text(contextTitle == "" ? defaultTitle : contextTitle)
@@ -86,6 +85,7 @@ struct MobilView: View {
                 }
             }
         }
+        .navigationBarTitle("Mobil", displayMode: .inline)
     }
 }
 

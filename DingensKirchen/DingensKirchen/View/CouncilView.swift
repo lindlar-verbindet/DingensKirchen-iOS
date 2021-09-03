@@ -31,6 +31,7 @@ struct CouncilView: View {
             }
             Spacer()
         }
+        .navigationBarTitle("Rathaus", displayMode: .inline)
     }
     
     private func loadData() -> [CouncilService] {
