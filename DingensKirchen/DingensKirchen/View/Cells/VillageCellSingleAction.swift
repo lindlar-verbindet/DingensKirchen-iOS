@@ -24,7 +24,7 @@ struct VillageCellSingleAction: View {
                 Button(btnTitle) {
                     
                 }
-                .foregroundColor(.primaryTextColor)
+                .foregroundColor(Color.primaryTextColor)
                 .frame(maxWidth: .infinity, minHeight: 30)
                 .background(Color.white)
                 .cornerRadius(5)

@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SWXMLHash
 
 struct VillageView: View {
+    
+    @State var file = Bundle.main.url(forResource: "village_services", withExtension: "xml")
+    
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView(.vertical) {
@@ -15,15 +19,50 @@ struct VillageView: View {
                     .resizable()
                     .frame(maxWidth: .infinity)
                     .scaledToFit()
-                VillageCellDoubleAction(title: "Nachbarschaftshilfe", desc: "Lorem ipsum dolor sit amet, consetetur sadipscing", btn1Title: "Anrufen", btn2Title: "Formular", index: 0)
-                    .padding(5)
-                VillageCellSingleAction(title: "Suche&Finde", desc: "Lorem ipsum dolor sit amet, consetetur sadipscing", btnTitle: "Öffnen", index: 1)
-                    .padding(5)
-                VillageCellDoubleAction(title: "Taschengeldbörse", desc: "Lorem ipsum dolor sit amet, consetetur sadipscing", btn1Title: "Anrufen", btn2Title: "Formular", index: 2)
-                    .padding(5)
+                ForEach(loadData(), id: \.self) { element in
+                    if element.type == 1 {
+                        VillageCellDoubleAction(title: element.name,
+                                                desc: element.desc,
+                                                btn1Title: element.callbtn,
+                                                btn2Title: element.actionbtn,
+                                                index: element.index)
+                    } else {
+                        VillageCellSingleAction(title: element.name,
+                                                desc: element.desc,
+                                                btnTitle: element.actionbtn,
+                                                index: element.index)
+                    }
+                }
+                .padding(5)
             }
             Spacer()
         }
+    }
+    
+    private func loadData() -> [VillageService] {
+        var result: [VillageService] = [VillageService]()
+        if let file = file {
+            if let data = try? Data(contentsOf: file, options: .alwaysMapped) {
+                let xml = SWXMLHash.config { config in
+                    config.encoding = .unicode
+                }.parse(data)
+                
+                var i = 0
+                for service in xml["village-services"].children {
+                    let element = VillageService(index: i,
+                                                 type: Int(service.element!.attribute(by: "type")?.text ?? "") ?? 0,
+                                                 name: service.element!.attribute(by: "title")?.text ?? "",
+                                                 desc: service.element!.attribute(by: "desc")?.text ?? "",
+                                                 tel: service.element!.attribute(by: "tel")?.text ?? "",
+                                                 callbtn: service.element!.attribute(by: "telbtn")?.text ?? "",
+                                                 link: service.element!.attribute(by: "action")?.text ?? "",
+                                                 actionbtn: service.element!.attribute(by: "actionbtn")?.text ?? "")
+                    i += 1
+                    result.append(element)
+                }
+            }
+        }
+        return result
     }
 }
 
