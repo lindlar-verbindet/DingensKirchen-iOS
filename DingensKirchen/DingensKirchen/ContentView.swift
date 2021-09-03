@@ -47,6 +47,7 @@ struct ContentView: View {
             }
             .navigationBarTitle("DingensKirchen")
         }
+        .accentColor(.secondaryHighlight)
     }
     
     @ViewBuilder func switchView(action:NavigationAction) -> some View {
