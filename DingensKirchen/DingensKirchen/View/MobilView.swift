@@ -75,7 +75,7 @@ struct MobilView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
                 .navigationBarTitle("Mobil", displayMode: .inline)
-            MapBottomSheetView(isOpen: self.$bottomSheetShown, maxHeight: 400) {
+            MapBottomSheetView(isOpen: self.$bottomSheetShown, maxHeight: 370) {
                 VStack(alignment: .leading) {
                     Text(contextTitle == "" ? defaultTitle : contextTitle)
                         .font(.title)
