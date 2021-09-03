@@ -9,8 +9,12 @@ import SwiftUI
 
 struct CouncilCell: View {
     
+    @Environment(\.openURL) var openURL
+    
     @State var title: String
+    @State var desc: String
     @State var buttonTitle: String
+    @State var targetLink: String
     @State var index: Int
     
     var body: some View {
@@ -21,12 +25,12 @@ struct CouncilCell: View {
                 .padding(5)
             HStack {
                 Image(systemName: "info.circle.fill")
-                Text("Weitere Informationen")
+                Text(desc)
                     .foregroundColor(.white)
             }
             .padding(5)
             Button(buttonTitle) {
-                
+                openURL(URL(string: targetLink)!)
             }
             .foregroundColor(.primaryTextColor)
             .frame(maxWidth: .infinity, minHeight: 30)
@@ -42,6 +46,6 @@ struct CouncilCell: View {
 
 struct CouncilCell_Previews: PreviewProvider {
     static var previews: some View {
-        CouncilCell(title: "test", buttonTitle: "Jetzt online beantragen", index: 0)
+        CouncilCell(title: "test", desc: "desc", buttonTitle: "Jetzt online beantragen", targetLink: "https://google.com", index: 0)
     }
 }
