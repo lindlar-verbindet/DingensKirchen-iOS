@@ -12,6 +12,7 @@ struct EventCell: View {
     @State var imagePath: String = ""
     @State var date: String
     @State var title: String
+    @State var desc: String
     @State var description: String
     @State var address: String
     @State var website: String
@@ -21,6 +22,7 @@ struct EventCell: View {
         self.imagePath = imagePath
         self.date = date
         self.title = title
+        self.desc = desc
         self.description = desc
         self.address = address
         self.website = website
@@ -39,8 +41,15 @@ struct EventCell: View {
                 }
                 VStack(alignment: .leading) {
                     Text(date)
+                        .font(Font.system(size: 12))
+                        .foregroundColor(.white)
+                        .fontWeight(.light)
                     Text(title)
-                    Text("DESC")
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                        .padding(.top, 10)
+                    Text(desc)
+                        .foregroundColor(.white)
                 }
             }
             HStack {
@@ -49,6 +58,8 @@ struct EventCell: View {
                     .frame(width: 10, height: 10)
                     .foregroundColor(.white)
                 Text(address)
+                    .font(Font.system(size: 12))
+                    .foregroundColor(.white)
                 Spacer()
             }
             HStack {
@@ -57,6 +68,8 @@ struct EventCell: View {
                     .frame(width: 10, height: 10, alignment: .center)
                     .foregroundColor(.white)
                 Text(website)
+                    .font(Font.system(size: 12))
+                    .foregroundColor(.white)
                 Spacer()
             }
             

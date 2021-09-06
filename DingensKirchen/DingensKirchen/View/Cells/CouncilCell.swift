@@ -25,6 +25,7 @@ struct CouncilCell: View {
                 .padding(5)
             HStack {
                 Image(systemName: "info.circle.fill")
+                    .foregroundColor(.white)
                 Text(desc)
                     .foregroundColor(.white)
             }

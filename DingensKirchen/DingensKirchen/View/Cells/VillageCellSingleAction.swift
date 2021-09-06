@@ -17,8 +17,12 @@ struct VillageCellSingleAction: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
+                .foregroundColor(.white)
+                .fontWeight(.bold)
                 .padding(5)
             Text(desc)
+                .font(Font.system(size: 14))
+                .foregroundColor(.white)
                 .padding(5)
             HStack {
                 Button(btnTitle) {
