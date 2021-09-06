@@ -40,15 +40,16 @@ struct ContentView: View {
                             MobilWidget()
                         }
                     }
-                    NavigationLink(destination: EventView()) {
-                        if let event = self.event {
+                    if let event = self.event {
+                        NavigationLink(destination: EventView()) {
                             EventWidget(date: event.dateString, eventTitle: event.title, eventDesc: event.desc)
-                        } else {
-                            EventWidget(date: "",
-                                        eventTitle: "Es gibt aktuell keine Termine",
-                                        eventDesc: "")
+                            
                         }
-                        
+                    } else {
+                        EventWidget(date: "",
+                                    eventTitle: "Es gibt aktuell keine Termine",
+                                    eventDesc: "")
+                            
                     }
                     
                 }
