@@ -17,6 +17,9 @@ enum NavigationAction {
 }
 
 struct ContentView: View {
+    
+    @State var event: WPEvent?
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -38,14 +41,22 @@ struct ContentView: View {
                         }
                     }
                     NavigationLink(destination: EventView()) {
-                        EventWidget(date: "01.01.1970",
-                                    eventTitle: "Beispieltermin",
-                                    eventDesc: "Kurzbeschreibung...")
+                        if let event = self.event {
+                            EventWidget(date: event.dateString, eventTitle: event.title, eventDesc: event.desc)
+                        } else {
+                            EventWidget(date: "",
+                                        eventTitle: "Es gibt aktuell keine Termine",
+                                        eventDesc: "")
+                        }
+                        
                     }
                     
                 }
             }
             .navigationBarTitle("DingensKirchen")
+            .onAppear {
+                self.event = WPEventHelper().getlatestEvent() ?? nil
+            }
         }
         .accentColor(.secondaryHighlight)
     }
