@@ -11,27 +11,13 @@ import SwiftyJSON
 
 struct WPEventHelper {
     
-    private let urlString: String = "https://www.lindlar-verbindet.de/wp-json/mecexternal/v1/calendar/412"
-    
-    func getlatestEvent() -> WPEvent? {
-        let events = requestEvents()
-        if events.isEmpty {
-            return nil
-        } else {
-            return events.first
-        }
+    static func getEvents(callback: @escaping ([WPEvent]) -> Void) {
+        requestEvents(callback: callback)
     }
     
-    func getEvents() -> [WPEvent]? {
-        let events = requestEvents()
-        if events.isEmpty {
-            return nil
-        } else {
-            return events
-        }
-    }
-    
-    private func requestEvents() -> [WPEvent] {
+    private static func requestEvents(callback: @escaping ([WPEvent]) -> Void) {
+        let urlString: String = "https://www.lindlar-verbindet.de/wp-json/mecexternal/v1/calendar/412"
+        
         var result = [WPEvent]()
         
         let headers: HTTPHeaders = [.accept("application/json")]
@@ -39,42 +25,43 @@ struct WPEventHelper {
         let request = AF.request(urlString, headers: headers)
                         .validate()
         request.responseJSON { response in
+            
+            let formatter = DateFormatter()
+            formatter.locale = Locale(identifier: "de_DE")
+            formatter.dateFormat = "yyyy-MM-dd"
+            
             switch response.result {
             case .success(let data):
                 let json = JSON(data)
                 if !json["content_json"].isEmpty {
-                    let dummy = json["content_json"]
+                    let data = json["content_json"]
                     var index = 0
-                    for element in dummy {
+                    for element in data {
                         print(element.0)
-                        let formatter = DateFormatter()
-                        formatter.locale = Locale(identifier: "de_DE")
-                        formatter.dateFormat = "yyyy-MM-dd"
                         if let date = formatter.date(from: String(element.0)) {
-                            let content = element.1
-                            let title = content["title"].string
-                            let desc = content["desc"].string
-                            let start = content["time"]["start_raw"].string
-                            let end = content["time"]["end_raw"].string
+                            let content = element.1[0]
+                            print(content)
+                            let title = content["data"]["title"].string
+                            let desc = content["data"]["content"].string
+                            let start = content["data"]["time"]["start_raw"].string
+                            let end = content["data"]["time"]["end_raw"].string
                             var location = ""
-                            for loc in content["locations"] {
-                                location = loc.0
+                            for loc in content["data"]["locations"] {
+                                location = loc.1["address"].string!
                             }
-                            let link = content["permalink"].string
+                            let link = content["data"]["permalink"].string
                             
                             let event = WPEvent(index: index, title: title!, desc: desc!, date: date, start: start!, end: end!, location: location, link: link!)
                             result.append(event)
                             index += 1 
                         }
                     }
+                    callback(result)
                 }
             case .failure(let error):
                 print(error)
                 break
             }
         }
-        
-        return result
     }
-    
 }

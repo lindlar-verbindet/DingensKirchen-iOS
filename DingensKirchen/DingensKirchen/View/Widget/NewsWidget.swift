@@ -25,8 +25,9 @@ struct NewsWidget: View {
             Text(newsTitle)
                 .widgetText(isTitle: true)
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
-            Text(newsDesc)
-                .widgetText()
+            Text(newsDesc.cutoffIfNeeded(maxChars: 120))
+                .font(Font.system(size: 14))
+                .foregroundColor(.white)
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 10))
                 
         }

@@ -1,5 +1,5 @@
 //
-//  WPEvent.swift
+//  WPNews.swift
 //  DingensKirchen
 //
 //  Created by Pascal Schönthier on 06.09.21.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct WPEvent: Hashable {
-    let index:      Int
-    let title:      String
-    let desc:       String
+struct WPNews: Hashable {
+    let index:  Int
+    let title:  String
+    let desc:   String
     var htmlFreeDesc: String {
         get {
             print(desc)
@@ -18,9 +18,9 @@ struct WPEvent: Hashable {
             return linkfree.replacingOccurrences(of: "<[^>]+>", with: "",options: .regularExpression)
         }
     }
-    let date:       Date
+    let date:   Date
     var dateString: String {
-        get{
+        get {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "de_DE")
             dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
@@ -28,8 +28,5 @@ struct WPEvent: Hashable {
             return dateFormatter.string(from: self.date)
         }
     }
-    let start:      String
-    let end:        String
-    let location:   String
-    let link:       String
+    let link:   String
 }

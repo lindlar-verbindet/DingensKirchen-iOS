@@ -19,10 +19,9 @@ struct EventView: View {
                     .frame(maxWidth: .infinity)
                     .scaledToFit()
                 ForEach(events, id: \.self) { event in
-                    EventCell(imagePath: "ic_event_head",
-                              date: event.dateString,
+                    EventCell(date: event.dateString,
                               title: event.title,
-                              desc: event.desc,
+                              desc: event.htmlFreeDesc,
                               address: event.location,
                               website: event.link,
                               item: event.index)
@@ -38,7 +37,7 @@ struct EventView: View {
     }
     
     private func getEvents() {
-        if let events = WPEventHelper().getEvents() {
+        WPEventHelper.getEvents { events in
             self.events = events
         }
     }

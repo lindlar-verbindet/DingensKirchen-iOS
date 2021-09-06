@@ -48,7 +48,7 @@ struct EventCell: View {
                         .foregroundColor(.white)
                         .fontWeight(.bold)
                         .padding(.top, 10)
-                    Text(desc)
+                    Text(desc.cutoffIfNeeded(maxChars: 50))
                         .foregroundColor(.white)
                 }
             }

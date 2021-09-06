@@ -18,16 +18,21 @@ enum NavigationAction {
 
 struct ContentView: View {
     
+    @State var news: WPNews?
     @State var event: WPEvent?
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 ScrollView(.vertical) {
-                    NavigationLink(destination: NewsView()) {
-                        NewsWidget(date: "01.01.1970",
-                                   newsTitle: "Letzte Nachricht",
-                                   newsDesc: "Lorem Ipsum dolor sit amet, consetetur...")
+                    if let news = news {
+                        NavigationLink(destination: NewsView()) {
+                            NewsWidget(date: news.dateString,
+                                       newsTitle: news.title,
+                                       newsDesc: news.htmlFreeDesc)
+                        }
+                    } else {
+                        NewsWidget(date: "", newsTitle: "Aktuell sind keine Nachrichten Vorhanden", newsDesc: "")
                     }
                     NavigationLink(destination: VillageView()) {
                         VillageWidget()
@@ -55,7 +60,16 @@ struct ContentView: View {
             }
             .navigationBarTitle("DingensKirchen")
             .onAppear {
-                self.event = WPEventHelper().getlatestEvent() ?? nil
+//                self.event = WPEventHelper().getlatestEvent() ?? nil
+                WPEventHelper.getEvents { events in
+                    print(events)
+                    self.event = events.first
+                }
+                WPNewsHelper.getNews { news in
+                        print(news)
+                        self.news = news.first
+                }
+                
             }
         }
         .accentColor(.secondaryHighlight)
