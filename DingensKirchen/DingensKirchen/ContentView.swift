@@ -51,7 +51,6 @@ struct ContentView: View {
                                     eventDesc: "")
                             
                     }
-                    
                 }
             }
             .navigationBarTitle("DingensKirchen")

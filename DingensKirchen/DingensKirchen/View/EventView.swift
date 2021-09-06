@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct EventView: View {
+    
+    @State var events: [WPEvent] = [WPEvent]()
+    
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView(.vertical) {
@@ -15,14 +18,29 @@ struct EventView: View {
                     .resizable()
                     .frame(maxWidth: .infinity)
                     .scaledToFit()
-                EventCell(imagePath: "ic_event_head", date: "01.01.1970", title: "Test", desc: "Some Description of the event", address: "Teststreet 1", website: "diesite.de", item: 0)
-                    .padding(5)
-                EventCell(date: "01.01.1970", title: "Test", desc: "Some Description of the event", address: "Teststreet 1", website: "diesite.de", item: 1)
-                    .padding(5)
+                ForEach(events, id: \.self) { event in
+                    EventCell(imagePath: "ic_event_head",
+                              date: event.dateString,
+                              title: event.title,
+                              desc: event.desc,
+                              address: event.location,
+                              website: event.link,
+                              item: event.index)
+                        .padding(5)
+                }
             }
             Spacer()
         }
         .navigationBarTitle("Veranstaltungen&Termine", displayMode: .inline)
+        .onAppear {
+            getEvents()
+        }
+    }
+    
+    private func getEvents() {
+        if let events = WPEventHelper().getEvents() {
+            self.events = events
+        }
     }
 }
 

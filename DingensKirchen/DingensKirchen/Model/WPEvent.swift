@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct WPEvent {
+struct WPEvent: Hashable {
+    let index:      Int
     let title:      String
     let desc:       String
     let date:       Date
