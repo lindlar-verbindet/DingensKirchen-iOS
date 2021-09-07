@@ -43,15 +43,15 @@ struct WPEventHelper {
                             print(content)
                             let title = content["data"]["title"].string
                             let desc = content["data"]["content"].string
-                            let start = content["data"]["time"]["start_raw"].string
-                            let end = content["data"]["time"]["end_raw"].string
+                            let start = content["data"]["time"]["start_raw"].string ?? ""
+                            let end = content["data"]["time"]["end_raw"].string ?? ""
                             var location = ""
                             for loc in content["data"]["locations"] {
                                 location = loc.1["address"].string!
                             }
                             let link = content["data"]["permalink"].string
                             
-                            let event = WPEvent(index: index, title: title!, desc: desc!, date: date, start: start!, end: end!, location: location, link: link!)
+                            let event = WPEvent(index: index, title: title!, desc: desc!, date: date, start: start, end: end, location: location, link: link!)
                             result.append(event)
                             index += 1 
                         }

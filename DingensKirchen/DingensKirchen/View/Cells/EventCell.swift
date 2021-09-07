@@ -11,23 +11,32 @@ struct EventCell: View {
     
     @State var imagePath: String = ""
     @State var date: String
+    @State var start: String
+    @State var end: String
     @State var title: String
     @State var desc: String
-    @State var description: String
     @State var address: String
     @State var website: String
-    @State var itemNumber: Int
+    @State var index: Int
     
-    init(imagePath: String = "", date: String, title: String, desc: String, address: String, website: String, item: Int) {
+    init(imagePath: String = "",
+         date: String,
+         start: String,
+         end: String,
+         title: String,
+         desc: String,
+         address: String,
+         website: String,
+         index: Int) {
         self.imagePath = imagePath
         self.date = date
+        self.start = start
+        self.end = end
         self.title = title
         self.desc = desc
-        self.description = desc
         self.address = address
         self.website = website
-        self.itemNumber = item 
-        
+        self.index = index
     }
     
     var body: some View {
@@ -40,7 +49,7 @@ struct EventCell: View {
                         .scaledToFit()
                 }
                 VStack(alignment: .leading) {
-                    Text(date)
+                    Text(getEventDateString())
                         .font(Font.system(size: 12))
                         .foregroundColor(.white)
                         .fontWeight(.light)
@@ -48,8 +57,13 @@ struct EventCell: View {
                         .foregroundColor(.white)
                         .fontWeight(.bold)
                         .padding(.top, 10)
-                    Text(desc.cutoffIfNeeded(maxChars: 50))
+                    Text(desc)
+                        .font(Font.system(size: 14))
                         .foregroundColor(.white)
+                }
+                .onAppear{
+                    print(start)
+                    print(end)
                 }
             }
             HStack {
@@ -76,13 +90,26 @@ struct EventCell: View {
         }
         .frame(maxWidth: .infinity)
         .padding(5)
-        .background(itemNumber % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
+        .background(index % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
         .cornerRadius(5)
+    }
+    
+    private func getEventDateString() -> String {
+        if start != end {
+            let startTime = start != "" ? " Von: " + start + " " : ""
+            let endTime = end != "" ? "Bis: " + end : ""
+            return date + startTime + endTime
+        } else {
+            let startTime = start != "" ? " Ab: " + start : ""
+            return date + startTime
+        }
+        
+        
     }
 }
 
 struct EventCell_Previews: PreviewProvider {
     static var previews: some View {
-        EventCell(date: "01.01.1970", title: "test", desc: "testerino", address: "teststreet", website: "pixelskull.de", item: 0)
+        EventCell(date: "01.01.1970", start: "19:00", end: "22:00", title: "test", desc: "testerino", address: "teststreet", website: "pixelskull.de", index: 0)
     }
 }

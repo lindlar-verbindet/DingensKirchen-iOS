@@ -21,11 +21,13 @@ struct EventView: View {
                 ForEach(events, id: \.self) { event in
                     NavigationLink(destination: DKWebView(urlString: event.link)) {
                         EventCell(date: event.dateString,
+                                  start: event.start,
+                                  end: event.end, 
                                   title: event.title,
                                   desc: event.htmlFreeDesc,
                                   address: event.location,
                                   website: event.link,
-                                  item: event.index)
+                                  index: event.index)
                             .padding(5)
                     }
                 }
