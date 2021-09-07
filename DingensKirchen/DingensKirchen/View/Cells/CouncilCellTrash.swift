@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct CouncilCellTrash: View {
+    
+    let targetURLString = "https://abfallnavi.de/lindlar/"
+    
     var body: some View {
         VStack {
-            Image("ic_trash")
-                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: 120)
-                .background(Color.primaryHighlight)
-                .cornerRadius(5)
+            NavigationLink(destination: DKWebView(urlString: targetURLString)) {
+                Image("ic_trash")
+                    .resizable()
+                    .frame(maxWidth: .infinity, maxHeight: 120)
+                    .background(Color.primaryHighlight)
+                    .cornerRadius(5)
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
             
     }

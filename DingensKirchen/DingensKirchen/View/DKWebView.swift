@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WebView
+import WebKit
 
 struct DKWebView: View {
     
@@ -36,8 +37,13 @@ struct DKWebView: View {
                 }
             }
             .onAppear {
+                let request = URLRequest(url: URL(string: urlString)!)
                 self.webViewStore.webView
-                    .load(URLRequest(url: URL(string: urlString)!))
+                    .configuration.defaultWebpagePreferences.allowsContentJavaScript = true
+                self.webViewStore.webView
+                    .load(request)
+                
+                
             }
             .navigationTitle(webViewStore.webView.title ?? "")
     }

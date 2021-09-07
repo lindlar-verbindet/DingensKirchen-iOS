@@ -9,8 +9,6 @@ import SwiftUI
 
 struct CouncilCell: View {
     
-    @Environment(\.openURL) var openURL
-    
     @State var title: String
     @State var desc: String
     @State var buttonTitle: String
@@ -30,9 +28,11 @@ struct CouncilCell: View {
                     .foregroundColor(.white)
             }
             .padding(5)
-            Button(buttonTitle) {
-                openURL(URL(string: targetLink)!)
-            }
+            Button(action: {}, label: {
+                NavigationLink(destination: DKWebView(urlString: targetLink)) {
+                    Text(buttonTitle)
+                }
+            })
             .foregroundColor(.primaryTextColor)
             .frame(maxWidth: .infinity, minHeight: 30)
             .background(Color.white)
