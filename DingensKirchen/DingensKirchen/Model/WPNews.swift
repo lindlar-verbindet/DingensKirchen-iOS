@@ -22,8 +22,9 @@ struct WPNews: Hashable {
     var dateString: String {
         get {
             let dateFormatter = DateFormatter()
+//            dateFormatter.calendar = Calendar(identifier: .iso8601)
             dateFormatter.locale = Locale(identifier: "de_DE")
-            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
+            dateFormatter.setLocalizedDateFormatFromTemplate("`dd-MMM`T`HH:mm`")
             
             return dateFormatter.string(from: self.date)
         }

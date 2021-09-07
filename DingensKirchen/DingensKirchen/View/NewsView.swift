@@ -13,12 +13,14 @@ struct NewsView: View {
     
     var body: some View {
         ScrollView(.vertical) {
-            ForEach(news, id: \.self) { n in 
-                NewsCell(index: n.index,
-                         title: n.title,
-                         desc: n.htmlFreeDesc,
-                         date: n.dateString)
-                    .padding(5)
+            ForEach(news, id: \.self) { n in
+                NavigationLink(destination: DKWebView(urlString: n.link)) {
+                    NewsCell(index: n.index,
+                             title: n.title,
+                             desc: n.htmlFreeDesc,
+                             date: n.dateString)
+                        .padding(5)
+                }
             }
         }
         .navigationBarTitle("Lindlarer News", displayMode: .inline)
