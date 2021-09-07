@@ -87,9 +87,10 @@ struct DigitalView: View {
             Button("Absenden", action: {
                 print(topic)
             })
+            .disabled(!terms)
             .frame(maxWidth: .infinity)
             .padding(5)
-            .background(Color.secondaryHighlight)
+            .background(!terms ? Color.primaryBackground : Color.secondaryHighlight)
             .foregroundColor(.white)
             .cornerRadius(5)
         }
