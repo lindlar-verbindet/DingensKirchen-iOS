@@ -34,9 +34,11 @@ struct VillageCellDoubleAction: View {
                 .background(Color.primaryTextColor)
                 .cornerRadius(5)
                 .padding(5)
-                Button(btn2Title) {
-                    
-                }
+                Button(action: {}, label: {
+                    NavigationLink(destination: DigitalView()) {
+                        Text(btn2Title)
+                    }
+                })
                 .foregroundColor(.primaryTextColor)
                 .frame(maxWidth: .infinity, minHeight: 30)
                 .background(Color.white)
