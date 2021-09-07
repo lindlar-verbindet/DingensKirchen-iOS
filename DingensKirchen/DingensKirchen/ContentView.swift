@@ -18,18 +18,18 @@ enum NavigationAction {
 
 struct ContentView: View {
     
-    @State var news: WPNews?
-    @State var event: WPEvent?
+    @State var news: [WPNews]?
+    @State var events: [WPEvent]?
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 ScrollView(.vertical) {
                     if let news = news {
-                        NavigationLink(destination: NewsView()) {
-                            NewsWidget(date: news.dateString,
-                                       newsTitle: news.title,
-                                       newsDesc: news.htmlFreeDesc)
+                        NavigationLink(destination: NewsView(news: news)) {
+                            NewsWidget(date: news.first!.dateString,
+                                       newsTitle: news.first!.title,
+                                       newsDesc: news.first!.htmlFreeDesc)
                         }
                     } else {
                         NewsWidget(date: "", newsTitle: "Aktuell sind keine Nachrichten Vorhanden", newsDesc: "")
@@ -45,9 +45,11 @@ struct ContentView: View {
                             MobilWidget()
                         }
                     }
-                    if let event = self.event {
+                    if let events = self.events {
                         NavigationLink(destination: EventView()) {
-                            EventWidget(date: event.dateString, eventTitle: event.title, eventDesc: event.desc)
+                            EventWidget(date: events.first!.dateString,
+                                        eventTitle: events.first!.title,
+                                        eventDesc: events.first!.desc)
                             
                         }
                     } else {
@@ -63,11 +65,11 @@ struct ContentView: View {
 //                self.event = WPEventHelper().getlatestEvent() ?? nil
                 WPEventHelper.getEvents { events in
                     print(events)
-                    self.event = events.first
+                    self.events = events
                 }
                 WPNewsHelper.getNews { news in
                         print(news)
-                        self.news = news.first
+                        self.news = news
                 }
                 
             }
