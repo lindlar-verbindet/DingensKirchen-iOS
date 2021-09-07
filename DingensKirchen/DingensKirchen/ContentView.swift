@@ -46,11 +46,10 @@ struct ContentView: View {
                         }
                     }
                     if let events = self.events {
-                        NavigationLink(destination: EventView()) {
+                        NavigationLink(destination: EventView(events: events)) {
                             EventWidget(date: events.first!.dateString,
                                         eventTitle: events.first!.title,
-                                        eventDesc: events.first!.desc)
-                            
+                                        eventDesc: events.first!.htmlFreeDesc.cutoffIfNeeded(maxChars: 40))
                         }
                     } else {
                         EventWidget(date: "",
@@ -62,10 +61,11 @@ struct ContentView: View {
             }
             .navigationBarTitle("DingensKirchen")
             .onAppear {
-//                self.event = WPEventHelper().getlatestEvent() ?? nil
                 WPEventHelper.getEvents { events in
                     print(events)
-                    self.events = events
+                    self.events = events.sorted { (a, b) in
+                        a.date <= b.date
+                    }
                 }
                 WPNewsHelper.getNews { news in
                         print(news)

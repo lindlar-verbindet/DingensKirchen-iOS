@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventView: View {
     
-    @State var events: [WPEvent] = [WPEvent]()
+    @State var events: [WPEvent]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -19,32 +19,25 @@ struct EventView: View {
                     .frame(maxWidth: .infinity)
                     .scaledToFit()
                 ForEach(events, id: \.self) { event in
-                    EventCell(date: event.dateString,
-                              title: event.title,
-                              desc: event.htmlFreeDesc,
-                              address: event.location,
-                              website: event.link,
-                              item: event.index)
-                        .padding(5)
+                    NavigationLink(destination: DKWebView(urlString: event.link)) {
+                        EventCell(date: event.dateString,
+                                  title: event.title,
+                                  desc: event.htmlFreeDesc,
+                                  address: event.location,
+                                  website: event.link,
+                                  item: event.index)
+                            .padding(5)
+                    }
                 }
             }
             Spacer()
         }
         .navigationBarTitle("Veranstaltungen&Termine", displayMode: .inline)
-        .onAppear {
-            getEvents()
-        }
-    }
-    
-    private func getEvents() {
-        WPEventHelper.getEvents { events in
-            self.events = events
-        }
     }
 }
 
 struct EventVIew_Previews: PreviewProvider {
     static var previews: some View {
-        EventView()
+        EventView(events: [WPEvent(index: 0, title: "heading", desc: "Description", date: Date(), start: "09:00", end: "17:00", location: "Teststreet", link: "pixelskull.de")])
     }
 }
