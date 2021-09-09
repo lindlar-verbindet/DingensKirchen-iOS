@@ -61,17 +61,8 @@ struct ContentView: View {
             }
             .navigationBarTitle("DingensKirchen")
             .onAppear {
-                WPEventHelper.getEvents { events in
-                    print(events)
-                    self.events = events.sorted { (a, b) in
-                        a.date <= b.date
-                    }
-                }
-                WPNewsHelper.getNews { news in
-                        print(news)
-                        self.news = news
-                }
-                
+                WPEventHelper.getEvents { events in self.events = events }
+                WPNewsHelper.getNews { news in self.news = news }
             }
         }
         .accentColor(.secondaryHighlight)

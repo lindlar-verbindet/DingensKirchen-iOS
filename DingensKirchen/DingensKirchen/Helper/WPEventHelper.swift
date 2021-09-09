@@ -36,7 +36,10 @@ struct WPEventHelper {
                 if !json["content_json"].isEmpty {
                     let data = json["content_json"]
                     var index = 0
-                    for element in data {
+                    let sorted = data.sorted { a, b in
+                        formatter.date(from: a.0)! <= formatter.date(from: b.0)!
+                    }
+                    for element in sorted {
                         print(element.0)
                         if let date = formatter.date(from: String(element.0)) {
                             let content = element.1[0]
@@ -51,7 +54,14 @@ struct WPEventHelper {
                             }
                             let link = content["data"]["permalink"].string
                             
-                            let event = WPEvent(index: index, title: title!, desc: desc!, date: date, start: start, end: end, location: location, link: link!)
+                            let event = WPEvent(index: index,
+                                                title: title!,
+                                                desc: desc!,
+                                                date: date,
+                                                start: start,
+                                                end: end,
+                                                location: location,
+                                                link: link!)
                             result.append(event)
                             index += 1 
                         }
