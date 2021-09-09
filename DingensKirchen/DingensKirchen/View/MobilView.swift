@@ -70,21 +70,26 @@ struct MobilView: View {
     @State var defaultDesc = "<b>Nicht die richtige Mitfahrgelegenheit gefunden?</b> \nVersuchen Sie es doch mit unserem LiMo-Service: \n <a href=tel:+4922664407204>+49 2266 440 72 04</a>"
     
     var body: some View {
-        ZStack {
-            MapboxMap(parent: self)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .edgesIgnoringSafeArea(.all)
-            MapBottomSheetView(isOpen: self.$bottomSheetShown, maxHeight: 370) {
-                VStack(alignment: .leading) {
-                    Text(contextTitle == "" ? defaultTitle : contextTitle)
-                        .font(.title)
-                        .padding(5)
-                    AttributedText(contextTitle == "" ? defaultDesc : contextDesc)
-                    Spacer()
-                        .frame(maxWidth: .infinity)
+        GeometryReader { view in
+            ZStack {
+                MapboxMap(parent: self)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
+                MapBottomSheetView(isOpen: self.$bottomSheetShown, maxHeight: (view.size.height / 3) * 2)  {
+                    VStack(alignment: .leading) {
+                        Text(contextTitle == "" ? defaultTitle : contextTitle)
+                            .font(.title)
+                            .padding(5)
+                        AttributedText(contextTitle == "" ? defaultDesc : contextDesc)
+                        Spacer()
+                            .frame(maxWidth: .infinity)
+                    }
                 }
+                .padding(EdgeInsets(top: view.safeAreaInsets.top, leading: 0, bottom: 0, trailing: 0))
+                .ignoresSafeArea()
             }
         }
+        
         .navigationBarTitle("Mobil", displayMode: .inline)
     }
 }
