@@ -24,6 +24,7 @@ struct VillageView: View {
                         VillageCellDoubleAction(title: element.name,
                                                 desc: element.desc,
                                                 btn1Title: element.callbtn,
+                                                tel: element.tel, 
                                                 btn2Title: element.actionbtn,
                                                 index: element.index)
                     } else {

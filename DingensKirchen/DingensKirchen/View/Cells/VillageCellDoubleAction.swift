@@ -12,6 +12,7 @@ struct VillageCellDoubleAction: View {
     @State var title: String
     @State var desc: String
     @State var btn1Title: String
+    @State var tel: String?
     @State var btn2Title: String
     @State var index: Int
     
@@ -27,7 +28,9 @@ struct VillageCellDoubleAction: View {
                 .padding(5)
             HStack {
                 Button(btn1Title) {
-                    
+                    if let url = URL(string: "telprompt://\(tel!)"), UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
                 }
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, minHeight: 30)
