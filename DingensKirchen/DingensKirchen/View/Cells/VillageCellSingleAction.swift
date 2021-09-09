@@ -36,7 +36,7 @@ struct VillageCellSingleAction: View {
             }
             .frame(maxWidth: .infinity)
         }
-        .background(index % 2 == 0 ? Color.primaryHighlight : Color.primaryBackground)
+        .background(index % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
         .cornerRadius(5)
     }
 }
