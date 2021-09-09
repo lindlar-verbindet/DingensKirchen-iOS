@@ -89,7 +89,6 @@ struct MobilView: View {
                 .ignoresSafeArea()
             }
         }
-        
         .navigationBarTitle("Mobil", displayMode: .inline)
     }
 }

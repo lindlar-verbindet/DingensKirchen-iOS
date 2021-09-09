@@ -22,7 +22,6 @@ struct NewsWidget: View {
             Text(date)
                 .widgetText()
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 12))
-                .font(Font.system(size: 10))
             Text(newsTitle)
                 .widgetText(isTitle: true)
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
