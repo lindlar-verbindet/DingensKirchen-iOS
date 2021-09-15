@@ -32,10 +32,10 @@ struct AttributedText: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UITextView, context: Context) {
+        
         uiView.attributedText = try! NSAttributedString(data: text.data(using: .unicode)!,
                                                    options: [.documentType: NSAttributedString.DocumentType.html],
                                                    documentAttributes: nil)
-        uiView.font = UIFont.systemFont(ofSize: 14)
     }
 }
 
@@ -67,7 +67,7 @@ struct MobilView: View {
     @State var contextDesc: String = ""
     
     @State var defaultTitle = "Lindlar Mobil"
-    @State var defaultDesc = "<b>Nicht die richtige Mitfahrgelegenheit gefunden?</b> \nVersuchen Sie es doch mit unserem LiMo-Service: \n <a href=tel:+4922664407204>+49 2266 440 72 04</a>"
+    @State var defaultDesc = "<span style=\"font-family: sans-serif; font-size: 12pt;\"><strong>Nicht die richtige Mitfahrgelegenheit gefunden?</strong> <br>Versuchen Sie es doch mit unserem LiMo-Service: <br><a href=tel:+4922664407204>+49 2266 440 72 04</a></span>"
     
     var body: some View {
         GeometryReader { view in
