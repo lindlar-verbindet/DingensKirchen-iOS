@@ -21,10 +21,11 @@ struct CouncilCell: View {
                 .foregroundColor(.white)
                 .font(Font.system(size: 24))
                 .bold()
-                .padding(5)
+                .padding(EdgeInsets(top: 15, leading: 15, bottom: 5, trailing: 15))
             Text(desc)
                 .bold()
                 .foregroundColor(.white)
+                .padding(EdgeInsets(top: 0, leading: 15, bottom: 5, trailing: 15))
             .padding(5)
             Button(action: {}, label: {
                 NavigationLink(destination: DKWebView(urlString: targetLink)) {

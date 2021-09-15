@@ -89,7 +89,7 @@ struct EventCell: View {
             
         }
         .frame(maxWidth: .infinity)
-        .padding(5)
+        .padding(15)
         .background(index % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
         .cornerRadius(15)
     }

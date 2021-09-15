@@ -15,11 +15,14 @@ struct CouncilWidget: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(title)
-                .widgetText(isTitle: true)
+            Text(title.uppercased())
+                .font(Font.system(size: 20))
+                .bold()
+                .foregroundColor(.white)
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
             Text(desc)
-                .widgetText()
+                .font(Font.system(size: 14))
+                .foregroundColor(.white)
                 .padding(EdgeInsets(top: 30, leading: 10, bottom: 10, trailing: 10))
         }
         .smallWidget()

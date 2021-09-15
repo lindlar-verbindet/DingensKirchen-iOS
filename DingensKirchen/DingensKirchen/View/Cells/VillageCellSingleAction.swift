@@ -19,11 +19,11 @@ struct VillageCellSingleAction: View {
             Text(title)
                 .foregroundColor(.white)
                 .fontWeight(.bold)
-                .padding(5)
+                .padding(EdgeInsets(top: 15, leading: 15, bottom: 5, trailing: 15))
             Text(desc)
                 .font(Font.system(size: 14))
                 .foregroundColor(.white)
-                .padding(5)
+                .padding(EdgeInsets(top: 0, leading: 15, bottom: 5, trailing: 15))
             HStack {
                 Button(btnTitle) {
                     

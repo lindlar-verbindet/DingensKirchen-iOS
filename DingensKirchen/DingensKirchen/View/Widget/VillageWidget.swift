@@ -10,17 +10,19 @@ import SwiftUI
 struct VillageWidget: View {
     
     let title: String = "Dorfleben"
-    
     @State var desc: String = "Suche&Finde, DigitalBegleitung, Nachbarschaftshilfe, Taschengeldbörse"
     
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(title)
-                .widgetText(isTitle: true)
+            Text(title.uppercased())
+                .font(Font.system(size: 20))
+                .foregroundColor(.white)
+                .bold()
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
             Text(desc)
-                .widgetText()
+                .font(Font.system(size: 14))
+                .foregroundColor(.white)
                 .padding(EdgeInsets(top: 30, leading: 10, bottom: 10, trailing: 10))
         }
         .widget(background: Color.primaryHighlight)

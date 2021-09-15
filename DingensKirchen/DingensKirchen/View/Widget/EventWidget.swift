@@ -17,17 +17,22 @@ struct EventWidget: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(title)
-                .widgetText(isTitle: true)
+            Text(title.uppercased())
+                .font(Font.system(size: 20))
+                .bold()
+                .foregroundColor(.white)
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
             Text(date)
-                .widgetText()
+                .font(Font.system(size: 12))
+                .foregroundColor(.white)
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
             Text(eventTitle)
-                .widgetText(isTitle: true)
+                .font(Font.system(size: 18))
+                .foregroundColor(.white)
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             Text(eventDesc)
-                .widgetText()
+                .font(Font.system(size: 14))
+                .foregroundColor(.white)
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
         }
         .widget(background: Color.primaryHighlight)

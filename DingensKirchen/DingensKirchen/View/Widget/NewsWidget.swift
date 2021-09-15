@@ -16,19 +16,23 @@ struct NewsWidget: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(title)
-                .widgetText(isTitle: true)
-                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+            Text(title.uppercased())
+                .font(Font.system(size: 20))
+                .foregroundColor(.white)
+                .bold()
+                .padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
             Text(date)
-                .widgetText()
-                .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 12))
+                .font(Font.system(size: 12))
+                .foregroundColor(.white)
+                .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
             Text(newsTitle)
-                .widgetText(isTitle: true)
-                .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
+                .font(Font.system(size: 18))
+                .foregroundColor(.white)
+                .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
             Text(newsDesc.cutoffIfNeeded(maxChars: 120))
                 .font(Font.system(size: 14))
                 .foregroundColor(.white)
-                .padding(EdgeInsets(top: 5, leading: 10, bottom: 10, trailing: 10))
+                .padding(EdgeInsets(top: 2, leading: 15, bottom: 15, trailing: 15))
                 
         }
         .widget()
