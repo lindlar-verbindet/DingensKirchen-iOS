@@ -60,7 +60,7 @@ struct DigitalView: View {
                     .padding(5)
                     .background(Color.tertiaryHighlight)
                     .foregroundColor(.white)
-                    .cornerRadius(5)
+                    .cornerRadius(15)
                 }
                 
                 textField("Erzählen Sie uns ein bisschen mehr zum Thema. So können wir den richtigen Experten für Sie finden.", binding: $details)
@@ -92,7 +92,7 @@ struct DigitalView: View {
             .padding(5)
             .background(!terms ? Color.primaryBackground : Color.secondaryHighlight)
             .foregroundColor(.white)
-            .cornerRadius(5)
+            .cornerRadius(15)
         }
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
     }

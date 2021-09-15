@@ -91,7 +91,7 @@ struct EventCell: View {
         .frame(maxWidth: .infinity)
         .padding(5)
         .background(index % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
-        .cornerRadius(5)
+        .cornerRadius(15)
     }
     
     private func getEventDateString() -> String {

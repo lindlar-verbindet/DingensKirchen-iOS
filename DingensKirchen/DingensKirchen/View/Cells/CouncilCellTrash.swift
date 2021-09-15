@@ -18,7 +18,7 @@ struct CouncilCellTrash: View {
                     .resizable()
                     .frame(maxWidth: .infinity, maxHeight: 120)
                     .background(Color.primaryHighlight)
-                    .cornerRadius(5)
+                    .cornerRadius(15)
             }
             .navigationViewStyle(StackNavigationViewStyle())
         }

@@ -31,13 +31,13 @@ struct VillageCellSingleAction: View {
                 .foregroundColor(Color.primaryTextColor)
                 .frame(maxWidth: .infinity, minHeight: 30)
                 .background(Color.white)
-                .cornerRadius(5)
+                .cornerRadius(15)
                 .padding(5)
             }
             .frame(maxWidth: .infinity)
         }
         .background(index % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
-        .cornerRadius(5)
+        .cornerRadius(15)
     }
 }
 

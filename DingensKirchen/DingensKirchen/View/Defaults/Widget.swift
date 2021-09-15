@@ -15,7 +15,7 @@ struct Widget: ViewModifier {
         content
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
             .background(background)
-            .cornerRadius(5)
+            .cornerRadius(15)
     }
 }
 
@@ -27,7 +27,7 @@ struct SmallWidget: ViewModifier {
         content
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 130, maxHeight: 130, alignment: .leading)
             .background(background)
-            .cornerRadius(5)
+            .cornerRadius(15)
     }
 }
 

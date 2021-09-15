@@ -33,7 +33,7 @@ struct NewsCell: View {
         .frame(maxWidth: .infinity, alignment: .topLeading)
         .padding(5)
         .background(index % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
-        .cornerRadius(5)
+        .cornerRadius(15)
     }
 }
 

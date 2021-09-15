@@ -35,7 +35,7 @@ struct VillageCellDoubleAction: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, minHeight: 30)
                 .background(Color.primaryTextColor)
-                .cornerRadius(5)
+                .cornerRadius(15)
                 .padding(5)
                 Button(action: {}, label: {
                     NavigationLink(destination: DigitalView()) {
@@ -45,13 +45,13 @@ struct VillageCellDoubleAction: View {
                 .foregroundColor(.primaryTextColor)
                 .frame(maxWidth: .infinity, minHeight: 30)
                 .background(Color.white)
-                .cornerRadius(5)
+                .cornerRadius(15)
                 .padding(5)
             }
             .frame(maxWidth: .infinity)
         }
         .background(index % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
-        .cornerRadius(5)
+        .cornerRadius(15)
     }
 }
 
