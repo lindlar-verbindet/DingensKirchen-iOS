@@ -19,14 +19,12 @@ struct CouncilCell: View {
         VStack(alignment: .leading) {
             Text(title)
                 .foregroundColor(.white)
-                .widgetText(isTitle: true)
+                .font(Font.system(size: 24))
+                .bold()
                 .padding(5)
-            HStack {
-                Image(systemName: "info.circle.fill")
-                    .foregroundColor(.white)
-                Text(desc)
-                    .foregroundColor(.white)
-            }
+            Text(desc)
+                .bold()
+                .foregroundColor(.white)
             .padding(5)
             Button(action: {}, label: {
                 NavigationLink(destination: DKWebView(urlString: targetLink)) {
@@ -36,8 +34,8 @@ struct CouncilCell: View {
             .foregroundColor(.primaryTextColor)
             .frame(maxWidth: .infinity, minHeight: 30)
             .background(Color.white)
-            .cornerRadius(15)
-            .padding(5)
+            .cornerRadius(5)
+            .padding(EdgeInsets(top: 5, leading: 15, bottom: 15, trailing: 15))
         }
         .padding(5)
         .background(index % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
