@@ -19,10 +19,12 @@ struct CouncilWidget: View {
                 .font(Font.system(size: 20))
                 .bold()
                 .foregroundColor(.white)
+                .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
             Text(desc)
                 .font(Font.system(size: 14))
                 .foregroundColor(.white)
+                .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 30, leading: 10, bottom: 10, trailing: 10))
         }
         .smallWidget()

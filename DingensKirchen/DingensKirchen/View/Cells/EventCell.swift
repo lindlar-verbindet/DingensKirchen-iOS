@@ -53,13 +53,16 @@ struct EventCell: View {
                         .font(Font.system(size: 12))
                         .foregroundColor(.white)
                         .fontWeight(.light)
+                        .multilineTextAlignment(.leading)
                     Text(title)
                         .foregroundColor(.white)
                         .fontWeight(.bold)
+                        .multilineTextAlignment(.leading)
                         .padding(.top, 10)
                     Text(desc)
                         .font(Font.system(size: 14))
                         .foregroundColor(.white)
+                        .multilineTextAlignment(.leading)
                 }
                 .onAppear{
                     print(start)
@@ -74,6 +77,7 @@ struct EventCell: View {
                 Text(address)
                     .font(Font.system(size: 12))
                     .foregroundColor(.white)
+                    .multilineTextAlignment(.leading)
                 Spacer()
             }
             HStack {
