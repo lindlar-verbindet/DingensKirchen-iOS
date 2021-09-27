@@ -105,8 +105,8 @@ class MapViewController: UIViewController {
             var title = ""
             do {
                 try result.get().forEach { feature in
-                    print("\(self.stopsID): \(feature.feature.properties)")
-                    if let name = feature.feature.properties["name"] {
+                    print("\(self.stopsID): \(String(describing: feature.feature?.properties))")
+                    if let name = feature.feature?.properties?["name"] {
                         if title == "" {
                             title.append(name as! String)
                         } else {
@@ -132,11 +132,11 @@ class MapViewController: UIViewController {
             var desc = ""
             do {
                 try result.get().forEach { feature in
-                    print("\(self.routesID): \(feature.feature.properties)")
-                    if let ref = feature.feature.properties["ref"] as? String {
+                    print("\(self.routesID): \(String(describing: feature.feature?.properties))")
+                    if let ref = feature.feature?.properties?["ref"] as? String {
                         let busLink = self.getDeparturePlan(ref)
-                        let from = feature.feature.properties["from"] as! String
-                        let to = feature.feature.properties["to"] as! String
+                        let from = feature.feature?.properties?["from"] as! String
+                        let to = feature.feature?.properties?["to"] as! String
                         if desc == "" {
                             desc.append("\(busLink): \(from) -> \(to)")
                         } else {

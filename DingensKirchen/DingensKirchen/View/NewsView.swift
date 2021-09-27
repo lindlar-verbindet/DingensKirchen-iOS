@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewsView: View {
     
-    @State var news: [WPNews]
+    @State var news: [News]
     
     var body: some View {
         ScrollView(.vertical) {
@@ -29,6 +29,6 @@ struct NewsView: View {
 
 struct NewsView_Previews: PreviewProvider {
     static var previews: some View {
-        NewsView(news: [WPNews(index: 0, title: "title", desc: "desc", date: Date(), link: "pixelskull.de")])
+        NewsView(news: [News(index: 0, title: "title", desc: "desc", date: Date(), link: "pixelskull.de")])
     }
 }

@@ -18,7 +18,7 @@ enum NavigationAction {
 
 struct ContentView: View {
     
-    @State var news: [WPNews]?
+    @State var news: [News]?
     @State var events: [WPEvent]?
     
     var body: some View {
@@ -62,7 +62,22 @@ struct ContentView: View {
             .navigationBarTitle("DingensKirchen")
             .onAppear {
                 WPEventHelper.getEvents { events in self.events = events }
-                WPNewsHelper.getNews { news in self.news = news }
+                WPNewsHelper.getNews { news in
+                    if self.news != nil {
+                        self.news = append(news, toArray: self.news!)
+                    } else {
+                        self.news = news
+                    }
+                    
+                }
+                RSSNewsHelper.getNews { news in
+                    print(news)
+                    if self.news != nil {
+                        self.news = append(news, toArray: self.news!)
+                    } else {
+                        self.news = news
+                    }
+                }
             }
         }
         .accentColor(.secondaryHighlight)
@@ -81,7 +96,19 @@ struct ContentView: View {
         case .council:
             CouncilWidget()
         }
+    }
+    
+    func append(_ values:[News], toArray:[News]) -> [News] {
+        var index = toArray.count
+        var resultArray = toArray
+        values.forEach { n in
+            var new = n
+            new.index = index
+            resultArray.append(new)
+            index += 1
+        }
         
+        return resultArray
     }
 }
 

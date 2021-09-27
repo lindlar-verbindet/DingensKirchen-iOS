@@ -11,15 +11,15 @@ import SwiftyJSON
 
 struct WPNewsHelper {
     
-    static func getNews(callback: @escaping ([WPNews]) -> Void) {
+    static func getNews(callback: @escaping ([News]) -> Void) {
         requestNews(callback: callback)
     }
     
-    private static func requestNews(callback: @escaping ([WPNews]) -> Void) {
+    private static func requestNews(callback: @escaping ([News]) -> Void) {
         let newsID: String = "13"
         let urlString: String = "https://www.lindlar-verbindet.de/wp-json/wp/v2/posts?categories="
         
-        var result = [WPNews]()
+        var result = [News]()
         
         let headers: HTTPHeaders = [.accept("application/json")]
         
@@ -41,7 +41,7 @@ struct WPNewsHelper {
                     let date = formatter.date(from: element["date"].string!)
                     let link = element["link"].string
                     
-                    let news = WPNews(index: index, title: title!, desc: desc!, date: date!, link: link!)
+                    let news = News(index: index, title: title!, desc: desc!, date: date!, link: link!)
                     result.append(news)
                     index += 1
                 }

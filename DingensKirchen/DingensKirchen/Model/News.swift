@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct WPNews: Hashable {
-    let index:  Int
+struct News: Hashable {
+    var index:  Int
     let title:  String
     let desc:   String
     var htmlFreeDesc: String {
