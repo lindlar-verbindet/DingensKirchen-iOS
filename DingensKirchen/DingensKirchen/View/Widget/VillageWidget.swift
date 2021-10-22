@@ -14,17 +14,28 @@ struct VillageWidget: View {
     
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(title.uppercased())
-                .font(Font.system(size: 26, weight: .light))
-                .foregroundColor(.black)
-                .multilineTextAlignment(.leading)
-                .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
-            Text(desc)
-                .font(Font.system(size: 14))
-                .foregroundColor(.black)
-                .multilineTextAlignment(.leading)
-                .padding(EdgeInsets(top: 30, leading: 10, bottom: 10, trailing: 10))
+        ZStack(alignment: .leading) {
+            HStack {
+                Spacer()
+                Image(uiImage: UIImage(named: "ic_people")!)
+                    .resizable()
+                    .frame(width: 130, height: 100)
+                    .padding(.trailing, 20)
+                    .foregroundColor(.black)
+                    .opacity(0.2)
+            }
+            VStack(alignment: .leading) {
+                Text(title.uppercased())
+                    .font(Font.system(size: 26, weight: .light))
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
+                Text(desc)
+                    .font(Font.system(size: 14))
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                    .padding(EdgeInsets(top: 30, leading: 10, bottom: 10, trailing: 10))
+            }
         }
         .widget(background: .secondaryHighlight)
         .padding(5)
