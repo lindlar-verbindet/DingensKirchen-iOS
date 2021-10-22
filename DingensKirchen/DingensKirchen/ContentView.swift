@@ -25,6 +25,14 @@ struct ContentView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 ScrollView(.vertical) {
+                    HStack {
+                        Spacer()
+                        Image(uiImage: UIImage(named: "ic_bench")!)
+                            .resizable()
+                            .frame(width: 200, height: 140)
+                            .padding()
+                    }
+                    
                     if let news = news {
                         NavigationLink(destination: NewsView(news: news)) {
                             NewsWidget(date: news.first!.dateString,
@@ -38,11 +46,11 @@ struct ContentView: View {
                         VillageWidget()
                     }
                     HStack {
-                        NavigationLink(destination: CouncilView()){
-                            CouncilWidget()
-                        }
                         NavigationLink(destination: MobilView()) {
                             MobilWidget()
+                        }
+                        NavigationLink(destination: CouncilView()){
+                            CouncilWidget()
                         }
                     }
                     if let events = self.events {
@@ -59,7 +67,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationBarTitle("DingensKirchen")
+            .navigationBarTitle("LindlarAPP")
             .onAppear {
                 WPEventHelper.getEvents { events in self.events = events }
                 WPNewsHelper.getNews { news in

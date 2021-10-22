@@ -17,29 +17,28 @@ struct NewsWidget: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title.uppercased())
-                .font(Font.system(size: 20))
-                .foregroundColor(.white)
-                .bold()
+                .font(Font.system(size: 26, weight: .light))
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
             Text(date)
                 .font(Font.system(size: 12))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
             Text(newsTitle)
                 .font(Font.system(size: 18))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
             Text(newsDesc.cutoffIfNeeded(maxChars: 120))
                 .font(Font.system(size: 14))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 2, leading: 15, bottom: 15, trailing: 15))
                 
         }
-        .widget()
+        .widget(background: .primaryHighlight)
         .padding(5)
     }
 }

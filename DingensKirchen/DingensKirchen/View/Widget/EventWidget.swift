@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventWidget: View {
     
-    let title: String = "Veranstaltungen & Termine"
+    let title: String = "Termine"
     
     @State var date: String = ""
     @State var eventTitle: String = ""
@@ -18,28 +18,27 @@ struct EventWidget: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title.uppercased())
-                .font(Font.system(size: 20))
-                .bold()
-                .foregroundColor(.white)
+                .font(Font.system(size: 26, weight: .light))
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
             Text(date)
                 .font(Font.system(size: 12))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
             Text(eventTitle)
                 .font(Font.system(size: 18))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             Text(eventDesc)
                 .font(Font.system(size: 14))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
         }
-        .widget(background: Color.primaryHighlight)
+        .widget(background: .primaryHighlight)
         .padding(5)
     }
 }

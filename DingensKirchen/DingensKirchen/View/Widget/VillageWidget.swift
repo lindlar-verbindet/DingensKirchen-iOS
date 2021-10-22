@@ -16,18 +16,17 @@ struct VillageWidget: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title.uppercased())
-                .font(Font.system(size: 20))
-                .foregroundColor(.white)
-                .bold()
+                .font(Font.system(size: 26, weight: .light))
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
             Text(desc)
                 .font(Font.system(size: 14))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 30, leading: 10, bottom: 10, trailing: 10))
         }
-        .widget(background: Color.primaryHighlight)
+        .widget(background: .secondaryHighlight)
         .padding(5)
     }
 }
