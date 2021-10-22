@@ -12,29 +12,44 @@ struct EventView: View {
     @State var events: [WPEvent]
     
     var body: some View {
-        VStack(alignment: .leading) {
-            ScrollView(.vertical) {
-                Image("ic_event_head")
-                    .resizable()
-                    .frame(maxWidth: .infinity)
-                    .scaledToFit()
-                ForEach(events, id: \.self) { event in
-                    NavigationLink(destination: DKWebView(urlString: event.link)) {
-                        EventCell(date: event.dateString,
-                                  start: event.start,
-                                  end: event.end, 
-                                  title: event.title,
-                                  desc: event.htmlFreeDesc,
-                                  address: event.location,
-                                  website: event.link,
-                                  index: event.index)
-                            .padding(5)
+        ZStack(alignment: .leading) {
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    Image("ic_clock")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(.primaryBackground)
+                        .scaledToFit()
+                }
+                Spacer()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.primaryBackground)
+                    .padding(.top, -10)
+                    .ignoresSafeArea()
+            }
+            VStack(alignment: .leading) {
+                ScrollView(.vertical) {
+                    Spacer()
+                        .frame(height: 120)
+                    ForEach(events, id: \.self) { event in
+                        NavigationLink(destination: DKWebView(urlString: event.link)) {
+                            EventCell(date: event.dateString,
+                                      start: event.start,
+                                      end: event.end,
+                                      title: event.title,
+                                      desc: event.htmlFreeDesc,
+                                      address: event.location,
+                                      website: event.link,
+                                      index: event.index)
+                                .padding(5)
+                        }
                     }
                 }
+                Spacer()
             }
-            Spacer()
         }
-        .navigationBarTitle("Veranstaltungen&Termine", displayMode: .inline)
+        .navigationBarTitle("Termine", displayMode: .inline)
     }
 }
 
