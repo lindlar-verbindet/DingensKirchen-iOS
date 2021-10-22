@@ -63,8 +63,17 @@ struct ContentView: View {
                         EventWidget(date: "",
                                     eventTitle: "Es gibt aktuell keine Termine",
                                     eventDesc: "")
-                            
+                            .padding(.bottom, 40)
                     }
+                    Image(uiImage: UIImage(named: "ic_skyline")!)
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(.primaryBackground)
+                        .ignoresSafeArea()
+                        .padding(.leading, -10)
+                        .padding(.trailing, -10)
+                        .padding(.bottom, -50)
+        
                 }
             }
             .navigationBarTitle("", displayMode: .inline)
