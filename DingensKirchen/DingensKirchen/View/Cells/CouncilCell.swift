@@ -39,7 +39,7 @@ struct CouncilCell: View {
             .padding(EdgeInsets(top: 5, leading: 15, bottom: 15, trailing: 15))
         }
         .padding(5)
-        .background(index % 2 == 0 ? Color.primaryHighlight : Color.secondaryHighlight)
+        .background(index % 2 == 0 ? Color.secondaryHighlight : Color.primaryHighlight)
         .cornerRadius(15)
     }
 }

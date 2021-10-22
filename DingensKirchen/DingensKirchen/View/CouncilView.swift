@@ -12,24 +12,40 @@ struct CouncilView: View {
     @State var file = Bundle.main.url(forResource: "council_services", withExtension: "xml")
     
     var body: some View {
-        ScrollView(.vertical) {
+        ZStack {
             VStack(alignment: .leading) {
-                Image("ic_village_head")
-                    .resizable()
-                    .frame(maxWidth: .infinity)
-                    .scaledToFill()
-                CouncilCellTrash()
-                    .padding(5)
-                ForEach(loadData(), id: \.self) { element in
-                    CouncilCell(title: element.name,
-                                desc: element.desc,
-                                buttonTitle: element.btn,
-                                targetLink: element.link,
-                                index: element.index)
+                HStack {
+                    Spacer()
+                    Image("ic_council")
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(.primaryBackground)
+                        .scaledToFill()
                 }
-                .padding(5)
+                Spacer()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.primaryBackground)
+                    .padding(.top, -10)
+                    .ignoresSafeArea()
             }
-            Spacer()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            ScrollView(.vertical) {
+                VStack(alignment: .leading) {
+                    Spacer()
+                        .frame(height: 120)
+                    CouncilCellTrash()
+                        .padding(5)
+                    ForEach(loadData(), id: \.self) { element in
+                        CouncilCell(title: element.name,
+                                    desc: element.desc,
+                                    buttonTitle: element.btn,
+                                    targetLink: element.link,
+                                    index: element.index)
+                    }
+                    .padding(5)
+                }
+                Spacer()
+            }
         }
         .navigationBarTitle("Rathaus", displayMode: .inline)
     }
