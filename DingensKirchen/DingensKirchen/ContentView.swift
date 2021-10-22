@@ -79,9 +79,12 @@ struct ContentView: View {
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarItems(leading: Image(uiImage:UIImage(named: "ic_logo")!)
                                     .resizable()
-                                    .frame(width: 260, height: 40)
-                                    .padding()
-            )
+                                    .frame(width: 200, height: 30)
+                                    .padding())
+            .navigationBarItems(trailing: Image(uiImage: UIImage(named: "ic_info")!)
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .padding())
             .onAppear {
                 WPEventHelper.getEvents { events in self.events = events }
                 WPNewsHelper.getNews { news in
@@ -136,6 +139,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView().previewDevice("iPod touch (7th generation)").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
