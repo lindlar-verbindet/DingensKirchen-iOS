@@ -67,7 +67,12 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationBarTitle("LindlarAPP")
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarItems(leading: Image(uiImage:UIImage(named: "ic_logo")!)
+                                    .resizable()
+                                    .frame(width: 260, height: 40)
+                                    .padding()
+            )
             .onAppear {
                 WPEventHelper.getEvents { events in self.events = events }
                 WPNewsHelper.getNews { news in
