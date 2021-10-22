@@ -12,16 +12,33 @@ struct NewsView: View {
     @State var news: [News]
     
     var body: some View {
-        ScrollView(.vertical) {
-            ForEach(news, id: \.self) { n in
-                NavigationLink(destination: DKWebView(urlString: n.link)) {
-                    NewsCell(index: n.index,
-                             title: n.title,
-                             desc: n.htmlFreeDesc,
-                             date: n.dateString)
-                        .padding(5)
+        ZStack(alignment: .leading) {
+            VStack(alignment: .leading) {
+                HStack{
+                    Spacer()
+                    Image(uiImage: UIImage(named: "ic_megaphone")!)
+                        .foregroundColor(.primaryBackground)
+                }
+                Spacer()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.primaryBackground)
+                    .padding(.top, -20)
+                    .ignoresSafeArea()
+            }
+            ScrollView(.vertical) {
+                Spacer()
+                    .frame(height: 120)
+                ForEach(news, id: \.self) { n in
+                    NavigationLink(destination: DKWebView(urlString: n.link)) {
+                        NewsCell(index: n.index,
+                                 title: n.title,
+                                 desc: n.htmlFreeDesc,
+                                 date: n.dateString)
+                            .padding(5)
+                    }
                 }
             }
+            Spacer()
         }
         .navigationBarTitle("Lindlarer News", displayMode: .inline)
     }

@@ -13,30 +13,45 @@ struct VillageView: View {
     @State var file = Bundle.main.url(forResource: "village_services", withExtension: "xml")
     
     var body: some View {
-        VStack(alignment: .leading) {
-            ScrollView(.vertical) {
-                Image("ic_village_head")
-                    .resizable()
-                    .frame(maxWidth: .infinity)
-                    .scaledToFit()
-                ForEach(loadData(), id: \.self) { element in
-                    if element.type == 1 {
-                        VillageCellDoubleAction(title: element.name,
-                                                desc: element.desc,
-                                                btn1Title: element.callbtn,
-                                                tel: element.tel, 
-                                                btn2Title: element.actionbtn,
-                                                index: element.index)
-                    } else {
-                        VillageCellSingleAction(title: element.name,
-                                                desc: element.desc,
-                                                btnTitle: element.actionbtn,
-                                                index: element.index)
-                    }
+        ZStack(alignment: .leading) {
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    Image("ic_people")
+                        .resizable()
+                        .frame(width: 140, height: 100)
+                        .foregroundColor(.primaryBackground)
+                        .scaledToFit()
                 }
-                .padding(5)
+                Spacer()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.primaryBackground)
+                    .padding(.top, -20)
+                    .ignoresSafeArea()
             }
-            Spacer()
+            VStack(alignment: .leading) {
+                ScrollView(.vertical) {
+                    Spacer()
+                        .frame(height: 120)
+                    ForEach(loadData(), id: \.self) { element in
+                        if element.type == 1 {
+                            VillageCellDoubleAction(title: element.name,
+                                                    desc: element.desc,
+                                                    btn1Title: element.callbtn,
+                                                    tel: element.tel,
+                                                    btn2Title: element.actionbtn,
+                                                    index: element.index)
+                        } else {
+                            VillageCellSingleAction(title: element.name,
+                                                    desc: element.desc,
+                                                    btnTitle: element.actionbtn,
+                                                    index: element.index)
+                        }
+                    }
+                    .padding(5)
+                }
+                Spacer()
+            }
         }
         .navigationBarTitle("Dorfleben", displayMode: .inline)
     }
