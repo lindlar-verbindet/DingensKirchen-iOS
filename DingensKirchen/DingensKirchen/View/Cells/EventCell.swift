@@ -51,17 +51,17 @@ struct EventCell: View {
                 VStack(alignment: .leading) {
                     Text(getEventDateString())
                         .font(Font.system(size: 12))
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .fontWeight(.light)
                         .multilineTextAlignment(.leading)
                     Text(title)
-                        .foregroundColor(.white)
-                        .fontWeight(.bold)
+                        .foregroundColor(.black)
+                        .font(Font.system(size: 22, weight: .light))
                         .multilineTextAlignment(.leading)
                         .padding(.top, 10)
                     Text(desc)
                         .font(Font.system(size: 14))
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .multilineTextAlignment(.leading)
                 }
                 .onAppear{
@@ -73,10 +73,10 @@ struct EventCell: View {
                 Image(systemName: "signpost.right.fill")
                     .resizable()
                     .frame(width: 10, height: 10)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 Text(address)
                     .font(Font.system(size: 12))
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                 Spacer()
             }
@@ -84,17 +84,17 @@ struct EventCell: View {
                 Image(systemName: "link")
                     .resizable()
                     .frame(width: 10, height: 10, alignment: .center)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 Text(website)
                     .font(Font.system(size: 12))
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 Spacer()
             }
             
         }
         .frame(maxWidth: .infinity)
         .padding(15)
-        .background(index % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
+        .background(index % 2 == 0 ? Color.primaryHighlight : Color.secondaryHighlight)
         .cornerRadius(15)
     }
     

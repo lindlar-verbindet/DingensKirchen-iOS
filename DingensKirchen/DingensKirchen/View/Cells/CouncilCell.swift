@@ -18,14 +18,12 @@ struct CouncilCell: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .foregroundColor(.white)
-                .font(Font.system(size: 24))
-                .bold()
+                .foregroundColor(.black)
+                .font(Font.system(size: 22, weight: .light))
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 15, leading: 15, bottom: 5, trailing: 15))
             Text(desc)
-                .bold()
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 5, trailing: 15))
             .padding(5)
@@ -34,14 +32,14 @@ struct CouncilCell: View {
                     Text(buttonTitle)
                 }
             })
-            .foregroundColor(.primaryTextColor)
+            .foregroundColor(.black)
             .frame(maxWidth: .infinity, minHeight: 30)
             .background(Color.white)
             .cornerRadius(5)
             .padding(EdgeInsets(top: 5, leading: 15, bottom: 15, trailing: 15))
         }
         .padding(5)
-        .background(index % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
+        .background(index % 2 == 0 ? Color.primaryHighlight : Color.secondaryHighlight)
         .cornerRadius(15)
     }
 }

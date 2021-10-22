@@ -17,25 +17,25 @@ struct NewsCell: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .foregroundColor(.white)
-                .fontWeight(.bold)
+                .font(Font.system(size: 22, weight: .light))
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 15, leading: 15, bottom: 5, trailing: 15))
             Text(date)
                 .font(Font.system(size: 10))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .fontWeight(.light)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 5, trailing: 15))
             Text(desc)
                 .font(Font.system(size: 14))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 5, leading: 15, bottom: 15, trailing: 15))
         }
         .frame(maxWidth: .infinity, alignment: .topLeading)
         .padding(5)
-        .background(index % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
+        .background(index % 2 == 0 ? Color.primaryHighlight : Color.secondaryHighlight)
         .cornerRadius(15)
     }
 }

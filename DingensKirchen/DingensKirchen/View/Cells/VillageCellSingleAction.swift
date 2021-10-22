@@ -17,20 +17,20 @@ struct VillageCellSingleAction: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .foregroundColor(.white)
-                .fontWeight(.bold)
+                .font(Font.system(size: 22, weight: .light))
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 15, leading: 15, bottom: 5, trailing: 15))
             Text(desc)
                 .font(Font.system(size: 14))
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 5, trailing: 15))
             HStack {
                 Button(btnTitle) {
                     
                 }
-                .foregroundColor(Color.primaryTextColor)
+                .foregroundColor(.black)
                 .frame(maxWidth: .infinity, minHeight: 30)
                 .background(Color.white)
                 .cornerRadius(5)
@@ -38,7 +38,7 @@ struct VillageCellSingleAction: View {
             }
             .frame(maxWidth: .infinity)
         }
-        .background(index % 2 == 0 ? Color.primaryBackground : Color.primaryHighlight)
+        .background(index % 2 == 0 ? Color.primaryHighlight : Color.secondaryHighlight)
         .cornerRadius(15)
     }
 }
