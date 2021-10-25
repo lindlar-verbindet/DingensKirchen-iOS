@@ -25,11 +25,7 @@ struct ContentView: View {
     @State private var scale = 1.0
     @State private var degrees = 10
     
-    private let benchAnimation = Animation.easeInOut(duration: 1)
-                                            .repeatCount(3, autoreverses: true)
-//                                          .repeatForever(autoreverses: true)
     private let benchTimerBig = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
-//    private let benchTimerSmall = Timer.publish(every: 6, on: .main, in: .common).autoconnect()
     
     var body: some View {
         NavigationView {
@@ -95,7 +91,6 @@ struct ContentView: View {
                         .padding(.leading, -10)
                         .padding(.trailing, -10)
                         .padding(.bottom, -50)
-        
                 }
             }
             .navigationBarTitle("", displayMode: .inline)
@@ -116,7 +111,6 @@ struct ContentView: View {
                     } else {
                         self.news = news
                     }
-                    
                 }
                 RSSNewsHelper.getNews { news in
                     if self.news != nil {
@@ -161,6 +155,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().previewDevice("iPod touch (7th generation)").environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

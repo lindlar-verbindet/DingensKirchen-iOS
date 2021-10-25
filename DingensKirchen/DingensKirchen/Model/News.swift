@@ -13,7 +13,6 @@ struct News: Hashable {
     let desc:   String
     var htmlFreeDesc: String {
         get {
-            print(desc)
             let linkfree = desc.replacingOccurrences(of: "<figcaption>Favicon</figcaption>", with: "")
             return linkfree.replacingOccurrences(of: "<[^>]+>", with: "",options: .regularExpression)
         }

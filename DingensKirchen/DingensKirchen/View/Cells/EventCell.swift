@@ -64,10 +64,6 @@ struct EventCell: View {
                         .foregroundColor(.black)
                         .multilineTextAlignment(.leading)
                 }
-                .onAppear{
-                    print(start)
-                    print(end)
-                }
             }
             HStack {
                 Image(systemName: "signpost.right.fill")
