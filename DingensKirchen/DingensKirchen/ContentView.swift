@@ -28,7 +28,7 @@ struct ContentView: View {
     private let benchAnimation = Animation.easeInOut(duration: 1)
                                             .repeatCount(3, autoreverses: true)
 //                                          .repeatForever(autoreverses: true)
-    private let benchTimerBig = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+    private let benchTimerBig = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
 //    private let benchTimerSmall = Timer.publish(every: 6, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -41,8 +41,9 @@ struct ContentView: View {
                             .resizable()
                             .scaledToFit()
                             .scaleEffect(animate ? 1.1 : 1.0, anchor: .center)
-                            .frame(width: 200, height: 140)
+                            .rotationEffect(.degrees(animate ? -10 : 0), anchor: .topLeading)
                             .animation(.linear(duration: 0.6))
+                            .frame(width: 200, height: 140)
                             .onChange(of: animate, perform: { newValue in
                                 if newValue == true {
                                     animate.toggle()
