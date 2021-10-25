@@ -46,7 +46,8 @@ struct VillageView: View {
                             VillageCellSingleAction(title: element.name,
                                                     desc: element.desc,
                                                     btnTitle: element.actionbtn,
-                                                    index: element.index)
+                                                    index: element.index,
+                                                    url: element.link)
                         }
                     }
                     .padding(5)

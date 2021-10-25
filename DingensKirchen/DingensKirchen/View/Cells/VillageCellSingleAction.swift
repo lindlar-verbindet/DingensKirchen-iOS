@@ -13,6 +13,7 @@ struct VillageCellSingleAction: View {
     @State var desc: String
     @State var btnTitle: String
     @State var index: Int
+    @State var url: String
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -27,9 +28,10 @@ struct VillageCellSingleAction: View {
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 5, trailing: 15))
             HStack {
-                Button(btnTitle) {
-                    
-                }
+                NavigationLink(destination: DKWebView(urlString: url), label: {
+//                    Button(btnTitle) {}
+                    Text(btnTitle)
+                })
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity, minHeight: 30)
                 .background(Color.white)
@@ -45,6 +47,6 @@ struct VillageCellSingleAction: View {
 
 struct VillageCellSingleAction_Previews: PreviewProvider {
     static var previews: some View {
-        VillageCellSingleAction(title: "Test Title", desc: "Test Description", btnTitle: "Öffnen", index: 1)
+        VillageCellSingleAction(title: "Test Title", desc: "Test Description", btnTitle: "Öffnen", index: 1, url: "https://google.com")
     }
 }
