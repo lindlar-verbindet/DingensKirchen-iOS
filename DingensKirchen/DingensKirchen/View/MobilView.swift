@@ -71,7 +71,7 @@ struct MobilView: View {
     
     var body: some View {
         GeometryReader { view in
-            ZStack {
+            ZStack(alignment: .leading) {
                 MapboxMap(parent: self)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .edgesIgnoringSafeArea(.all)

@@ -20,6 +20,7 @@ struct EventView: View {
                         .resizable()
                         .frame(width: 100, height: 100)
                         .foregroundColor(.primaryBackground)
+                        .padding(.trailing, 10)
                         .scaledToFit()
                 }
                 Spacer()
@@ -28,8 +29,8 @@ struct EventView: View {
                     .padding(.top, -10)
                     .ignoresSafeArea()
             }
-            VStack(alignment: .leading) {
-                ScrollView(.vertical) {
+            ScrollView(.vertical) {
+                VStack(alignment: .leading) {
                     Spacer()
                         .frame(height: 120)
                     ForEach(events, id: \.self) { event in

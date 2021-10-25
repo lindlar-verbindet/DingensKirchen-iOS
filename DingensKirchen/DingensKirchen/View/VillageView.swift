@@ -21,6 +21,7 @@ struct VillageView: View {
                         .resizable()
                         .frame(width: 140, height: 100)
                         .foregroundColor(.primaryBackground)
+                        .padding(.trailing, 10)
                         .scaledToFit()
                 }
                 Spacer()
@@ -29,8 +30,8 @@ struct VillageView: View {
                     .padding(.top, -20)
                     .ignoresSafeArea()
             }
-            VStack(alignment: .leading) {
-                ScrollView(.vertical) {
+            ScrollView(.vertical) {
+                VStack(alignment: .leading) {
                     Spacer()
                         .frame(height: 120)
                     ForEach(loadData(), id: \.self) { element in

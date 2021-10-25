@@ -12,7 +12,7 @@ struct CouncilView: View {
     @State var file = Bundle.main.url(forResource: "council_services", withExtension: "xml")
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .leading) {
             VStack(alignment: .leading) {
                 HStack {
                     Spacer()
@@ -20,7 +20,8 @@ struct CouncilView: View {
                         .resizable()
                         .frame(width: 100, height: 100)
                         .foregroundColor(.primaryBackground)
-                        .scaledToFill()
+                        .padding(.trailing, 10)
+                        .scaledToFit()
                 }
                 Spacer()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -28,7 +29,6 @@ struct CouncilView: View {
                     .padding(.top, -10)
                     .ignoresSafeArea()
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             ScrollView(.vertical) {
                 VStack(alignment: .leading) {
                     Spacer()
