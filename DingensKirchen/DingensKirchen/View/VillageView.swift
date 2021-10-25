@@ -19,7 +19,7 @@ struct VillageView: View {
                     Spacer()
                     Image("ic_people")
                         .resizable()
-                        .frame(width: 140, height: 100)
+                        .frame(width: 150, height: 100)
                         .foregroundColor(.primaryBackground)
                         .padding(.trailing, 10)
                         .scaledToFit()

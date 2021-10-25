@@ -21,6 +21,16 @@ struct ContentView: View {
     @State var news: [News]?
     @State var events: [WPEvent]?
     
+    @State private var animate = false
+    @State private var scale = 1.0
+    @State private var degrees = 10
+    
+    private let benchAnimation = Animation.easeInOut(duration: 1)
+                                            .repeatCount(3, autoreverses: true)
+//                                          .repeatForever(autoreverses: true)
+    private let benchTimerBig = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
+//    private let benchTimerSmall = Timer.publish(every: 6, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -29,8 +39,19 @@ struct ContentView: View {
                         Spacer()
                         Image(uiImage: UIImage(named: "ic_bench")!)
                             .resizable()
+                            .scaledToFit()
+                            .scaleEffect(animate ? 1.1 : 1.0, anchor: .center)
                             .frame(width: 200, height: 140)
+                            .animation(.linear(duration: 0.6))
+                            .onChange(of: animate, perform: { newValue in
+                                if newValue == true {
+                                    animate.toggle()
+                                }
+                            })
                             .padding()
+                            .onReceive(benchTimerBig) { _ in
+                                animate.toggle()
+                            }
                     }
                     
                     if let news = news {
@@ -86,6 +107,7 @@ struct ContentView: View {
                                     .frame(width: 25, height: 25)
                                     .padding())
             .onAppear {
+                guard events == nil else { return }
                 WPEventHelper.getEvents { events in self.events = events }
                 WPNewsHelper.getNews { news in
                     if self.news != nil {
@@ -96,7 +118,6 @@ struct ContentView: View {
                     
                 }
                 RSSNewsHelper.getNews { news in
-                    print(news)
                     if self.news != nil {
                         self.news = append(news, toArray: self.news!)
                     } else {

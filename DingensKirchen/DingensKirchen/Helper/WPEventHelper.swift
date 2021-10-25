@@ -40,10 +40,8 @@ struct WPEventHelper {
                         formatter.date(from: a.0)! <= formatter.date(from: b.0)!
                     }
                     for element in sorted {
-                        print(element.0)
                         if let date = formatter.date(from: String(element.0)) {
                             let content = element.1[0]
-                            print(content)
                             let title = content["data"]["title"].string
                             let desc = content["data"]["content"].string
                             let start = content["data"]["time"]["start_raw"].string ?? ""
