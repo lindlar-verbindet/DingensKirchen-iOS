@@ -40,9 +40,16 @@ struct VillageCellDoubleAction: View {
                 .cornerRadius(5)
                 .padding(EdgeInsets(top: 5, leading: 15, bottom: 15, trailing: 5))
                 Button(action: {}, label: {
-                    NavigationLink(destination: DigitalView()) {
-                        Text(btn2Title)
+                    if title == "Digitalbegleitung" {
+                        NavigationLink(destination: DigitalView()) {
+                            Text(btn2Title)
+                        }
+                    } else if title == "Taschengeldbörse" {
+                        NavigationLink(destination: PocketMoneyView()) {
+                            Text(btn2Title)
+                        }
                     }
+                    
                 })
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity, minHeight: 30)
