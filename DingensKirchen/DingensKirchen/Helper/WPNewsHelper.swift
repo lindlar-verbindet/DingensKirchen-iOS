@@ -40,8 +40,10 @@ struct WPNewsHelper {
                     let desc = element["content"]["rendered"].string
                     let date = formatter.date(from: element["date"].string!)
                     let link = element["link"].string
-                    
-                    let news = News(index: index, title: title!, desc: desc!, date: date!, link: link!)
+                    let imageURL = ImageURLGetter.getImageURL(content: desc ?? "")
+                
+                    let news = News(index: index, title: title!, desc: desc!, date: date!, link: link!, imageURL: imageURL)
+                    print("News Image: " + (news.imageURL ?? ""))
                     result.append(news)
                     index += 1
                 }

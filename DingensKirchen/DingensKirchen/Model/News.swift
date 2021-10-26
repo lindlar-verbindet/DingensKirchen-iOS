@@ -29,4 +29,5 @@ struct News: Hashable {
         }
     }
     let link:   String
+    let imageURL: String?
 }

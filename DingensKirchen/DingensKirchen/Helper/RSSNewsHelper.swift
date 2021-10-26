@@ -38,9 +38,10 @@ struct RSSNewsHelper {
                     let desc = item["content:encoded"].element?.text ?? ""
                     let date = formatter.date(from: item["pubDate"].element!.text)
                     let link = item["link"].element?.text ?? ""
+                    let imageURL = ImageURLGetter.getImageURL(content: desc)
                     
                     if let date = date {
-                        let news = News(index: index, title: title, desc: desc, date: date, link: link)
+                        let news = News(index: index, title: title, desc: desc, date: date, link: link, imageURL: imageURL)
                         index += 1
                         result.append(news)
                     }

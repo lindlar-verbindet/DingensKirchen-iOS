@@ -33,7 +33,8 @@ struct NewsView: View {
                         NewsCell(index: n.index,
                                  title: n.title,
                                  desc: n.htmlFreeDesc,
-                                 date: n.dateString)
+                                 date: n.dateString,
+                                 imageURL: n.imageURL)
                             .padding(5)
                     }
                 }
@@ -46,6 +47,6 @@ struct NewsView: View {
 
 struct NewsView_Previews: PreviewProvider {
     static var previews: some View {
-        NewsView(news: [News(index: 0, title: "title", desc: "desc", date: Date(), link: "pixelskull.de")])
+        NewsView(news: [News(index: 0, title: "title", desc: "desc", date: Date(), link: "pixelskull.de", imageURL: nil)])
     }
 }

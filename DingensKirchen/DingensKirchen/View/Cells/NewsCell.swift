@@ -13,9 +13,15 @@ struct NewsCell: View {
     @State var title: String
     @State var desc: String
     @State var date: String
+    @State var imageURL: String?
     
     var body: some View {
         VStack(alignment: .leading) {
+            if let url = imageURL {
+                CustomImageView(urlString: url)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(-10)
+            }
             Text(title)
                 .font(Font.system(size: 22, weight: .light))
                 .foregroundColor(.black)
