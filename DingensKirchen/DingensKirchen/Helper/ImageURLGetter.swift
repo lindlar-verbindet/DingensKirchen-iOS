@@ -26,7 +26,6 @@ struct ImageURLGetter {
                     results.append(String(img[urlRange]))
                 }
             }
-            print("URL: %@", results.first ?? "empty")
             return results.first
         } catch {
             print(error)

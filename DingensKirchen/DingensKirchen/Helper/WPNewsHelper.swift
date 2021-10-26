@@ -43,7 +43,6 @@ struct WPNewsHelper {
                     let imageURL = ImageURLGetter.getImageURL(content: desc ?? "")
                 
                     let news = News(index: index, title: title!, desc: desc!, date: date!, link: link!, imageURL: imageURL)
-                    print("News Image: " + (news.imageURL ?? ""))
                     result.append(news)
                     index += 1
                 }
