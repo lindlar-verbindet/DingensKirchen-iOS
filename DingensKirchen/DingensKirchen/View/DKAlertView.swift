@@ -25,7 +25,7 @@ struct DKAlertView: View {
                 .background(Color.white)
                 .clipShape(Circle())
                 .padding(.top, -50)
-            Text("TIPP DES TAGES")
+            Text("tipp_headline")
                 .font(Font.system(size: 26, weight: .light))
                 .foregroundColor(Color.tertiaryHighlight)
                 .bold()
@@ -40,7 +40,7 @@ struct DKAlertView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .multilineTextAlignment(.leading)
             Spacer()
-            Button("OK") {
+            Button("tipp_button") {
                 shown.toggle()
             }
             .frame(width: screen.width - 100, height: 40)

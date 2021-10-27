@@ -55,7 +55,7 @@ struct VillageView: View {
                 Spacer()
             }
         }
-        .navigationBarTitle("Dorfleben", displayMode: .inline)
+        .navigationBarTitle("village_navigation_title", displayMode: .inline)
     }
     
     private func loadData() -> [VillageService] {

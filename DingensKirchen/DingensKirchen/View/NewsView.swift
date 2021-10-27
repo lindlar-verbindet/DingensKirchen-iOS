@@ -41,7 +41,7 @@ struct NewsView: View {
             }
             Spacer()
         }
-        .navigationBarTitle("Lindlarer News", displayMode: .inline)
+        .navigationBarTitle("news_navigation_title", displayMode: .inline)
     }
 }
 

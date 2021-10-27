@@ -10,7 +10,7 @@ import SwiftyJSON
 
 struct PocketMoneyView: View {
     
-    private let apiURL = "https://vermittlungstool.dev.bergnet.de/input/app"
+    private let apiURL = NSLocalizedString("api_tool_url", comment: "")
     
     @State var givenName: String    = ""
     @State var name: String         = ""
@@ -30,25 +30,40 @@ struct PocketMoneyView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
-                    textField("Ihr Vorname", binding: $givenName)
-                    textField("Ihr Nachname", binding: $name)
-                    textField("Ihre Anschrift", binding: $address)
-                    textField("Ihre Telefon oder Mobilnummer", binding: $phone)
-                    textField("Ihre E-Mail-Adresse", binding: $email)
-                    textField("Ihr Geburtsdatum", binding: $birthDate)
+                    textField("form_givenname", binding: $givenName)
+                    textField("form_familyname", binding: $name)
+                    textField("form_address", binding: $address)
+                    textField("form_phone", binding: $phone)
+                    textField("form_mail", binding: $email)
+                    textField("form_birthdate", binding: $birthDate)
                 }
                 Section {
-                    Text("Bei welchem Themengebiet haben Sie Fragen/Wünschen Sie Unterstützung")
+                    Text("form_topic")
                     Picker(topic, selection: $topic) {
-                        Text("Bedienung Smartphone").tag("Bedienung Smartphone")
-                        Text("Bedienung Computer").tag("Bedienung Computer")
-                        Text("Updates/Apps/Programme installieren").tag("Updates/Apps/Programme installieren")
-                        Text("Videokonferenzen").tag("Videokonferenzen")
-                        Text("Windows").tag("Windows")
-                        Text("macOS").tag("macOS")
-                        Text("Android - Smartphone").tag("Android - Smartphone")
-                        Text("iOS - iPhone").tag("iOS - iPhone")
-                        Text("Anderes Thema").tag("Anderes Thema")
+                        Text("pocket_money_form_spinner_1")
+                            .tag(NSLocalizedString("pocket_money_form_spinner_1",
+                                                   comment: ""))
+                        Text("pocket_money_form_spinner_2")
+                            .tag(NSLocalizedString("pocket_money_form_spinner_2",
+                                                   comment: ""))
+                        Text("pocket_money_form_spinner_3")
+                            .tag(NSLocalizedString("pocket_money_form_spinner_3",
+                                                   comment: ""))
+                        Text("pocket_money_form_spinner_4")
+                            .tag(NSLocalizedString("pocket_money_form_spinner_4",
+                                                   comment: ""))
+                        Text("pocket_money_form_spinner_5")
+                            .tag(NSLocalizedString("pocket_money_form_spinner_5",
+                                                   comment: ""))
+                        Text("pocket_money_form_spinner_6")
+                            .tag(NSLocalizedString("pocket_money_form_spinner_6",
+                                                   comment: ""))
+                        Text("pocket_money_form_spinner_7")
+                            .tag(NSLocalizedString("pocket_money_form_spinner_7",
+                                                   comment: ""))
+                        Text("pocket_money_form_spinner_8")
+                            .tag(NSLocalizedString("pocket_money_form_spinner_8",
+                                                   comment: ""))
                     }
                     .pickerStyle(MenuPickerStyle())
                     .frame(maxWidth: .infinity)
@@ -58,16 +73,18 @@ struct PocketMoneyView: View {
                     .cornerRadius(5)
                 }
                 
-                if topic == "Anderes Thema" {
-                    textField("Nicht dabei? Wobei können wir helfen? ", binding: $moreInfo)
+                if topic == NSLocalizedString("pocket_money_form_spinner_8",
+                                              comment: "") {
+                    textField("form_detail", binding: $moreInfo)
                 }
-                textField("Optionale Angaben zu Ihrer Anfrage", binding: $detailInfo)
+                textField("form_more", binding: $detailInfo)
                 
-                textField("Von", binding: $fromDate)
-                textField("Bis", binding: $untilDate)
+                Text("form_time_headline")
+                textField("form_time_from", binding: $fromDate)
+                textField("form_time_until", binding: $untilDate)
                 
                 Toggle(isOn: $terms, label: {
-                    Text("Hiermit erkläre ich mich einverstanden, dass meine in das Formular eingegebenen Daten elektronisch gespeichert und zum Zweck der Kontaktaufnahme verarbeitet und genutzt werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit wiederrufen kann.")
+                    Text("form_datapolicy")
                         .fixedSize(horizontal: false, vertical: true)
                         .lineLimit(nil)
                         .multilineTextAlignment(.leading)
@@ -77,7 +94,7 @@ struct PocketMoneyView: View {
                 })
                 .toggleStyle(CheckboxStyle())
             }
-            Button("Absenden") {
+            Button("form_button") {
                 sendForm()
             }
             .disabled(!terms)
@@ -88,7 +105,7 @@ struct PocketMoneyView: View {
             .cornerRadius(5)
         }
         .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
-        .navigationBarTitle("Taschengeldbörse")
+        .navigationBarTitle("pocket_money_navigation_title")
     }
     
     private func sendForm() {

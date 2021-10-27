@@ -10,7 +10,7 @@ import SwiftyJSON
 
 struct DigitalView: View {
     
-    private let apiURL = "https://vermittlungstool.dev.bergnet.de/input/app"
+    private let apiURL = NSLocalizedString("api_tool_url", comment: "")
     
     @State var givenName: String = ""
     @State var name: String = ""
@@ -23,14 +23,6 @@ struct DigitalView: View {
     @State var meeting: Bool = false
     @State var terms: Bool = false
     
-    fileprivate func textField(_ title: String, binding: Binding<String>) -> some View {
-        VStack(alignment: .leading) {
-            Text(title)
-            TextField("", text: binding)
-            Divider()
-        }
-    }
-    
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading) {
@@ -41,24 +33,42 @@ struct DigitalView: View {
                         .frame(maxWidth: .infinity)
                         .scaledToFit()
                     
-                    textField("Ihr Vorname", binding: $givenName)
-                    textField("Ihr Nachname", binding: $name)
-                    textField("Ihre Anschrift", binding: $address)
-                    textField("Ihre Telefon oder Mobilnummer", binding: $phone)
-                    textField("Ihre E-Mail-Adresse", binding: $email)
+                    textField("form_givenname", binding: $givenName)
+                    textField("form_familyname", binding: $name)
+                    textField("form_address", binding: $address)
+                    textField("form_phone", binding: $phone)
+                    textField("form_mail", binding: $email)
                 }
                 Section {
                     Text("Bei welchem Themengebiet haben Sie Fragen/Wünschen Sie Unterstützung")
                     Picker(topic, selection: $topic) {
-                        Text("Bedienung Smartphone").tag("Bedienung Smartphone")
-                        Text("Bedienung Computer").tag("Bedienung Computer")
-                        Text("Updates/Apps/Programme installieren").tag("Updates/Apps/Programme installieren")
-                        Text("Videokonferenzen").tag("Videokonferenzen")
-                        Text("Windows").tag("Windows")
-                        Text("macOS").tag("macOS")
-                        Text("Android - Smartphone").tag("Android - Smartphone")
-                        Text("iOS - iPhone").tag("iOS - iPhone")
-                        Text("Anderes Thema").tag("Anderes Thema")
+                        Text("digital_form_spinner_1")
+                            .tag(NSLocalizedString("digital_form_spinner_1",
+                                                   comment: ""))
+                        Text("digital_form_spinner_2")
+                            .tag(NSLocalizedString("digital_form_spinner_2",
+                                                   comment: ""))
+                        Text("digital_form_spinner_3")
+                            .tag(NSLocalizedString("digital_form_spinner_3",
+                                                   comment: ""))
+                        Text("digital_form_spinner_4")
+                            .tag(NSLocalizedString("digital_form_spinner_4",
+                                                   comment: ""))
+                        Text("digital_form_spinner_5")
+                            .tag(NSLocalizedString("digital_form_spinner_5",
+                                                   comment: ""))
+                        Text("digital_form_spinner_6")
+                            .tag(NSLocalizedString("digital_form_spinner_6",
+                                                   comment: ""))
+                        Text("digital_form_spinner_7")
+                            .tag(NSLocalizedString("digital_form_spinner_7",
+                                                   comment: ""))
+                        Text("digital_form_spinner_8")
+                            .tag(NSLocalizedString("digital_form_spinner_8",
+                                                   comment: ""))
+                        Text("digital_form_spinner_9")
+                            .tag(NSLocalizedString("digital_form_spinner_9",
+                                                   comment: ""))
                     }
                     .pickerStyle(MenuPickerStyle())
                     .accentColor(.white)
@@ -68,13 +78,14 @@ struct DigitalView: View {
                     .cornerRadius(5)
                 }
                 
-                if topic == "Anderes Thema" {
-                    textField("Nicht dabei? Wobei können wir helfen?", binding: $moreInfo)
+                if topic == NSLocalizedString("digital_form_spinner_9",
+                                              comment: "") {
+                    textField("form_detail", binding: $moreInfo)
                 }
-                textField("Erzählen Sie uns ein bisschen mehr zum Thema. So können wir den richtigen Experten für Sie finden.", binding: $detailInfo)
+                textField("form_more", binding: $detailInfo)
                 
                 Toggle(isOn: $meeting, label: {
-                    Text("Ist ein Vorort-Termin erwünscht?")
+                    Text("form_location")
                         .onTapGesture {
                             meeting.toggle()
                         }
@@ -82,7 +93,7 @@ struct DigitalView: View {
                 .toggleStyle(CheckboxStyle())
                 
                 Toggle(isOn: $terms, label: {
-                    Text("Hiermit erkläre ich mich einverstanden, dass meine in das Formular eingegebenen Daten elektronisch gespeichert und zum Zweck der Kontaktaufnahme verarbeitet und genutzt werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit wiederrufen kann.")
+                    Text("form_datapolicy")
                         .fixedSize(horizontal: false, vertical: true)
                         .lineLimit(nil)
                         .multilineTextAlignment(.leading)
@@ -92,7 +103,7 @@ struct DigitalView: View {
                 })
                 .toggleStyle(CheckboxStyle())
             }
-            Button("Absenden", action: {
+            Button("form_button", action: {
                 sendForm()
             })
             .disabled(!terms)
@@ -103,7 +114,7 @@ struct DigitalView: View {
             .cornerRadius(5)
         }
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
-        .navigationBarTitle("Digitalbegleitung")
+        .navigationBarTitle("digital_navigation_title")
     }
     
     private func sendForm() {

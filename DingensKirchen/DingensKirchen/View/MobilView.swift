@@ -66,8 +66,10 @@ struct MobilView: View {
     @State var contextTitle: String = ""
     @State var contextDesc: String = ""
     
-    @State var defaultTitle = "Lindlar Mobil"
-    @State var defaultDesc = "<span style=\"font-family: sans-serif; font-size: 12pt;\"><strong>Nicht die richtige Mitfahrgelegenheit gefunden?</strong> <br>Versuchen Sie es doch mit unserem LiMo-Service: <br><a href=tel:+4922664407204>+49 2266 440 72 04</a></span>"
+    @State var defaultTitle = NSLocalizedString("mobil_placeholder_title",
+                                                comment: "")
+    @State var defaultDesc = NSLocalizedString("mobil_placeholder_description",
+                                               comment: "")
     
     var body: some View {
         GeometryReader { view in
@@ -89,7 +91,7 @@ struct MobilView: View {
                 .ignoresSafeArea()
             }
         }
-        .navigationBarTitle("Mobil", displayMode: .inline)
+        .navigationBarTitle("mobil_navigation_title", displayMode: .inline)
     }
 }
 

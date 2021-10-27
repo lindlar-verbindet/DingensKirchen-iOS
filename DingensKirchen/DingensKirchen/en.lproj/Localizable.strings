@@ -1,0 +1,118 @@
+/* 
+  Content.strings
+  DingensKirchen
+
+  Created by Pascal Schönthier on 27.10.21.
+  
+*/
+
+// Config
+"api_tool_url" = "https://vermittlungstool.dev.bergnet.de/input/app";
+
+
+// Content View
+"widget_news_headline" = "LINDLARER NEWS";
+"widget_news_loading" = "Aktuell sind keine Nachrichten Vorhanden";
+
+"widget_village_headline" = "DORFLEBEN";
+"widget_village_teaser" = "";
+
+"widget_mobil_headline" = "MOBIL";
+"widget_mobil_teaser" = "";
+
+"widget_council_headline" = "";
+"widget_council_teaser" = "";
+
+"widget_events_headline" = "";
+"widget_events_teaser" = "";
+"widget_events_loading" = "Es gibt aktuell keine Termine";
+
+// NewsView
+"news_navigation_title" = "Lindlarer News";
+
+// VillageView
+"village_navigation_title" = "Dorfleben";
+
+// MobilView
+"mobil_navigation_title" = "Mobil";
+"mobil_placeholder_title" = "Lindlar Mobil";
+"mobil_placeholder_description" = "<span style=\"font-family: sans-serif; font-size: 12pt;\"><strong>Nicht die richtige Mitfahrgelegenheit gefunden?</strong> <br>Versuchen Sie es doch mit unserem LiMo-Service: <br><a href=tel:+4922664407204>+49 2266 440 72 04</a></span>";
+
+// CouncilView
+"council_navigation_title" = "Rathaus";
+
+// EventView
+"event_navigation_title" = "Termine";
+
+// TippView
+"tipp_headline" = "TIPP DES TAGES";
+"tipp_button" = "OK";
+
+// DigitlView
+"digital_navigation_title" = "Digitalbegleitung";
+"digital_form_spinner_1" = "Bedienung Smartphone";
+"digital_form_spinner_2" = "Bedienung Computer";
+"digital_form_spinner_3" = "Updates/Apps/Programme installieren";
+"digital_form_spinner_4" = "Videokonferenzen";
+"digital_form_spinner_5" = "Windows";
+"digital_form_spinner_6" = "macOS";
+"digital_form_spinner_7" = "Android - Smartphone";
+"digital_form_spinner_8" = "iOS - iPhone";
+"digital_form_spinner_9" = "Anderes Thema";
+
+// PocketMoneyView
+"pocket_money_navigation_title" = "Taschengeldbörse";
+"pocket_money_form_spinner_1" = "Einkaufen";
+"pocket_money_form_spinner_2" = "Erledigungsgänge";
+"pocket_money_form_spinner_3" = "Haustierebetreuung";
+"pocket_money_form_spinner_4" = "Auf- oder Abbauen von Möbeln";
+"pocket_money_form_spinner_5" = "Rasenmähen, Schneeräumen oder Kehrarbeiten";
+"pocket_money_form_spinner_6" = "Leichte Gartenarbeiten";
+"pocket_money_form_spinner_7" = "Hilfe mit dem Handy/Computer";
+"pocket_money_form_spinner_8" = "... bei einer anderen Tätigkeit";
+
+// NeighbourView
+"neighbour_navigation_title" = "Nachbarschaftshilfe";
+"neighbour_form_spinner_1" = "Einkaufen";
+"neighbour_form_spinner_2" = "Erledigungsgänge";
+"neighbour_form_spinner_3" = "Haustiere";
+"neighbour_form_spinner_4" = "Auf- oder Abbauen von Möbeln";
+"neighbour_form_spinner_5" = "Ausfüllen von Fomularen";
+"neighbour_form_spinner_6" = "Rasenmähen, Schneeräumen oder Kehrarbeiten";
+"neighbour_form_spinner_7" = "Leichte Gartenarbeiten";
+"neighbour_form_spinner_8" = "... bei einer anderen Tätigkeit";
+
+// LiMoView
+"limo_navigation_title" = "Lindlar Mobil";
+
+// Form Texte
+"form_givenname" = "Ihr Vorname";
+"form_familyname" = "Ihr Nachname";
+"form_address" = "Ihre Adresse";
+"form_phone" = "Ihre Telefon oder Mobilnummer";
+"form_mail" = "Ihre E-Mail-Adresse";
+"form_birthdate" = "Ihr Geburtsdatum";
+"form_topic" = "Bei welchem Themengebiet haben Sie Fragen/Wünschen Sie Unterstützung";
+"form_detail" = "Nicht dabei? Wobei können wir helfen?";
+"form_more" = "Erzählen Sie uns ein bisschen mehr zum Thema. So können wir den richtigen Experten für Sie finden.";
+"form_time_headline" = "In welchem Zeitraum sollte die Aufgabe erledigt werden?";
+"form_time_from" = "Von:";
+"form_time_until" = "Bis:";
+"form_location" = "Ist ein Vorort-Termin erwünscht?";
+"form_datapolicy" = "Hiermit erkläre ich mich einverstanden, dass meine in das Formular eingegebenen Daten elektronisch gespeichert und zum Zweck der Kontaktaufnahme verarbeitet und genutzt werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit wiederrufen kann.";
+"form_button" = "Absenden";
+ 
+
+// Form Texte (Digital)
+
+
+
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";

@@ -65,7 +65,9 @@ struct ContentView: View {
                                            newsDesc: news.first!.htmlFreeDesc)
                             }
                         } else {
-                            NewsWidget(date: "", newsTitle: "Aktuell sind keine Nachrichten Vorhanden", newsDesc: "")
+                            NewsWidget(date: "",
+                                       newsTitle: NSLocalizedString("widget_news_loading", comment: ""),
+                                       newsDesc: "")
                         }
                         NavigationLink(destination: VillageView()) {
                             VillageWidget()
@@ -86,7 +88,7 @@ struct ContentView: View {
                             }
                         } else {
                             EventWidget(date: "",
-                                        eventTitle: "Es gibt aktuell keine Termine",
+                                        eventTitle: NSLocalizedString("widget_events_loading", comment: ""),
                                         eventDesc: "")
                                 .padding(.bottom, 40)
                         }

@@ -10,7 +10,7 @@ import SwiftyJSON
 
 struct NeighbourView: View {
     
-    private let apiURL = "https://vermittlungstool.dev.bergnet.de/input/app"
+    private let apiURL = NSLocalizedString("api_tool_url", comment: "")
     
     @State var givenName: String = ""
     @State var name: String = ""
@@ -28,24 +28,38 @@ struct NeighbourView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
-                    textField("Ihr Vorname", binding: $givenName)
-                    textField("Ihr Nachname", binding: $name)
-                    textField("Ihre Anschrift", binding: $address)
-                    textField("Ihre Telefon oder Mobilnummer", binding: $phone)
-                    textField("Ihre E-Mail-Adresse", binding: $email)
+                    textField("form_givenname", binding: $givenName)
+                    textField("form_familyname", binding: $name)
+                    textField("form_address", binding: $address)
+                    textField("form_phone", binding: $phone)
+                    textField("form_mail", binding: $email)
                 }
                 Section {
-                    Text("Bei welchem Themengebiet haben Sie Fragen/Wünschen Sie Unterstützung")
+                    Text("form_topic")
                     Picker(topic, selection: $topic) {
-                        Text("Bedienung Smartphone").tag("Bedienung Smartphone")
-                        Text("Bedienung Computer").tag("Bedienung Computer")
-                        Text("Updates/Apps/Programme installieren").tag("Updates/Apps/Programme installieren")
-                        Text("Videokonferenzen").tag("Videokonferenzen")
-                        Text("Windows").tag("Windows")
-                        Text("macOS").tag("macOS")
-                        Text("Android - Smartphone").tag("Android - Smartphone")
-                        Text("iOS - iPhone").tag("iOS - iPhone")
-                        Text("Anderes Thema").tag("Anderes Thema")
+                        Text("neighbour_form_spinner_1")
+                            .tag(NSLocalizedString("neighbour_form_spinner_1",
+                                                   comment: ""))
+                        Text("neighbour_form_spinner_2")
+                            .tag(NSLocalizedString("neighbour_form_spinner_2",
+                                                   comment: ""))
+                        Text("neighbour_form_spinner_3").tag(NSLocalizedString("neighbour_form_spinner_3",
+                                                    comment: ""))
+                        Text("neighbour_form_spinner_4")
+                            .tag(NSLocalizedString("neighbour_form_spinner_4",
+                                                   comment: ""))
+                        Text("neighbour_form_spinner_5")
+                            .tag(NSLocalizedString("neighbour_form_spinner_5",
+                                                   comment: ""))
+                        Text("neighbour_form_spinner_6")
+                            .tag(NSLocalizedString("neighbour_form_spinner_6",
+                                                   comment: ""))
+                        Text("neighbour_form_spinner_7")
+                            .tag(NSLocalizedString("neighbour_form_spinner_7",
+                                                   comment: ""))
+                        Text("neighbour_form_spinner_8")
+                            .tag(NSLocalizedString("neighbour_form_spinner_8",
+                                                   comment: ""))
                     }
                     .pickerStyle(MenuPickerStyle())
                     .frame(maxWidth: .infinity)
@@ -54,14 +68,19 @@ struct NeighbourView: View {
                     .accentColor(.white)
                     .cornerRadius(5)
                 }
-                textField("Nicht debei? Wie können wir helfen?", binding: $moreInfo)
-                textField("Optionale Angaben zu Ihrer Anfrage", binding: $detailInfo)
                 
-                Text("In welchem Zeitraum sollte die Aufgabe erledigt werden?")
-                textField("Von:", binding: $fromDate)
-                textField("Bis:", binding: $untilDate)
+                if topic == NSLocalizedString("neighbour_form_spinner_8",
+                                              comment: "") {
+                    textField("form_detail", binding: $moreInfo)
+                }
+                
+                textField("form_more", binding: $detailInfo)
+                
+                Text("form_time_headline")
+                textField("form_time_from", binding: $fromDate)
+                textField("form_time_until", binding: $untilDate)
                 Toggle(isOn: $terms, label: {
-                    Text("Hiermit erkläre ich mich einverstanden, dass meine in das Formular eingegebenen Daten elektronisch gespeichert und zum Zweck der Kontaktaufnahme verarbeitet und genutzt werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit wiederrufen kann.")
+                    Text("form_datapolicy")
                         .fixedSize(horizontal: false, vertical: true)
                         .lineLimit(nil)
                         .multilineTextAlignment(.leading)
@@ -71,7 +90,7 @@ struct NeighbourView: View {
                 })
                 .toggleStyle(CheckboxStyle())
                 
-                Button("Absenden") {
+                Button("form_button") {
                     sendForm()
                 }
                 .disabled(!terms)
@@ -83,7 +102,7 @@ struct NeighbourView: View {
             }
         }
         .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
-        .navigationBarTitle("Nachbarschaftshilfe")
+        .navigationBarTitle("neighbour_navigation_title")
     }
     
     private func sendForm() {

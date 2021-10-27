@@ -50,7 +50,7 @@ struct EventView: View {
                 Spacer()
             }
         }
-        .navigationBarTitle("Termine", displayMode: .inline)
+        .navigationBarTitle("event_navigation_title", displayMode: .inline)
     }
 }
 

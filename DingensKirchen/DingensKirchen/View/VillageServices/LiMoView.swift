@@ -10,7 +10,7 @@ import SwiftyJSON
 
 struct LiMoView: View {
     
-    private let apiURL = "https://vermittlungstool.dev.bergnet.de/input/app"
+    private let apiURL = NSLocalizedString("api_tool_url", comment: "")
     
     @State var givenName: String = ""
     @State var name: String = ""
@@ -26,13 +26,13 @@ struct LiMoView: View {
                     .scaledToFit()
                     .frame(maxWidth: .infinity)
                     .padding(20)
-                textField("Ihr Vorname", binding: $givenName)
-                textField("Ihr Nachname", binding: $name)
-                textField("Ihre Telefon oder Mobilnummer", binding: $phone)
-                textField("Ihre E-Mail-Adresse", binding: $email)
+                textField("form_givenname", binding: $givenName)
+                textField("form_familyname", binding: $name)
+                textField("form_phone", binding: $phone)
+                textField("form_mail", binding: $email)
                 
                 Toggle(isOn: $terms, label: {
-                    Text("Hiermit erkläre ich mich einverstanden, dass meine in das Formular eingegebenen Daten elektronisch gespeichert und zum Zweck der Kontaktaufnahme verarbeitet und genutzt werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit wiederrufen kann.")
+                    Text("form_datapolicy")
                         .fixedSize(horizontal: false, vertical: true)
                         .lineLimit(nil)
                         .multilineTextAlignment(.leading)
@@ -42,7 +42,7 @@ struct LiMoView: View {
                 })
                 .toggleStyle(CheckboxStyle())
                 
-                Button("Absenden", action: {
+                Button("form_button", action: {
                     sendForm()
                 })
                 .disabled(!terms)
@@ -54,7 +54,7 @@ struct LiMoView: View {
             }
         }
         .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
-        .navigationBarTitle("Lindlar Mobil")
+        .navigationBarTitle("limo_navigation_title")
     }
     
     private func sendForm() {
