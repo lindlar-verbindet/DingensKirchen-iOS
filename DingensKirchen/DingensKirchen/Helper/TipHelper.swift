@@ -12,7 +12,7 @@ import SwiftyJSON
 struct TipHelper {
     
     static func getTodaysTip(callback: @escaping (Tip) -> Void) {
-        let urlString = "https://designclever.de/tippdtages.json"
+        let urlString = NSLocalizedString("tipp_server_url", comment: "")
         let currentDay = Calendar.autoupdatingCurrent.ordinality(of: .day, in: .year, for: Date()) ?? 0
         
         var result = [Tip]()

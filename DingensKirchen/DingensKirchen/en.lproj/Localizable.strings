@@ -9,6 +9,14 @@
 // Config
 "api_tool_url" = "https://vermittlungstool.dev.bergnet.de/input/app";
 
+"live_news_url" = "https://www.lindlar-verbindet.de/wp-json/wp/v2/posts?categories=";
+"live_news_category" = "13";
+"live_event_url" = "https://www.lindlar-verbindet.de/wp-json/mecexternal/v1/calendar/412";
+
+"lindlar_server_url" = "https://www.lindlar.de/rss.html";
+
+"tipp_server_url" = "https://designclever.de/tippdtages.json";
+
 
 // Content View
 "widget_news_headline" = "LINDLARER NEWS";

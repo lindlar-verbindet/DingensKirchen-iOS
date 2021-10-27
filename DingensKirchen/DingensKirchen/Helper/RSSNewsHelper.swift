@@ -17,7 +17,7 @@ struct RSSNewsHelper {
     }
     
     private static func requestNews(callback: @escaping ([News]) -> Void) {
-        let urlString: String = "https://www.lindlar.de/rss.html"
+        let urlString: String = NSLocalizedString("lindlar_server_url", comment: "")
         
         var result = [News]()
                 

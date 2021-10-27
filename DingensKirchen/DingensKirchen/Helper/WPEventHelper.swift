@@ -16,7 +16,7 @@ struct WPEventHelper {
     }
     
     private static func requestEvents(callback: @escaping ([WPEvent]) -> Void) {
-        let urlString: String = "https://www.lindlar-verbindet.de/wp-json/mecexternal/v1/calendar/412"
+        let urlString: String = NSLocalizedString("https://www.lindlar-verbindet.de/wp-json/mecexternal/v1/calendar/412", comment: "")
         
         var result = [WPEvent]()
         

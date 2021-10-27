@@ -16,8 +16,8 @@ struct WPNewsHelper {
     }
     
     private static func requestNews(callback: @escaping ([News]) -> Void) {
-        let newsID: String = "13"
-        let urlString: String = "https://www.lindlar-verbindet.de/wp-json/wp/v2/posts?categories="
+        let newsID: String = NSLocalizedString("live_news_category", comment: "")
+        let urlString: String = NSLocalizedString("live_news_url", comment: "")
         
         var result = [News]()
         
