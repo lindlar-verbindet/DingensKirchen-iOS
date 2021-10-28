@@ -34,6 +34,16 @@
 "widget_events_headline" = "TERMINE";
 "widget_events_loading" = "Es gibt aktuell keine Termine.";
 
+// InfoView
+"info_navigation_title" = "Informationen";
+"info_imprint" = "IMPRESSUM";
+"info_datapolicy" = "DATENSCHUTZ";
+"info_owner_headline" = "Herausgeber der App";
+"info_owner" = "Lindlar verbindet e.V.";
+"info_concept_headline" = "Konzept + Entwicklung";
+"info_concept" = "pixelskull.de";
+"info_open" = "Diese App ist quelloffen und kann frei weiterentwickelt werden.";
+
 // NewsView
 "news_navigation_title" = "Lindlarer News";
 
@@ -108,18 +118,3 @@
 "form_location" = "Ist ein Vorort-Termin erwünscht?";
 "form_datapolicy" = "Hiermit erkläre ich mich einverstanden, dass meine in das Formular eingegebenen Daten elektronisch gespeichert und zum Zweck der Kontaktaufnahme verarbeitet und genutzt werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit wiederrufen kann.";
 "form_button" = "Absenden";
- 
-
-// Form Texte (Digital)
-
-
-
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";

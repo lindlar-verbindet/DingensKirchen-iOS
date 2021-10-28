@@ -114,10 +114,13 @@ struct ContentView: View {
                                     .resizable()
                                     .frame(width: 140, height: 30)
                                     .padding())
-            .navigationBarItems(trailing: Image(uiImage: UIImage(named: "ic_info")!)
-                                    .resizable()
-                                    .frame(width: 25, height: 25)
-                                    .padding())
+            .navigationBarItems(trailing: NavigationLink(destination: InfoView(), label: {
+                Image(uiImage: UIImage(named: "ic_info")!)
+                    .resizable()
+                    .foregroundColor(.black)
+                    .frame(width: 25, height: 25, alignment: .center)
+                    .padding()
+            }))
             .onAppear {
                 guard events == nil else { return }
                 WPEventHelper.getEvents { events in self.events = events }
