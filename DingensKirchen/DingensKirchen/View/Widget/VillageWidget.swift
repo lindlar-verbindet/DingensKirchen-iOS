@@ -32,10 +32,10 @@ struct VillageWidget: View {
                     .multilineTextAlignment(.leading)
                     .padding(EdgeInsets(top: 10, leading: 10, bottom: 0, trailing: 10))
                 Text(desc)
-                    .font(Font.system(size: 14))
+                    .font(Font.system(size: 16, weight: .light))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-                    .padding(EdgeInsets(top: 30, leading: 10, bottom: 10, trailing: 10))
+                    .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
             }
         }
         .widget(background: .secondaryHighlight)

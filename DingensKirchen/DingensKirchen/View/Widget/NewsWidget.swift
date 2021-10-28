@@ -35,17 +35,17 @@ struct NewsWidget: View {
                     .font(Font.system(size: 12))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-                    .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
+                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                 Text(newsTitle)
-                    .font(Font.system(size: 18))
+                    .font(Font.system(size: 16, weight: .bold))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15))
                 Text(newsDesc.cutoffIfNeeded(maxChars: 120))
-                    .font(Font.system(size: 14))
+                    .font(Font.system(size: 16, weight: .light))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
-                    .padding(EdgeInsets(top: 2, leading: 15, bottom: 15, trailing: 15))
+                    .padding(EdgeInsets(top: 0, leading: 15, bottom: 15, trailing: 15))
                     
             }
         }
