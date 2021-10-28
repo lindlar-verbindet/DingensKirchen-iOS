@@ -123,7 +123,9 @@ struct ContentView: View {
             }))
             .onAppear {
                 guard events == nil else { return }
-                WPEventHelper.getEvents { events in self.events = events }
+                WPEventHelper.getEvents { events in
+                    self.events = events
+                }
                 WPNewsHelper.getNews { news in
                     if self.news != nil {
                         self.news = append(news, toArray: self.news!)

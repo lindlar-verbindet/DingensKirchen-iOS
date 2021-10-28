@@ -28,6 +28,17 @@ struct NeighbourView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
+                    Image("img_neighbour")
+                        .resizable()
+                        .scaledToFit()
+                    Text("neighbour_desc")
+                        .font(Font.system(size: 16, weight: .light))
+                        .padding(.bottom, 10)
+                    
+                    Rectangle()
+                        .foregroundColor(.primaryHighlight)
+                        .frame(maxWidth: .infinity, maxHeight: 4)
+                        .padding(.bottom, 20)
                     textField("form_givenname", binding: $givenName)
                     textField("form_familyname", binding: $name)
                     textField("form_address", binding: $address)
@@ -64,8 +75,8 @@ struct NeighbourView: View {
                     .pickerStyle(MenuPickerStyle())
                     .frame(maxWidth: .infinity)
                     .padding(5)
-                    .background(Color.tertiaryHighlight)
-                    .accentColor(.white)
+                    .background(Color.primaryHighlight)
+                    .accentColor(.black)
                     .cornerRadius(5)
                 }
                 
@@ -97,7 +108,7 @@ struct NeighbourView: View {
                 .frame(maxWidth: .infinity, minHeight: 40)
                 .padding(5)
                 .background(!terms ? Color.primaryBackground : Color.secondaryHighlight)
-                .foregroundColor(.white)
+                .foregroundColor(terms ? .black : .white)
                 .cornerRadius(5)
             }
         }

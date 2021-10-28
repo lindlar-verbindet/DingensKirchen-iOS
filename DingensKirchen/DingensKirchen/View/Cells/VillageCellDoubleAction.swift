@@ -19,12 +19,12 @@ struct VillageCellDoubleAction: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
-                .font(Font.system(size: 22, weight: .light))
+                .font(Font.system(size: 28, weight: .light))
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 15, leading: 15, bottom: 5, trailing: 15))
             Text(desc)
-                .font(Font.system(size: 14))
+                .font(Font.system(size: 16, weight: .light))
                 .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 5, trailing: 15))

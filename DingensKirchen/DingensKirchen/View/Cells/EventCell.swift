@@ -56,11 +56,10 @@ struct EventCell: View {
                         .multilineTextAlignment(.leading)
                     Text(title)
                         .foregroundColor(.black)
-                        .font(Font.system(size: 22, weight: .light))
+                        .font(Font.system(size: 28, weight: .light))
                         .multilineTextAlignment(.leading)
-                        .padding(.top, 10)
                     Text(desc)
-                        .font(Font.system(size: 14))
+                        .font(Font.system(size: 16, weight: .light))
                         .foregroundColor(.black)
                         .multilineTextAlignment(.leading)
                 }

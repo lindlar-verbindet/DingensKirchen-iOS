@@ -30,6 +30,18 @@ struct PocketMoneyView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
+                    Image("img_pocket_money")
+                        .resizable()
+                        .scaledToFit()
+                    Text("pocket_money_desc")
+                        .font(Font.system(size: 16, weight: .light))
+                        .padding(.bottom, 10)
+                    
+                    Rectangle()
+                        .foregroundColor(.primaryHighlight)
+                        .frame(maxWidth: .infinity, maxHeight: 4)
+                        .padding(.bottom, 20)
+                    
                     textField("form_givenname", binding: $givenName)
                     textField("form_familyname", binding: $name)
                     textField("form_address", binding: $address)
@@ -68,8 +80,8 @@ struct PocketMoneyView: View {
                     .pickerStyle(MenuPickerStyle())
                     .frame(maxWidth: .infinity)
                     .padding(5)
-                    .background(Color.tertiaryHighlight)
-                    .accentColor(.white)
+                    .background(Color.primaryHighlight)
+                    .accentColor(.black)
                     .cornerRadius(5)
                 }
                 
@@ -101,7 +113,7 @@ struct PocketMoneyView: View {
             .frame(maxWidth: .infinity, minHeight: 40)
             .padding(5)
             .background(!terms ? Color.primaryBackground : Color.secondaryHighlight)
-            .foregroundColor(.white)
+            .foregroundColor(terms ? .black : .white)
             .cornerRadius(5)
         }
         .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))

@@ -21,11 +21,23 @@ struct LiMoView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Image(uiImage: UIImage(named: "ic_limo")!)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity)
-                    .padding(20)
+                VStack(alignment: .trailing) {
+                    Image("ic_limo")
+                        .resizable()
+                        .frame(width: 150, height: 80)
+                        .scaledToFit()
+                    Image("img_limo")
+                        .resizable()
+                        .scaledToFit()
+                }
+                Text("limo_desc")
+                    .font(Font.system(size: 16, weight: .light))
+                    .padding(.bottom, 10)
+                
+                Rectangle()
+                    .foregroundColor(.primaryHighlight)
+                    .frame(maxWidth: .infinity, maxHeight: 4)
+                    .padding(.bottom, 20)
                 textField("form_givenname", binding: $givenName)
                 textField("form_familyname", binding: $name)
                 textField("form_phone", binding: $phone)
@@ -49,7 +61,7 @@ struct LiMoView: View {
                 .frame(maxWidth: .infinity, minHeight: 40)
                 .padding(5)
                 .background(!terms ? Color.primaryBackground : Color.secondaryHighlight)
-                .foregroundColor(.white)
+                .foregroundColor(terms ? Color.black : Color.white)
                 .cornerRadius(5)
             }
         }

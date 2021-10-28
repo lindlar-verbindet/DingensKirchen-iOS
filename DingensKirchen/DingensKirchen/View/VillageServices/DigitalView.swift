@@ -27,11 +27,23 @@ struct DigitalView: View {
         ScrollView(.vertical) {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
-                    Image("ic_digital")
-                        .resizable()
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .scaledToFit()
+                    VStack(alignment: .trailing) {
+                        Image("ic_digital")
+                            .resizable()
+                            .frame(width: 150, height: 60)
+                            .scaledToFit()
+                        Image("img_digital")
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    Text("digital_desc")
+                        .font(Font.system(size: 16, weight: .light))
+                        .padding(.bottom, 10)
+                    
+                    Rectangle()
+                        .foregroundColor(.primaryHighlight)
+                        .frame(maxWidth: .infinity, maxHeight: 4)
+                        .padding(.bottom, 20)
                     
                     textField("form_givenname", binding: $givenName)
                     textField("form_familyname", binding: $name)
@@ -71,10 +83,10 @@ struct DigitalView: View {
                                                    comment: ""))
                     }
                     .pickerStyle(MenuPickerStyle())
-                    .accentColor(.white)
+                    .accentColor(.black)
                     .frame(maxWidth: .infinity)
                     .padding(5)
-                    .background(Color.tertiaryHighlight)
+                    .background(Color.primaryHighlight)
                     .cornerRadius(5)
                 }
                 
@@ -110,7 +122,7 @@ struct DigitalView: View {
             .frame(maxWidth: .infinity, minHeight: 40)
             .padding(5)
             .background(!terms ? Color.primaryBackground : Color.secondaryHighlight)
-            .foregroundColor(.white)
+            .foregroundColor(terms ? .black : .white)
             .cornerRadius(5)
         }
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
