@@ -9,8 +9,9 @@ import SwiftUI
 
 struct VillageWidget: View {
     
-    let title: String = "Dorfleben"
-    @State var desc: String = "Suche&Finde, DigitalBegleitung, Nachbarschaftshilfe, Taschengeldbörse"
+    let title: String = NSLocalizedString("widget_village_headline", comment: "")
+    @State var desc: String = NSLocalizedString("widget_village_teaser",
+                                                comment: "")
     
     
     var body: some View {

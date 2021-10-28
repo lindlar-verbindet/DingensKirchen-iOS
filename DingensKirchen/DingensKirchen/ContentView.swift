@@ -112,7 +112,7 @@ struct ContentView: View {
             .navigationBarTitle("", displayMode: .inline)
             .navigationBarItems(leading: Image(uiImage:UIImage(named: "ic_logo")!)
                                     .resizable()
-                                    .frame(width: 200, height: 30)
+                                    .frame(width: 140, height: 30)
                                     .padding())
             .navigationBarItems(trailing: Image(uiImage: UIImage(named: "ic_info")!)
                                     .resizable()
@@ -127,6 +127,9 @@ struct ContentView: View {
                     } else {
                         self.news = news
                     }
+                    self.news?.sort(by: { n1, n2 in
+                        n1.date > n2.date
+                    })
                 }
                 RSSNewsHelper.getNews { news in
                     if self.news != nil {
@@ -134,6 +137,9 @@ struct ContentView: View {
                     } else {
                         self.news = news
                     }
+                    self.news?.sort(by: { n1, n2 in
+                        n1.date > n2.date
+                    })
                 }
                 TipHelper.getTodaysTip { currentTip in
                     self.tip = currentTip

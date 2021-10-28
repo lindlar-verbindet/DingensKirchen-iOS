@@ -12,7 +12,7 @@ struct EventWidget: View {
     let title: String = "Termine"
     
     @State var date: String = ""
-    @State var eventTitle: String = ""
+    @State var eventTitle: String = NSLocalizedString("widget_events_loading", comment: ""   )
     @State var eventDesc: String = ""
 
     var body: some View {

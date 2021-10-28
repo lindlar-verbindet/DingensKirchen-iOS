@@ -9,9 +9,10 @@ import SwiftUI
 
 struct CouncilWidget: View {
     
-    let title: String = "Rathaus"
-    
-    @State var desc: String = "OnlineServices, Müllkalender"
+    let title: String = NSLocalizedString("widget_council_headline",
+                                          comment: "")
+    @State var desc: String = NSLocalizedString("widget_council_teaser",
+                                                comment: "")
     
     var body: some View {
         ZStack(alignment: .leading) {

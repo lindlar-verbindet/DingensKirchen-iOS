@@ -11,7 +11,7 @@ struct NewsWidget: View {
     
     var title: String = "Lindlarer News"
     @State var date: String = ""
-    @State var newsTitle: String = ""
+    @State var newsTitle: String = NSLocalizedString("widget_news_loading", comment: "")
     @State var newsDesc: String = ""
     
     var body: some View {

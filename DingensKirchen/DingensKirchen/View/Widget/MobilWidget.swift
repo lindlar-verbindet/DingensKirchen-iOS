@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MobilWidget: View {
     
-    let title: String = "Mobil"
+    let title: String = NSLocalizedString("widget_mobil_headline", comment: "")
     
-    @State var desc: String = "ÖPNV, Bürgerbus, LiMo, Carsharing Linde"
+    @State var desc: String = NSLocalizedString("Mit dem Öffentlichen Personennahverkehr unterwegs in Lindlar.", comment: "")
     
     var body: some View {
         ZStack(alignment: .leading) {

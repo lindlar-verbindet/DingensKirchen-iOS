@@ -20,26 +20,25 @@
 
 // Content View
 "widget_news_headline" = "LINDLARER NEWS";
-"widget_news_loading" = "Aktuell sind keine Nachrichten Vorhanden";
+"widget_news_loading" = "Derzeit gibt es hier keine Einträge.";
 
-"widget_village_headline" = "DORFLEBEN";
-"widget_village_teaser" = "";
+"widget_village_headline" = "ANGEBOTE";
+"widget_village_teaser" = "Ehrenamtliche Dienste mobil nutzen – Nachbarschaftshilfe, LindlarMobil, Taschengeldbörse und mehr.";
 
 "widget_mobil_headline" = "MOBIL";
-"widget_mobil_teaser" = "";
+"widget_mobil_teaser" = "Mit dem Öffentlichen Personennahverkehr unterwegs in Lindlar.";
 
-"widget_council_headline" = "";
-"widget_council_teaser" = "";
+"widget_council_headline" = "RATHAUS";
+"widget_council_teaser" = "Das digitale Rathaus - Onlineservices und Informationen mobil einsehen und nutzen.";
 
-"widget_events_headline" = "";
-"widget_events_teaser" = "";
-"widget_events_loading" = "Es gibt aktuell keine Termine";
+"widget_events_headline" = "TERMINE";
+"widget_events_loading" = "Es gibt aktuell keine Termine.";
 
 // NewsView
 "news_navigation_title" = "Lindlarer News";
 
 // VillageView
-"village_navigation_title" = "Dorfleben";
+"village_navigation_title" = "Angebote";
 
 // MobilView
 "mobil_navigation_title" = "Mobil";
