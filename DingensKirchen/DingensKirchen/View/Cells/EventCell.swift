@@ -80,7 +80,7 @@ struct EventCell: View {
                     .resizable()
                     .frame(width: 10, height: 10, alignment: .center)
                     .foregroundColor(.black)
-                Text(website)
+                Text((URL(string: website)?.host)!)
                     .font(Font.system(size: 12))
                     .foregroundColor(.black)
                 Spacer()
