@@ -30,30 +30,48 @@ struct InfoView: View {
                 VStack(alignment: .leading) {
                     Spacer()
                         .frame(height: 120)
-                    Text("info_imprint")
-                        .font(Font.system(size: 20, weight: .light))
-                        .padding(EdgeInsets(top: 40, leading: 50, bottom: 0, trailing: 50))
-                    Text("info_datapolicy")
-                        .font(Font.system(size: 20, weight: .light))
-                        .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
+                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/impressum/")) {
+                        Text("info_imprint")
+                            .font(Font.system(size: 20, weight: .light))
+                            .padding(EdgeInsets(top: 40, leading: 50, bottom: 0, trailing: 50))
+                            .foregroundColor(.black)
+                    }
+                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/datenschutz/")) {
+                        Text("info_datapolicy")
+                            .font(Font.system(size: 20, weight: .light))
+                            .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
+                            .foregroundColor(.black)
+                    }
+                    
                     Rectangle()
                         .frame(maxWidth: .infinity, maxHeight: 1)
                         .padding(.top, 80)
                     Text("info_owner_headline")
                         .font(Font.system(size: 16, weight: .bold))
                         .padding(EdgeInsets(top: 50, leading: 50, bottom: 0, trailing: 50))
-                    Text("info_owner")
-                        .font(Font.system(size: 16, weight: .light))
-                        .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
+                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/")) {
+                        Text("info_owner")
+                            .font(Font.system(size: 16, weight: .light))
+                            .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
+                            .foregroundColor(.black)
+                    }
+                    
                     Text("info_concept_headline")
                         .font(Font.system(size: 16, weight: .bold))
                         .padding(EdgeInsets(top: 50, leading: 50, bottom: 0, trailing: 50))
-                    Text("info_concept")
-                        .font(Font.system(size: 16, weight: .light))
-                        .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
-                    Text("info_open")
-                        .font(Font.system(size: 16, weight: .bold))
-                        .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
+                    NavigationLink(destination: DKWebView(urlString: "https://pixelskull.de")) {
+                        Text("info_concept")
+                            .font(Font.system(size: 16, weight: .light))
+                            .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
+                            .foregroundColor(.black)
+                    }
+                    NavigationLink(destination: DKWebView(urlString: "https://github.com/lindlar-verbindet/DingensKirchen-iOS")) {
+                        Text("info_open")
+                            .font(Font.system(size: 16, weight: .bold))
+                            .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
+                            .foregroundColor(.black)
+                    }
+                    
                     }
                     .padding(5)
                 Spacer()
