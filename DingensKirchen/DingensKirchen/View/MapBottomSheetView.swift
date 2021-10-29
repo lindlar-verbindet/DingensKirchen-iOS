@@ -42,7 +42,7 @@ struct MapBottomSheetView<Content: View>: View {
                 self.content
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .top)
-            .background(Color(.secondarySystemBackground))
+            .background(Color.primaryHighlight.opacity(0.85))
             .cornerRadius(15, corners: [.topLeft, .topRight])
             .frame(height: geometry.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
@@ -58,6 +58,7 @@ struct MapBottomSheetView<Content: View>: View {
                 self.isOpen = value.translation.height < 0
             })
         }
+        
     }
     
     

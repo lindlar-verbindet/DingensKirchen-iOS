@@ -52,8 +52,9 @@
 
 // MobilView
 "mobil_navigation_title" = "Mobil";
-"mobil_placeholder_title" = "Lindlar Mobil";
-"mobil_placeholder_description" = "<span style=\"font-family: sans-serif; font-size: 12pt;\"><strong>Nicht die richtige Mitfahrgelegenheit gefunden?</strong> <br>Versuchen Sie es doch mit unserem LiMo-Service: <br><a href=tel:+4922664407204>+49 2266 440 72 04</a></span>";
+"mobil_placeholder_title" = "ES FÄHRT KEIN BUS?";
+"mobil_action" = "Wähle eine Haltestelle auf der Karte für Informationen zu den Busfahrzeiten";
+"mobil_placeholder_description" = "<span style=\"font-family: sans-serif; font-size: 12pt;\">Jetzt LindlarMobil buchen unter <br><a href=\"tel:+49 2266 440 72 04\">02266 440 72 04</a> <br>Der lindlarer Fahrservice mit Herz.</span>";
 
 // CouncilView
 "council_navigation_title" = "Rathaus";

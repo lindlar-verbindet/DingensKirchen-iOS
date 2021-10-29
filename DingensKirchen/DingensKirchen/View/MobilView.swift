@@ -28,14 +28,16 @@ struct AttributedText: UIViewRepresentable {
         textView.dataDetectorTypes = [.phoneNumber, .link]
                 
         textView.backgroundColor = UIColor.clear
+        
         return textView
     }
     
     func updateUIView(_ uiView: UITextView, context: Context) {
         
         uiView.attributedText = try! NSAttributedString(data: text.data(using: .unicode)!,
-                                                   options: [.documentType: NSAttributedString.DocumentType.html],
+                                                        options: [.documentType: NSAttributedString.DocumentType.html],
                                                    documentAttributes: nil)
+        uiView.font = UIFont.systemFont(ofSize: 16, weight: .light)
     }
 }
 
@@ -79,10 +81,15 @@ struct MobilView: View {
                     .edgesIgnoringSafeArea(.all)
                 MapBottomSheetView(isOpen: self.$bottomSheetShown, maxHeight: (view.size.height / 3) * 2)  {
                     VStack(alignment: .leading) {
+                        Text("mobil_action")
+                            .font(Font.system(size: 18))
+                            .padding(10)
                         Text(contextTitle == "" ? defaultTitle : contextTitle)
-                            .font(.title)
-                            .padding(5)
+                            .font(Font.system(size: 28, weight: .light))
+                            .padding(10)
                         AttributedText(contextTitle == "" ? defaultDesc : contextDesc)
+                            .font(Font.system(size: 16, weight: .light))
+                            .padding(10)
                         Spacer()
                             .frame(maxWidth: .infinity)
                     }

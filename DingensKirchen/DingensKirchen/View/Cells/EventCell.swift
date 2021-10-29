@@ -85,7 +85,6 @@ struct EventCell: View {
                     .foregroundColor(.black)
                 Spacer()
             }
-            
         }
         .frame(maxWidth: .infinity)
         .padding(15)
