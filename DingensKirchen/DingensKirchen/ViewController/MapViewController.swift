@@ -105,12 +105,12 @@ class MapViewController: UIViewController {
             var title = ""
             do {
                 try result.get().forEach { feature in
-                    print("\(self.stopsID): \(String(describing: feature.feature?.properties))")
-                    if let name = feature.feature?.properties?["name"] {
+                    print("\(self.stopsID): \(String(describing: feature.feature.properties))")
+                    if let name = feature.feature.properties?["name"] {
                         if title == "" {
-                            title.append(name as! String)
+                            title.append(name?.rawValue as! String)
                         } else {
-                            title.append("\n\(name as! String)")
+                            title.append("\n\(name?.rawValue as! String)")
                         }
                     }
                 }
@@ -132,15 +132,15 @@ class MapViewController: UIViewController {
             var desc = ""
             do {
                 try result.get().forEach { feature in
-                    print("\(self.routesID): \(String(describing: feature.feature?.properties))")
-                    if let ref = feature.feature?.properties?["ref"] as? String {
-                        let busLink = self.getDeparturePlan(ref)
-                        let from = feature.feature?.properties?["from"] as! String
-                        let to = feature.feature?.properties?["to"] as! String
+                    print("\(self.routesID): \(String(describing: feature.feature.properties))")
+                    if let ref = feature.feature.properties?["ref"] {
+                        let busLink = self.getDeparturePlan(ref?.rawValue as! String)
+                        let from = feature.feature.properties?["from"]
+                        let to = feature.feature.properties?["to"]
                         if desc == "" {
-                            desc.append("\(busLink): \(from) -> \(to)")
+                            desc.append("\(busLink): \(from??.rawValue as! String) -> \(to??.rawValue as! String)")
                         } else {
-                            desc.append("<br>\(busLink): \(from) -> \(to)")
+                            desc.append("<br>\(busLink): \(from??.rawValue as! String) -> \(to??.rawValue as! String)")
                         }
                     }
                     
