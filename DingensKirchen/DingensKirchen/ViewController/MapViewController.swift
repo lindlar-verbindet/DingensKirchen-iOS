@@ -12,14 +12,19 @@ import MapboxMaps
 // Create class which conforms to LocationConsumer, update the camera's centerCoordinate when a locationUpdate is received
 public class CameraLocationConsumer: LocationConsumer {
     weak var mapView: MapView?
+    var firstUpdate: Bool = true
      
     init(mapView: MapView) {
         self.mapView = mapView
     }
      
     public func locationUpdate(newLocation: Location) {
-//        mapView?.camera.ease(to: CameraOptions(center: newLocation.coordinate, zoom: 15),
-//                             duration: 1.3)
+        if firstUpdate {
+            mapView?.camera.ease(to: CameraOptions(center: newLocation.coordinate,
+                                                   zoom: 13),
+                                 duration: 1.3)
+            firstUpdate.toggle()
+        }
     }
 }
 
@@ -42,11 +47,9 @@ class MapViewController: UIViewController {
         self.setupOrnaments(map!)
         map?.mapboxMap.onNext(.mapLoaded) { _ in
             if let mapView = self.map {
-                
                 self.setupLocation(mapView)
             }
         }
-        
         view.addSubview(map!)
     }
     
@@ -75,7 +78,6 @@ class MapViewController: UIViewController {
         mapView.ornaments.options.attributionButton.margins = CGPoint(x: 0.0, y: 30.0)
         mapView.ornaments.options.attributionButton.position = .topRight
         
-        
         mapView.ornaments.options.logo.position = .topLeft
     }
     
@@ -91,7 +93,7 @@ class MapViewController: UIViewController {
         if  locationStatus == .authorizedAlways ||
                 locationStatus == .authorizedWhenInUse {
             // focus on current location
-            cameraOptions = CameraOptions(center: mapView.location.latestLocation?.coordinate, zoom: 15)
+            cameraOptions = CameraOptions(center: mapView.location.latestLocation?.coordinate, zoom: 13)
             mapView.location.addLocationConsumer(newConsumer: self.cameraLocationConsumer)
         } else {
             // focus on 51.020210571339675, 7.376733748068474
