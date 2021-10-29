@@ -67,7 +67,7 @@ struct EventCell: View {
             HStack {
                 Image(systemName: "signpost.right.fill")
                     .resizable()
-                    .frame(width: 10, height: 10)
+                    .frame(width: 20, height: 20)
                     .foregroundColor(.black)
                 Text(address)
                     .font(Font.system(size: 12))
@@ -78,7 +78,7 @@ struct EventCell: View {
             HStack {
                 Image(systemName: "link")
                     .resizable()
-                    .frame(width: 10, height: 10, alignment: .center)
+                    .frame(width: 20, height: 20, alignment: .center)
                     .foregroundColor(.black)
                 Text((URL(string: website)?.host)!)
                     .font(Font.system(size: 12))
