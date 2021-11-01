@@ -37,7 +37,6 @@ struct MobilWidget: View {
                     .multilineTextAlignment(.leading)
             }
         }
-        
         .smallWidget(background: .primaryHighlight)
         .padding(5)
     }

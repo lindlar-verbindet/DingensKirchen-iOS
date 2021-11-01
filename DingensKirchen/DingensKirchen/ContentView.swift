@@ -90,6 +90,9 @@ struct ContentView: View {
                             EventWidget(date: "",
                                         eventTitle: NSLocalizedString("widget_events_loading", comment: ""),
                                         eventDesc: "")
+                        }
+                        NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/umfrage")) {
+                            SurveyWidget(title: "UMFRAGE", desc: "What should go in here?")
                                 .padding(.bottom, 40)
                         }
                         Image(uiImage: UIImage(named: "ic_skyline")!)
