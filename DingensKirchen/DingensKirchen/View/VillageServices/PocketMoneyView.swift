@@ -51,7 +51,7 @@ struct PocketMoneyView: View {
                     textField("form_address", binding: $address)
                     textField("form_phone", binding: $phone)
                     textField("form_mail", binding: $email)
-                    textField("form_birthdate", binding: $birthDate)
+                    textField("form_birthdate", hint: "01.01.2021", binding: $birthDate)
                 }
                 Section {
                     Text("form_topic")
@@ -96,8 +96,8 @@ struct PocketMoneyView: View {
                 textField("form_more", binding: $detailInfo)
                 
                 Text("form_time_headline")
-                textField("form_time_from", binding: $fromDate)
-                textField("form_time_until", binding: $untilDate)
+                textField("form_time_from", hint: "01.01.2021", binding: $fromDate)
+                textField("form_time_until", hint: "02.01.2021", binding: $untilDate)
                 
                 Toggle(isOn: $terms, label: {
                     Text("form_datapolicy")

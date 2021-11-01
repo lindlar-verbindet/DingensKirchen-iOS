@@ -8,10 +8,10 @@
 import SwiftUI
 
 extension View {
-    func textField(_ title: String, binding: Binding<String>) -> some View {
+    func textField(_ title: String, hint: String? = nil,  binding: Binding<String>) -> some View {
         VStack(alignment: .leading) {
             Text(NSLocalizedString(title, comment: ""))
-            TextField("", text: binding)
+            TextField(hint != nil ? hint! : "", text: binding)
             Divider()
         }
     }

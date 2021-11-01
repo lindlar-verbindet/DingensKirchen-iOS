@@ -93,8 +93,8 @@ struct NeighbourView: View {
                 textField("form_more", binding: $detailInfo)
                 
                 Text("form_time_headline")
-                textField("form_time_from", binding: $fromDate)
-                textField("form_time_until", binding: $untilDate)
+                textField("form_time_from", hint: "01.01.2021", binding: $fromDate)
+                textField("form_time_until", hint: "02.01.2021", binding: $untilDate)
                 Toggle(isOn: $terms, label: {
                     Text("form_datapolicy")
                         .fixedSize(horizontal: false, vertical: true)
