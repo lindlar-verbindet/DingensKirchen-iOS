@@ -19,12 +19,13 @@ extension View {
     }
     
     func getAlertTitle(_ requestSuccess: Bool) -> String {
-        return requestSuccess ? "Geschafft" : "Fehler"
+        return requestSuccess ? NSLocalizedString("form_alert_success_title", comment: "") :
+                                NSLocalizedString("form_alert_failure_title", comment: "")
     }
     
     func getAlertText(_ requestSuccess: Bool) -> String {
-        return requestSuccess ?
-        "Deine Angaben wurden an Lindlar verbindet e.V. übermittelt." :
-        "Bitte überprüfe deine Angaben und versuche es nochmal"
+        return requestSuccess ? NSLocalizedString("form_alert_success_text", comment: "") :
+                                NSLocalizedString("form_alert_failure_text", comment: "")
+        
     }
 }

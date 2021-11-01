@@ -122,7 +122,7 @@ struct PocketMoneyView: View {
             .alert(isPresented: $showAlert) {
                 Alert(title: Text(getAlertTitle(requestSuccess)),
                       message: Text(getAlertText(requestSuccess)),
-                      dismissButton: .default(Text("OK"), action: {
+                      dismissButton: .default(Text("form_alert_button"), action: {
                     if requestSuccess {
                         presentationMode.wrappedValue.dismiss()
                     }
