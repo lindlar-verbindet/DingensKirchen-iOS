@@ -12,6 +12,8 @@ extension View {
         VStack(alignment: .leading) {
             Text(NSLocalizedString(title, comment: ""))
             TextField(hint != nil ? hint! : "", text: binding)
+                .disableAutocorrection(true)
+                .autocapitalization(.none)
             Divider()
         }
     }
