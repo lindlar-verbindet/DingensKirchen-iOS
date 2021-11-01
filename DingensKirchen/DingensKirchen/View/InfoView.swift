@@ -42,6 +42,12 @@ struct InfoView: View {
                             .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
                             .foregroundColor(.black)
                     }
+                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/feedback-anregungen-ideen/")) {
+                        Text("FEEDBACK")
+                            .font(Font.system(size: 20, weight: .light))
+                            .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
+                            .foregroundColor(.black)
+                    }
                     
                     Rectangle()
                         .frame(maxWidth: .infinity, maxHeight: 1)
@@ -71,7 +77,6 @@ struct InfoView: View {
                             .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
                             .foregroundColor(.black)
                     }
-                    
                     }
                     .padding(5)
                 Spacer()
