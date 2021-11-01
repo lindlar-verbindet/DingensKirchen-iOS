@@ -12,11 +12,16 @@ struct LiMoView: View {
     
     private let apiURL = NSLocalizedString("api_tool_url", comment: "")
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var givenName: String = ""
     @State var name: String = ""
     @State var phone: String = ""
     @State var email: String = ""
     @State var terms: Bool = false
+    
+    @State var requestSuccess: Bool = false
+    @State var showAlert: Bool = false
     
     var body: some View {
         ScrollView {
@@ -64,6 +69,15 @@ struct LiMoView: View {
                 .foregroundColor(terms ? Color.black : Color.white)
                 .cornerRadius(5)
             }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text(getAlertTitle(requestSuccess)),
+                      message: Text(getAlertText(requestSuccess)),
+                      dismissButton: .default(Text("OK"), action: {
+                    if requestSuccess {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }))
+            }
         }
         .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
         .navigationBarTitle("limo_navigation_title")
@@ -77,8 +91,10 @@ struct LiMoView: View {
         json["fon"].string = phone
         json["mail"].string = email
         json["datenschutz"].boolValue = terms
-        APIHelper.sendPOST(url: apiURL, json: json) { response in
-            print(response)
+        
+        APIHelper.sendPOST(url: apiURL, json: json) { success, response in
+            requestSuccess = success
+            showAlert.toggle()
         }
     }
 }

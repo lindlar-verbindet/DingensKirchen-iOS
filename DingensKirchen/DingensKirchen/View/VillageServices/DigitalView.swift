@@ -12,6 +12,8 @@ struct DigitalView: View {
     
     private let apiURL = NSLocalizedString("api_tool_url", comment: "")
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var givenName: String = ""
     @State var name: String = ""
     @State var address: String = ""
@@ -22,6 +24,9 @@ struct DigitalView: View {
     @State var detailInfo: String = ""
     @State var meeting: Bool = false
     @State var terms: Bool = false
+    
+    @State var requestSuccess: Bool = false
+    @State var showAlert: Bool = false
     
     var body: some View {
         ScrollView(.vertical) {
@@ -124,6 +129,15 @@ struct DigitalView: View {
             .background(!terms ? Color.primaryBackground : Color.secondaryHighlight)
             .foregroundColor(terms ? .black : .white)
             .cornerRadius(5)
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text(getAlertTitle(requestSuccess)),
+                      message: Text(getAlertText(requestSuccess)),
+                      dismissButton: .default(Text("OK"), action: {
+                    if requestSuccess {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }))
+            }
         }
         .padding(EdgeInsets(top: 5, leading: 10, bottom: 0, trailing: 10))
         .navigationBarTitle("digital_navigation_title")
@@ -145,8 +159,9 @@ struct DigitalView: View {
         json["vorort"].boolValue = meeting
         json["datenschutz"].boolValue = terms
         
-        APIHelper.sendPOST(url: apiURL, json: json) { response in
-            print(response)
+        APIHelper.sendPOST(url: apiURL, json: json) { (success, response) in
+            requestSuccess = success
+            showAlert.toggle()
         }
     }
 }

@@ -11,7 +11,7 @@ import SwiftyJSON
 
 struct APIHelper {
     
-    static func sendPOST(url: String, json: JSON, callback: @escaping (_: String) -> Void) {
+    static func sendPOST(url: String, json: JSON, callback: @escaping (_: Bool, _: String) -> Void) {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json; utf-8", forHTTPHeaderField: "Content-Type")
@@ -21,7 +21,8 @@ struct APIHelper {
             request.httpBody = data
             AF.request(request).responseJSON { response in
                 print(response)
-                callback(response.debugDescription)
+                let success = response.response?.statusCode == 200 ? true : false
+                callback(success, response.debugDescription)
             }
         } catch {
             print(error)
