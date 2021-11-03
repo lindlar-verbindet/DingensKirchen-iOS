@@ -8,12 +8,18 @@
 import SwiftUI
 
 extension View {
-    func textField(_ title: String, hint: String? = nil,  binding: Binding<String>) -> some View {
+    func textField(_ title: String,
+                   hint: String? = nil,
+                   contentType: UITextContentType? = nil,
+                   keyboardType: UIKeyboardType = .default,
+                   binding: Binding<String>) -> some View {
         VStack(alignment: .leading) {
             Text(NSLocalizedString(title, comment: ""))
             TextField(hint != nil ? hint! : "", text: binding)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
+                .textContentType(contentType != nil ? contentType : .none)
+                .keyboardType(keyboardType)
             Divider()
         }
     }

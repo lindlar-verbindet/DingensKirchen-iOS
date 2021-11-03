@@ -7,12 +7,37 @@
 
 import SwiftUI
 import SwiftyJSON
+import Focuser
+
+fileprivate enum FormFields: FocusStateCompliant {
+    case givenname, name, address, phone, email
+    
+    static var last: FormFields {
+        .email
+    }
+    
+    var next: FormFields? {
+        switch self {
+        case .givenname:
+            return .name
+        case .name:
+            return .address
+        case .address:
+            return .phone
+        case .phone:
+            return .email
+        default: return nil
+        }
+    }
+}
 
 struct NeighbourView: View {
     
     private let apiURL = NSLocalizedString("api_tool_url", comment: "")
     
     @Environment(\.presentationMode) var presentationMode
+    
+    @FocusStateLegacy fileprivate var focusedField: FormFields?
     
     @State var givenName: String = ""
     @State var name: String = ""
@@ -44,11 +69,16 @@ struct NeighbourView: View {
                         .foregroundColor(.primaryHighlight)
                         .frame(maxWidth: .infinity, maxHeight: 4)
                         .padding(.bottom, 20)
-                    textField("form_givenname", binding: $givenName)
-                    textField("form_familyname", binding: $name)
-                    textField("form_address", binding: $address)
-                    textField("form_phone", binding: $phone)
-                    textField("form_mail", binding: $email)
+                    textField("form_givenname", contentType: .givenName, binding: $givenName)
+                        .focusedLegacy($focusedField, equals: .givenname)
+                    textField("form_familyname", contentType: .familyName, binding: $name)
+                        .focusedLegacy($focusedField, equals: .name)
+                    textField("form_address", contentType: .streetAddressLine1, binding: $address)
+                        .focusedLegacy($focusedField, equals: .address)
+                    textField("form_phone", contentType: .telephoneNumber, binding: $phone)
+                        .focusedLegacy($focusedField, equals: .phone)
+                    textField("form_mail", contentType: .emailAddress, keyboardType: .emailAddress, binding: $email)
+                        .focusedLegacy($focusedField, equals: .email)
                 }
                 Section {
                     Text("form_topic")
@@ -83,6 +113,9 @@ struct NeighbourView: View {
                     .background(Color.primaryHighlight)
                     .accentColor(.black)
                     .cornerRadius(5)
+                    .onTapGesture {
+                        focusedField = nil
+                    }
                 }
                 
                 if topic == NSLocalizedString("neighbour_form_spinner_8",
