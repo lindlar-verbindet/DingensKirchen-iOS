@@ -22,7 +22,7 @@ struct EventWidget: View {
                 Image(uiImage: UIImage(named: "ic_clock")!)
                     .resizable()
                     .frame(width: 100, height: 100)
-                    .padding(.trailing, 20)
+                    .padding(EdgeInsets(top: 10, leading: 5, bottom: 10, trailing: 10))
                     .foregroundColor(.black)
                     .opacity(0.2)
             }
