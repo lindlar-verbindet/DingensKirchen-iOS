@@ -34,6 +34,9 @@
 "widget_events_headline" = "TERMINE";
 "widget_events_loading" = "Es gibt aktuell keine Termine.";
 
+"widget_survey_title" = "MITMACHEN!";
+"widget_survey_desc" = "Nehmen Sie an Umfragen rund um das Leben in Lindlar teil.";
+
 // InfoView
 "info_navigation_title" = "Informationen";
 "info_imprint" = "IMPRESSUM";
@@ -124,10 +127,10 @@
 "form_datapolicy" = "Hiermit erkläre ich mich einverstanden, dass meine in das Formular eingegebenen Daten elektronisch gespeichert und zum Zweck der Kontaktaufnahme verarbeitet und genutzt werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit wiederrufen kann.";
 "form_button" = "Absenden";
 
-"form_alert_success_title" = "Geschafft";
-"form_alert_success_text" = "Deine Angaben wurden an Lindlar verbindet e.V. übermittelt.";
+"form_alert_success_title" = "Geschafft!";
+"form_alert_success_text" = "Ihre Angaben wurden an Lindlar verbindet e.V. übermittelt.";
 
 "form_alert_failure_title" = "Fehler";
-"form_alert_failure_text" = "Bitte überprüfe deine Angaben und versuche es nochmal.";
+"form_alert_failure_text" = "Bitte überprüfen Sie Ihre Angaben und versuchen es noch einmal.";
 
 "form_alert_button" = "OK";
