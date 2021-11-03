@@ -81,7 +81,7 @@ struct DigitalView: View {
                         .focusedLegacy($focusedField, equals: .name)
                     textField("form_address", contentType: .streetAddressLine1, binding: $address)
                         .focusedLegacy($focusedField, equals: .address)
-                    textField("form_phone", contentType: .telephoneNumber, keyboardType: .phonePad, binding: $phone)
+                    textField("form_phone", contentType: .telephoneNumber, binding: $phone)
                         .focusedLegacy($focusedField, equals: .phone)
                     textField("form_mail", contentType: .emailAddress, keyboardType: .emailAddress, binding: $email)
                         .focusedLegacy($focusedField, equals: .email)
