@@ -12,10 +12,10 @@ struct EventCell: View {
     @State var imagePath: String = ""
     @State var date: String
     @State var start: String
-    @State var end: String
+    @State var end: String = ""
     @State var title: String
-    @State var desc: String
-    @State var address: String
+    @State var desc: String = ""
+    @State var address: String = ""
     @State var website: String
     @State var index: Int
     
@@ -54,26 +54,30 @@ struct EventCell: View {
                         .foregroundColor(.black)
                         .fontWeight(.light)
                         .multilineTextAlignment(.leading)
-                    Text(title)
+                    Text(String(htmlEncodedString: title) ?? "")
                         .foregroundColor(.black)
                         .font(Font.system(size: 28, weight: .light))
                         .multilineTextAlignment(.leading)
-                    Text(desc)
-                        .font(Font.system(size: 16, weight: .light))
-                        .foregroundColor(.black)
-                        .multilineTextAlignment(.leading)
+                    if desc != "" {
+                        Text(String(htmlEncodedString: desc) ?? "")
+                            .font(Font.system(size: 16, weight: .light))
+                            .foregroundColor(.black)
+                            .multilineTextAlignment(.leading)
+                    }
                 }
             }
-            HStack {
-                Image(systemName: "signpost.right.fill")
-                    .resizable()
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(.black)
-                Text(address)
-                    .font(Font.system(size: 12))
-                    .foregroundColor(.black)
-                    .multilineTextAlignment(.leading)
-                Spacer()
+            if address != "" {
+                HStack {
+                    Image(systemName: "signpost.right.fill")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.black)
+                    Text(address)
+                        .font(Font.system(size: 12))
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(.leading)
+                    Spacer()
+                }
             }
             HStack {
                 Image(systemName: "link")

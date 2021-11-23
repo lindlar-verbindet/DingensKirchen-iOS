@@ -97,7 +97,7 @@ class MapViewController: UIViewController {
             mapView.location.addLocationConsumer(newConsumer: self.cameraLocationConsumer)
         } else {
             // focus on 51.020210571339675, 7.376733748068474
-            cameraOptions = CameraOptions(center: CLLocationCoordinate2D(latitude: 51.020210571339675, longitude: 7.376733748068474))
+            cameraOptions = CameraOptions(center: CLLocationCoordinate2D(latitude: 51.020210571339675, longitude: 7.376733748068474), zoom: 13)
         }
         mapView.camera.ease(to: cameraOptions, duration: 2.0)
     }

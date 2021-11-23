@@ -48,7 +48,10 @@ struct WPEventHelper {
                             let end = content["data"]["time"]["end_raw"].string ?? ""
                             var location = ""
                             for loc in content["data"]["locations"] {
-                                location = loc.1["address"].string!
+                                location = loc.1["name"].string!
+                                if loc.1["address"].exists() {
+                                    location = loc.1["address"].string!
+                                }
                             }
                             let link = content["data"]["permalink"].string
                             
