@@ -128,7 +128,16 @@ struct ContentView: View {
             .onAppear {
                 guard events == nil else { return }
                 WPEventHelper.getEvents { events in
-                    self.events = events
+                    let temp = (self.events ?? []) + events
+                    self.events = temp.sorted(by: { a, b in
+                        a.date < b.date
+                    })
+                }
+                LindlarEventHelper.getEvents { events in
+                    let temp = (self.events ?? []) + events
+                    self.events = temp.sorted(by: { a, b in
+                        a.date < b.date
+                    })
                 }
                 WPNewsHelper.getNews { news in
                     if self.news != nil {

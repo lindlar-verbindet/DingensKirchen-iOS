@@ -17,6 +17,15 @@ extension String {
         }
     }
     
+    func dropLastChars(_ number: Int) -> String {
+        var result = self
+        let endIndex = (self.count - number)
+        for _ in (0 ... endIndex){
+            result = String(result.dropLast())
+        }
+        return result
+    }
+    
     init?(htmlEncodedString: String) {
 
         guard let data = htmlEncodedString.data(using: .utf8) else {
