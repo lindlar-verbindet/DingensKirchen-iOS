@@ -11,17 +11,17 @@ import SwiftyJSON
 import Turf
 
 struct LindlarEventHelper {
-    static func getEvents(callback: @escaping ([WPEvent]) -> Void) {
+    static func getEvents(callback: @escaping ([Event]) -> Void) {
         requestEvents(callback: callback)
     }
     
-    private static func requestEvents(callback: @escaping ([WPEvent]) -> Void) {
+    private static func requestEvents(callback: @escaping ([Event]) -> Void) {
         let currentDate = String(Date().timeIntervalSince1970)
         let currentTime = currentDate.split(separator: ".").first!
         
         let urlString: String = "https://lindlar.de/?eID=event_api&token=8_435!B!tV_9wuj-3P*e&mod=event&start=" + currentTime
         
-        var result = [WPEvent]()
+        var result = [Event]()
         
         let headers: HTTPHeaders = [.accept("application/json")]
         
@@ -56,7 +56,7 @@ struct LindlarEventHelper {
                     
                     let link = element["url"].string ?? ""
                     
-                    let event = WPEvent(index: index,
+                    let event = Event(index: index,
                                         title: title,
                                         desc: desc,
                                         date: startDate,

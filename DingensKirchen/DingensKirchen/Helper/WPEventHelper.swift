@@ -11,14 +11,14 @@ import SwiftyJSON
 
 struct WPEventHelper {
     
-    static func getEvents(callback: @escaping ([WPEvent]) -> Void) {
+    static func getEvents(callback: @escaping ([Event]) -> Void) {
         requestEvents(callback: callback)
     }
     
-    private static func requestEvents(callback: @escaping ([WPEvent]) -> Void) {
+    private static func requestEvents(callback: @escaping ([Event]) -> Void) {
         let urlString: String = NSLocalizedString("live_event_url", comment: "")
         
-        var result = [WPEvent]()
+        var result = [Event]()
         
         let headers: HTTPHeaders = [.accept("application/json")]
         
@@ -55,7 +55,7 @@ struct WPEventHelper {
                             }
                             let link = content["data"]["permalink"].string
                             
-                            let event = WPEvent(index: index,
+                            let event = Event(index: index,
                                                 title: title!,
                                                 desc: desc!,
                                                 date: date,

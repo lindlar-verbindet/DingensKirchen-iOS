@@ -20,7 +20,7 @@ struct ContentView: View {
     
     @State var news: [News]?
     @State var tip: Tip? 
-    @State var events: [WPEvent]?
+    @State var events: [Event]?
     @State var showAlert: Bool = false
     
     @State private var animate = false

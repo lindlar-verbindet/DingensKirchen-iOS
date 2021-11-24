@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EventView: View {
     
-    @State var events: [WPEvent]
+    @State var events: [Event]
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -56,6 +56,6 @@ struct EventView: View {
 
 struct EventVIew_Previews: PreviewProvider {
     static var previews: some View {
-        EventView(events: [WPEvent(index: 0, title: "heading", desc: "Description", date: Date(), start: "09:00", end: "17:00", location: "Teststreet", link: "pixelskull.de")])
+        EventView(events: [Event(index: 0, title: "heading", desc: "Description", date: Date(), start: "09:00", end: "17:00", location: "Teststreet", link: "pixelskull.de")])
     }
 }
