@@ -166,8 +166,6 @@ struct ContentView: View {
             
         }
         .accentColor(.secondaryHighlight)
-            
-            
     }
     
     @ViewBuilder func switchView(action:NavigationAction) -> some View {
