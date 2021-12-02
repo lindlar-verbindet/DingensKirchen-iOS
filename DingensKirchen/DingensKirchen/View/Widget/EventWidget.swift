@@ -11,9 +11,15 @@ struct EventWidget: View {
     
     let title: String = "Termine"
     
-    @State var date: String = ""
-    @State var eventTitle: String = NSLocalizedString("widget_events_loading", comment: ""   )
-    @State var eventDesc: String = ""
+    @State var date: String
+    @State var eventTitle: String
+    @State var eventDesc: String
+    
+    init(date: String, eventTitle: String, eventDesc: String) {
+        self.date = date
+        self.eventTitle = String(htmlEncodedString:eventTitle) ?? NSLocalizedString("widget_events_loading", comment: ""   )
+        self.eventDesc = String(htmlEncodedString: eventDesc) ?? ""
+    }
 
     var body: some View {
         ZStack(alignment: .leading) {
@@ -37,12 +43,12 @@ struct EventWidget: View {
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                Text(String(htmlEncodedString:eventTitle) ?? "")
+                Text(eventTitle)
                     .font(Font.system(size: 16))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                Text(String(htmlEncodedString: eventDesc) ?? "")
+                Text(eventDesc)
                     .font(Font.system(size: 16, weight: .light))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)

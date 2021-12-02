@@ -177,7 +177,9 @@ struct ContentView: View {
         case .mobil:
             MobilWidget()
         case .event:
-            EventWidget()
+            EventWidget(date: events?.first?.dateString ?? "",
+                        eventTitle: events?.first?.title ?? "",
+                        eventDesc: events?.first?.desc ?? "")
         case .council:
             CouncilWidget()
         }

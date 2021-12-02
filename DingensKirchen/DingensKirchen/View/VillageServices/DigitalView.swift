@@ -39,16 +39,17 @@ struct DigitalView: View {
     
     @FocusStateLegacy fileprivate var focusedField: FormFields?
     
-    @State var givenName: String = ""
-    @State var name: String = ""
-    @State var address: String = ""
-    @State var phone: String = ""
-    @State var email: String = ""
-    @State var topic: String = "Auswählen"
-    @State var moreInfo: String = ""
-    @State var detailInfo: String = ""
-    @State var meeting: Bool = false
-    @State var terms: Bool = false
+    @State var givenName: String    = ""
+    @State var name: String         = ""
+    @State var address: String      = ""
+    @State var district: String     = ""
+    @State var phone: String        = ""
+    @State var email: String        = ""
+    @State var topic: String        = "Auswählen"
+    @State var moreInfo: String     = ""
+    @State var detailInfo: String   = ""
+    @State var meeting: Bool        = false
+    @State var terms: Bool          = false
     
     @State var requestSuccess: Bool = false
     @State var showAlert: Bool = false
@@ -81,6 +82,35 @@ struct DigitalView: View {
                         .focusedLegacy($focusedField, equals: .name)
                     textField("form_address", contentType: .streetAddressLine1, binding: $address)
                         .focusedLegacy($focusedField, equals: .address)
+                    Picker(topic, selection: $district) {
+                        Text("form_district_spinner1")
+                            .tag(NSLocalizedString("form_district_spinner1",
+                                                   comment: ""))
+                        Text("form_district_spinner2")
+                            .tag(NSLocalizedString("form_district_spinner2",
+                                                   comment: ""))
+                        Text("form_district_spinner3")
+                            .tag(NSLocalizedString("form_district_spinner3",
+                                                   comment: ""))
+                        Text("form_district_spinner4")
+                            .tag(NSLocalizedString("form_district_spinner4",
+                                                   comment: ""))
+                        Text("form_district_spinner5")
+                            .tag(NSLocalizedString("form_district_spinner5",
+                                                   comment: ""))
+                        Text("form_district_spinner6")
+                            .tag(NSLocalizedString("form_district_spinner6",
+                                                   comment: ""))
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    .accentColor(.black)
+                    .frame(maxWidth: .infinity)
+                    .padding(5)
+                    .background(Color.primaryHighlight)
+                    .cornerRadius(5)
+                    .onTapGesture {
+                        focusedField = nil
+                    }
                     textField("form_phone", contentType: .telephoneNumber, binding: $phone)
                         .focusedLegacy($focusedField, equals: .phone)
                     textField("form_mail", contentType: .emailAddress, keyboardType: .emailAddress, binding: $email)
@@ -182,8 +212,7 @@ struct DigitalView: View {
         json["name"].string = givenName
         json["nachname"].string = name
         json["strasse"].string = address
-        json["plz"].string = "51789"
-        json["ort"].string = "Lindlar"
+        json["kdorf"].string = district
         json["fon"].string = phone
         json["mail"].string = email
         json["aufgabe"].string = topic

@@ -10,10 +10,10 @@ import SwiftyJSON
 import Focuser
 
 fileprivate enum FormFields: FocusStateCompliant {
-    case givenname, name, address, phone, email, birthdate
+    case givenname, name, address, phone, email
     
     static var last: FormFields {
-        .birthdate
+        .email
     }
     
     var next: FormFields? {
@@ -26,8 +26,6 @@ fileprivate enum FormFields: FocusStateCompliant {
             return .phone
         case .phone:
             return .email
-        case .email:
-            return .birthdate
         default: return nil
         }
     }
@@ -44,14 +42,12 @@ struct PocketMoneyView: View {
     @State var givenName: String    = ""
     @State var name: String         = ""
     @State var address: String      = ""
+    @State var district: String     = ""
     @State var phone: String        = ""
     @State var email: String        = ""
-    @State var birthDate: String    = ""
     @State var topic: String        = ""
     @State var moreInfo: String     = ""
     @State var detailInfo: String   = ""
-    @State var fromDate: String     = ""
-    @State var untilDate: String    = ""
     @State var terms: Bool          = false
     
     @State var requestSuccess: Bool = false
@@ -79,12 +75,39 @@ struct PocketMoneyView: View {
                         .focusedLegacy($focusedField, equals: .name)
                     textField("form_address", contentType: .streetAddressLine1, binding: $address)
                         .focusedLegacy($focusedField, equals: .address)
+                    Picker(topic, selection: $district) {
+                        Text("form_district_spinner1")
+                            .tag(NSLocalizedString("form_district_spinner1",
+                                                   comment: ""))
+                        Text("form_district_spinner2")
+                            .tag(NSLocalizedString("form_district_spinner2",
+                                                   comment: ""))
+                        Text("form_district_spinner3")
+                            .tag(NSLocalizedString("form_district_spinner3",
+                                                   comment: ""))
+                        Text("form_district_spinner4")
+                            .tag(NSLocalizedString("form_district_spinner4",
+                                                   comment: ""))
+                        Text("form_district_spinner5")
+                            .tag(NSLocalizedString("form_district_spinner5",
+                                                   comment: ""))
+                        Text("form_district_spinner6")
+                            .tag(NSLocalizedString("form_district_spinner6",
+                                                   comment: ""))
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    .frame(maxWidth: .infinity)
+                    .padding(5)
+                    .background(Color.primaryHighlight)
+                    .accentColor(.black)
+                    .cornerRadius(5)
+                    .onTapGesture {
+                        focusedField = nil
+                    }
                     textField("form_phone", contentType: .telephoneNumber, binding: $phone)
                         .focusedLegacy($focusedField, equals: .phone)
                     textField("form_mail", contentType: .emailAddress, keyboardType: .emailAddress, binding: $email)
                         .focusedLegacy($focusedField, equals: .email)
-                    textField("form_birthdate", hint: "01.01.2021", binding: $birthDate)
-                        .focusedLegacy($focusedField, equals: .birthdate)
                 }
                 Section {
                     Text("form_topic")
@@ -131,10 +154,6 @@ struct PocketMoneyView: View {
                 }
                 textField("form_more", binding: $detailInfo)
                 
-                Text("form_time_headline")
-                textField("form_time_from", hint: "01.01.2021", binding: $fromDate)
-                textField("form_time_until", hint: "02.01.2021", binding: $untilDate)
-                
                 Toggle(isOn: $terms, label: {
                     Text("form_datapolicy")
                         .fixedSize(horizontal: false, vertical: true)
@@ -175,16 +194,12 @@ struct PocketMoneyView: View {
         json["name"].string = givenName
         json["nachname"].string = name
         json["strasse"].string = address
-        json["plz"].string = "51789"
-        json["ort"].string = "Lindlar"
+        json["kdorf"].string = district
         json["fon"].string = phone
         json["mail"].string = email
-        json["geburtstag"].string = birthDate
         json["aufgabe"].string = topic
         json["aufgabe_beschreibung"].string = moreInfo
         json["freitext"].string = detailInfo
-        json["zeit_start"].string = fromDate
-        json["zeit_ende"].string = untilDate
         json["datenschutz"].boolValue = terms
         
         APIHelper.sendPOST(url: apiURL, json: json) { (success, response) in

@@ -134,3 +134,10 @@
 "form_alert_failure_text" = "Bitte überprüfen Sie Ihre Angaben und versuchen es noch einmal.";
 
 "form_alert_button" = "OK";
+
+"form_district_spinner1" = "Lindlar Ort";
+"form_district_spinner2" = "Frielingsdorf";
+"form_district_spinner3" = "Linde";
+"form_district_spinner4" = "Hohkeppel";
+"form_district_spinner5" = "Schmitzhöhe";
+"form_district_spinner6" = "Kapellensüng/Hartegasse";
