@@ -57,9 +57,14 @@ struct PocketMoneyView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
-                    Image("img_pocket_money")
-                        .resizable()
-                        .scaledToFit()
+                    VStack(alignment: .trailing) {
+                        Image("ic_tgb")
+                            .resizable()
+                            .frame(width: 260, height: 60)
+                        Image("img_pocket_money")
+                            .resizable()
+                            .scaledToFit()
+                    }
                     Text("pocket_money_desc")
                         .font(Font.system(size: 16, weight: .light))
                         .padding(.bottom, 10)

@@ -57,9 +57,15 @@ struct NeighbourView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
-                    Image("img_neighbour")
-                        .resizable()
-                        .scaledToFit()
+                    VStack(alignment: .trailing) {
+                        Image("ic_nbsh")
+                            .resizable()
+                            .frame(width: 260, height: 60)
+                        Image("img_neighbour")
+                            .resizable()
+                            .scaledToFit()
+                    }
+                    
                     Text("neighbour_desc")
                         .font(Font.system(size: 16, weight: .light))
                         .padding(.bottom, 10)
