@@ -22,6 +22,7 @@ struct ContentView: View {
     @State var tip: Tip? 
     @State var events: [Event]?
     @State var showAlert: Bool = false
+    @State var showTutorial: Bool = false
     
     @State private var animate = false
     
@@ -32,29 +33,40 @@ struct ContentView: View {
             ZStack {
                 VStack(alignment: .leading) {
                     ScrollView(.vertical) {
-                        HStack {
-                            Spacer()
+                        VStack(alignment: .leading) {
                             Button {
-                                if self.tip != nil {
-                                    showAlert.toggle()
-                                }
+                                self.showTutorial.toggle()
                             } label: {
-                                Image(uiImage: UIImage(named: "ic_bench")!)
+                                Image(systemName: "questionmark.circle.fill")
                                     .resizable()
-                                    .scaledToFit()
-                                    .scaleEffect(animate ? 1.1 : 1.0, anchor: .center)
-                                    .rotationEffect(.degrees(animate ? -10 : 0), anchor: .topLeading)
-                                    .animation(.linear(duration: 0.6))
-                                    .frame(width: 200, height: 140)
-                                    .onChange(of: animate, perform: { newValue in
-                                        if newValue == true {
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(.primaryHighlight)
+                            }
+                            .frame(width: 30, height: 30, alignment: .trailing)
+                            HStack {
+                                Spacer()
+                                Button {
+                                    if self.tip != nil {
+                                        showAlert.toggle()
+                                    }
+                                } label: {
+                                    Image(uiImage: UIImage(named: "ic_bench")!)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .scaleEffect(animate ? 1.1 : 1.0, anchor: .center)
+                                        .rotationEffect(.degrees(animate ? -10 : 0), anchor: .topLeading)
+                                        .animation(.linear(duration: 0.6))
+                                        .frame(width: 200, height: 140)
+                                        .onChange(of: animate, perform: { newValue in
+                                            if newValue == true {
+                                                animate.toggle()
+                                            }
+                                        })
+                                        .padding()
+                                        .onReceive(benchTimerBig) { _ in
                                             animate.toggle()
                                         }
-                                    })
-                                    .padding()
-                                    .onReceive(benchTimerBig) { _ in
-                                        animate.toggle()
-                                    }
+                                }
                             }
                         }
                         
@@ -106,10 +118,14 @@ struct ContentView: View {
                             .padding(.bottom, -50)
                     }
                 }
-                .blur(radius: showAlert ? 5 : 0)
+                .blur(radius: (showAlert || showTutorial) ? 5 : 0)
                 .disabled(showAlert)
+                .disabled(showTutorial)
                 if (showAlert) {
                     DKAlertView(shown: $showAlert, title: tip!.title, content: tip!.content)
+                }
+                if (showTutorial) {
+                    TutorialView(shown: $showTutorial)
                 }
             }
             

@@ -7,7 +7,7 @@
 */
 
 // Config
-"api_tool_url" = "https://vermittlungstool.dev.bergnet.de/input/app";
+"api_tool_url" = "https://vermittlung.lindlar-verbindet.de/input/app";
 
 "live_news_url" = "https://www.lindlar-verbindet.de/wp-json/wp/v2/posts?categories=";
 "live_news_category" = "13";
