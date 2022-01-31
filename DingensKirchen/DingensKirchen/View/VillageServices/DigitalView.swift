@@ -61,8 +61,7 @@ struct DigitalView: View {
                     VStack(alignment: .trailing) {
                         Image("ic_digital")
                             .resizable()
-                            .frame(width: 150, height: 60)
-                            .scaledToFit()
+                            .frame(width: 200, height: 60)
                         Image("img_digital")
                             .resizable()
                             .scaledToFit()

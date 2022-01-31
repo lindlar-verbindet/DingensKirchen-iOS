@@ -52,8 +52,7 @@ struct LiMoView: View {
                 VStack(alignment: .trailing) {
                     Image("ic_limo")
                         .resizable()
-                        .frame(width: 150, height: 80)
-                        .scaledToFit()
+                        .frame(width: 180, height: 80)
                     Image("img_limo")
                         .resizable()
                         .scaledToFit()

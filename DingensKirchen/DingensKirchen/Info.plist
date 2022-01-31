@@ -30,7 +30,7 @@
 		<string>We temporarily require your precise location for an optimal experience.</string>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Your precise location is used to calculate turn-by-turn directions, show your location on the map, and help improve the map.</string>
+	<string>Die MeinLindlar-App benötigt Ihre Standort Daten um die aktuelle Position auf der Karte anzuzeigen.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

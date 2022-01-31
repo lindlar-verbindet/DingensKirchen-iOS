@@ -26,7 +26,7 @@
 "widget_village_teaser" = "Ehrenamtliche Dienste mobil nutzen – Nachbarschaftshilfe, LindlarMobil, Taschengeldbörse und mehr.";
 
 "widget_mobil_headline" = "MOBIL";
-"widget_mobil_teaser" = "Mit dem Öffentlichen Personennahverkehr unterwegs in Lindlar.";
+"widget_mobil_teaser" = "Mit dem ÖPNV und Bürgerbus unterwegs in Lindlar.";
 
 "widget_council_headline" = "RATHAUS";
 "widget_council_teaser" = "Das digitale Rathaus - Onlineservices und Informationen mobil einsehen und nutzen.";
@@ -43,7 +43,7 @@
 "info_datapolicy" = "DATENSCHUTZ";
 "info_owner_headline" = "Herausgeber der App";
 "info_owner" = "Lindlar verbindet e.V.";
-"info_concept_headline" = "Konzept + Entwicklung";
+"info_concept_headline" = "Entwicklung";
 "info_concept" = "pixelskull.de";
 "info_open" = "Diese App ist quelloffen und kann frei weiterentwickelt werden.";
 
