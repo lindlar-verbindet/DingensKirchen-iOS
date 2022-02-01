@@ -8,7 +8,7 @@
 import Foundation
 
 struct Event: Hashable {
-    let index:      Int
+    var index:      Int
     let title:      String
     let desc:       String
     var htmlFreeDesc: String {

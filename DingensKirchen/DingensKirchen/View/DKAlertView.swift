@@ -41,7 +41,7 @@ struct DKAlertView: View {
                 .multilineTextAlignment(.leading)
             Spacer()
             Button("tipp_button") {
-                shown.toggle()
+                shown = false
             }
             .frame(width: screen.width - 100, height: 40)
             .background(Color.primaryHighlight)

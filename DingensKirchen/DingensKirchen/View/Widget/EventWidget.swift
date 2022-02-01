@@ -15,10 +15,12 @@ struct EventWidget: View {
     @State var eventTitle: String
     @State var eventDesc: String
     
-    init(date: String, eventTitle: String, eventDesc: String) {
+    init(date: String, title: String, eventDesc: String) {
         self.date = date
-        self.eventTitle = String(htmlEncodedString:eventTitle) ?? NSLocalizedString("widget_events_loading", comment: ""   )
-        self.eventDesc = String(htmlEncodedString: eventDesc) ?? ""
+//        self.eventTitle = String(htmlEncodedString:title) ?? NSLocalizedString("widget_events_loading", comment: ""   )
+        self.eventTitle = title
+//        self.eventDesc = String(htmlEncodedString: eventDesc) ?? ""
+        self.eventDesc = eventDesc
     }
 
     var body: some View {
@@ -62,6 +64,6 @@ struct EventWidget: View {
 
 struct EventWidget_Previews: PreviewProvider {
     static var previews: some View {
-        EventWidget(date: "01.01.1970", eventTitle: "Beispieltermin", eventDesc: "Kurzbeschreibung")
+        EventWidget(date: "01.01.1970", title: "Beispieltermin", eventDesc: "Kurzbeschreibung")
     }
 }

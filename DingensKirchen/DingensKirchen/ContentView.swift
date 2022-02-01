@@ -16,16 +16,17 @@ enum NavigationAction {
     case event
 }
 
+
 struct ContentView: View {
+
+    @StateObject var newsViewModel = NewsViewModel()
+    @StateObject var eventViewModel = EventViewModel()
     
-    @State var news: [News]?
-    @State var tip: Tip? 
-    @State var events: [Event]?
     @State var showAlert: Bool = false
     @State var showTutorial: Bool = false
-    
     @State private var animate = false
     
+    @State var tip: Tip?
     private let benchTimerBig = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -40,14 +41,15 @@ struct ContentView: View {
                                 Image(systemName: "questionmark.circle.fill")
                                     .resizable()
                                     .frame(width: 20, height: 20)
-                                    .foregroundColor(.primaryHighlight)
+                                    .foregroundColor(.black)
                             }
-                            .frame(width: 30, height: 30, alignment: .trailing)
+                            .frame(width: 30, height: 30)
+                            .padding()
                             HStack {
                                 Spacer()
                                 Button {
                                     if self.tip != nil {
-                                        showAlert.toggle()
+                                        self.showAlert = true
                                     }
                                 } label: {
                                     Image(uiImage: UIImage(named: "ic_bench")!)
@@ -64,13 +66,15 @@ struct ContentView: View {
                                         })
                                         .padding()
                                         .onReceive(benchTimerBig) { _ in
-                                            animate.toggle()
+                                            DispatchQueue.main.async {
+                                                animate.toggle()
+                                            }
                                         }
                                 }
                             }
                         }
                         
-                        if let news = news {
+                        if let news = newsViewModel.response {
                             NavigationLink(destination: NewsView(news: news)) {
                                 NewsWidget(date: news.first!.dateString,
                                            newsTitle: news.first!.title,
@@ -92,15 +96,15 @@ struct ContentView: View {
                                 CouncilWidget()
                             }
                         }
-                        if let events = self.events {
+                        if let events = self.eventViewModel.response {
                             NavigationLink(destination: EventView(events: events)) {
                                 EventWidget(date: events.first!.dateString,
-                                            eventTitle: events.first!.title,
+                                            title: events.first!.title,
                                             eventDesc: events.first!.htmlFreeDesc.cutoffIfNeeded(maxChars: 40))
                             }
                         } else {
                             EventWidget(date: "",
-                                        eventTitle: NSLocalizedString("widget_events_loading", comment: ""),
+                                        title: NSLocalizedString("widget_events_loading", comment: ""),
                                         eventDesc: "")
                         }
                         NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/umfrage")) {
@@ -118,11 +122,14 @@ struct ContentView: View {
                             .padding(.bottom, -50)
                     }
                 }
-                .blur(radius: (showAlert || showTutorial) ? 5 : 0)
+                .blur(radius: showAlert ? 5 : 0)
+                .blur(radius: showTutorial ? 5 : 0)
                 .disabled(showAlert)
                 .disabled(showTutorial)
                 if (showAlert) {
-                    DKAlertView(shown: $showAlert, title: tip!.title, content: tip!.content)
+                    DKAlertView(shown: $showAlert,
+                                title: tip!.title,
+                                content: tip!.content)
                 }
                 if (showTutorial) {
                     TutorialView(shown: $showTutorial)
@@ -135,48 +142,21 @@ struct ContentView: View {
                                     .frame(width: 140, height: 30)
                                     .padding())
             .navigationBarItems(trailing: NavigationLink(destination: InfoView(), label: {
-                Image(uiImage: UIImage(named: "ic_info")!)
+                Image(uiImage: UIImage(systemName: "info")!)
                     .resizable()
-                    .foregroundColor(.black)
-                    .frame(width: 25, height: 25, alignment: .center)
+                    .foregroundColor(.gray)
+                    .frame(width: 15, height: 25)
                     .padding()
             }))
             .onAppear {
-                guard events == nil else { return }
-                WPEventHelper.getEvents { events in
-                    let temp = (self.events ?? []) + events
-                    self.events = temp.sorted(by: { a, b in
-                        a.date < b.date
-                    })
+                if eventViewModel.response == nil {
+                    eventViewModel.loadEvents()
                 }
-                LindlarEventHelper.getEvents { events in
-                    let temp = (self.events ?? []) + events
-                    self.events = temp.sorted(by: { a, b in
-                        a.date < b.date
-                    })
-                }
-                WPNewsHelper.getNews { news in
-                    if self.news != nil {
-                        self.news = append(news, toArray: self.news!)
-                    } else {
-                        self.news = news
-                    }
-                    self.news?.sort(by: { n1, n2 in
-                        n1.date > n2.date
-                    })
-                }
-                RSSNewsHelper.getNews { news in
-                    if self.news != nil {
-                        self.news = append(news, toArray: self.news!)
-                    } else {
-                        self.news = news
-                    }
-                    self.news?.sort(by: { n1, n2 in
-                        n1.date > n2.date
-                    })
+                if newsViewModel.response == nil {
+                    newsViewModel.loadNews()
                 }
                 TipHelper.getTodaysTip { currentTip in
-                    self.tip = currentTip
+                    tip = currentTip
                 }
             }
             
@@ -193,9 +173,9 @@ struct ContentView: View {
         case .mobil:
             MobilWidget()
         case .event:
-            EventWidget(date: events?.first?.dateString ?? "",
-                        eventTitle: events?.first?.title ?? "",
-                        eventDesc: events?.first?.desc ?? "")
+            EventWidget(date: eventViewModel.response?.first?.dateString ?? "",
+                        title: eventViewModel.response?.first?.title ?? "",
+                        eventDesc: eventViewModel.response?.first?.desc ?? "")
         case .council:
             CouncilWidget()
         }

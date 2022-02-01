@@ -61,7 +61,9 @@ struct TutorialView: View {
             .tabViewStyle(PageTabViewStyle())
             VStack(alignment: .trailing) {
                 Button {
-                    self.shown.toggle()
+                    DispatchQueue.main.async {
+                        self.shown.toggle()
+                    }
                 } label: {
                     Image(systemName: "xmark")
                         .resizable()
