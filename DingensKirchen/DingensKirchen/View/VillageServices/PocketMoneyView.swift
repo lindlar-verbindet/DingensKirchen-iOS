@@ -10,10 +10,10 @@ import SwiftyJSON
 import Focuser
 
 fileprivate enum FormFields: FocusStateCompliant {
-    case givenname, name, address, phone, email
+    case givenname, name, address, phone, email, detail
     
     static var last: FormFields {
-        .email
+        .detail
     }
     
     var next: FormFields? {
@@ -26,6 +26,8 @@ fileprivate enum FormFields: FocusStateCompliant {
             return .phone
         case .phone:
             return .email
+        case .email:
+            return .detail
         default: return nil
         }
     }
@@ -158,6 +160,7 @@ struct PocketMoneyView: View {
                     textField("form_detail", binding: $moreInfo)
                 }
                 textField("form_more", binding: $detailInfo)
+                    .focusedLegacy($focusedField, equals: .detail)
                 
                 Toggle(isOn: $terms, label: {
                     Text("form_datapolicy")
