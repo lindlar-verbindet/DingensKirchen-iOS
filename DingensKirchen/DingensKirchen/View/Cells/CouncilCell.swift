@@ -28,7 +28,7 @@ struct CouncilCell: View {
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 5, trailing: 15))
             .padding(5)
             Button(action: {}, label: {
-                NavigationLink(destination: DKWebView(urlString: targetLink)) {
+                NavigationLink(destination: DKWebView(urlString: targetLink, hideBackButtons: false)) {
                     Text(buttonTitle)
                 }
             })

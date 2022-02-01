@@ -30,19 +30,19 @@ struct InfoView: View {
                 VStack(alignment: .leading) {
                     Spacer()
                         .frame(height: 120)
-                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/impressum/")) {
+                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/impressum/", hideBackButtons: false)) {
                         Text("info_imprint")
                             .font(Font.system(size: 20, weight: .light))
                             .padding(EdgeInsets(top: 40, leading: 50, bottom: 0, trailing: 50))
                             .foregroundColor(.black)
                     }
-                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/datenschutz/")) {
+                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/datenschutz/", hideBackButtons: false)) {
                         Text("info_datapolicy")
                             .font(Font.system(size: 20, weight: .light))
                             .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
                             .foregroundColor(.black)
                     }
-                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/feedback-anregungen-ideen/")) {
+                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/feedback-anregungen-ideen/", hideBackButtons: false)) {
                         Text("FEEDBACK")
                             .font(Font.system(size: 20, weight: .light))
                             .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
@@ -55,7 +55,7 @@ struct InfoView: View {
                     Text("info_owner_headline")
                         .font(Font.system(size: 16, weight: .bold))
                         .padding(EdgeInsets(top: 50, leading: 50, bottom: 0, trailing: 50))
-                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/")) {
+                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/", hideBackButtons: false)) {
                         Text("info_owner")
                             .font(Font.system(size: 16, weight: .light))
                             .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
@@ -65,13 +65,13 @@ struct InfoView: View {
                     Text("info_concept_headline")
                         .font(Font.system(size: 16, weight: .bold))
                         .padding(EdgeInsets(top: 50, leading: 50, bottom: 0, trailing: 50))
-                    NavigationLink(destination: DKWebView(urlString: "https://pixelskull.de")) {
+                    NavigationLink(destination: DKWebView(urlString: "https://pixelskull.de", hideBackButtons: false)) {
                         Text("info_concept")
                             .font(Font.system(size: 16, weight: .light))
                             .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
                             .foregroundColor(.black)
                     }
-                    NavigationLink(destination: DKWebView(urlString: "https://github.com/lindlar-verbindet/DingensKirchen-iOS")) {
+                    NavigationLink(destination: DKWebView(urlString: "https://github.com/lindlar-verbindet/DingensKirchen-iOS", hideBackButtons: false)) {
                         Text("info_open")
                             .font(Font.system(size: 16, weight: .bold))
                             .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))

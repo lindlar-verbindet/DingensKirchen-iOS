@@ -34,7 +34,7 @@ struct EventView: View {
                     Spacer()
                         .frame(height: 120)
                     ForEach(events, id: \.self) { event in
-                        NavigationLink(destination: DKWebView(urlString: event.link)) {
+                        NavigationLink(destination: DKWebView(urlString: event.link, hideBackButtons: false)) {
                             EventCell(date: event.dateString,
                                       start: event.start,
                                       end: event.end,

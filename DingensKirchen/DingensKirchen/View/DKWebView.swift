@@ -13,39 +13,40 @@ struct DKWebView: View {
     
     @State var urlString: String
     @StateObject var webViewStore = WebViewStore()
+    @State var hideBackButtons: Bool
     
     var body: some View {
         ZStack(alignment: .bottom) {
             WebView(webView: webViewStore.webView)
         }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Text("")
-                }
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Spacer()
-                    Button(action: goBack) {
-                        Image(systemName: "chevron.backward")
-                            .accentColor(canGoBack() ? .tertiaryHighlight : .gray)
-                    }
-                    .disabled(!canGoBack())
-                    Button(action: goForward) {
-                        Image(systemName: "chevron.forward")
-                            .accentColor( canGoForward() ? .tertiaryHighlight : .gray)
-                    }
-                    .disabled(!canGoForward())
-                }
-            }
-            .onAppear {
-                let request = URLRequest(url: URL(string: urlString)!)
-                self.webViewStore.webView
-                    .configuration.defaultWebpagePreferences.allowsContentJavaScript = true
-                self.webViewStore.webView
-                    .load(request)
-                
-                
-            }
-            .navigationTitle(webViewStore.webView.title ?? "")
+//        .toolbar {
+//            ToolbarItem(placement: .navigationBarLeading) {
+//                Text("")
+//            }
+//            ToolbarItemGroup(placement: .bottomBar) {
+//                Spacer()
+//                Button(action: goBack) {
+//                    Image(systemName: "chevron.backward")
+//                        .accentColor(canGoBack() ? .tertiaryHighlight : .gray)
+//                }
+//                .disabled(!canGoBack())
+//                Button(action: goForward) {
+//                    Image(systemName: "chevron.forward")
+//                        .accentColor( canGoForward() ? .tertiaryHighlight : .gray)
+//                }
+//                .disabled(!canGoForward())
+//            }
+//        }
+        .onAppear {
+            let request = URLRequest(url: URL(string: urlString)!)
+            self.webViewStore.webView
+                .configuration.defaultWebpagePreferences.allowsContentJavaScript = true
+            self.webViewStore.webView
+                .load(request)
+            
+            
+        }
+        .navigationTitle(webViewStore.webView.title ?? "")
     }
     
     private func canGoBack() -> Bool {
@@ -69,6 +70,6 @@ struct DKWebView: View {
 
 struct WebView_Previews: PreviewProvider {
     static var previews: some View {
-        DKWebView(urlString: "https://pixelskull.de")
+        DKWebView(urlString: "https://pixelskull.de", hideBackButtons: false)
     }
 }

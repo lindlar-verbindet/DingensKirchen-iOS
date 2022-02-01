@@ -13,7 +13,7 @@ struct CouncilCellTrash: View {
     
     var body: some View {
         VStack {
-            NavigationLink(destination: DKWebView(urlString: targetURLString)) {
+            NavigationLink(destination: DKWebView(urlString: targetURLString, hideBackButtons: false)) {
                 Image("ic_trash")
                     .resizable()
                     .frame(maxWidth: .infinity, maxHeight: 120)
