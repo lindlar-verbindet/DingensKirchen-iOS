@@ -64,8 +64,11 @@ struct LindlarEventHelper {
                                         end: endTime,
                                         location: location,
                                         link: link)
-                    result.append(event)
-                    index += 1
+                    if (element["hidden"].bool! == false &&
+                        element["deleted"].bool! == false) {
+                        result.append(event)
+                        index += 1
+                    }
                 }
                 callback(result)
             case.failure(let error):

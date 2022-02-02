@@ -18,6 +18,8 @@ enum NavigationAction {
 
 
 struct ContentView: View {
+    
+    @AppStorage("firstStart") var firstStart = true
 
     @StateObject var newsViewModel = NewsViewModel()
     @StateObject var eventViewModel = EventViewModel()
@@ -157,6 +159,10 @@ struct ContentView: View {
                 }
                 TipHelper.getTodaysTip { currentTip in
                     tip = currentTip
+                }
+                if firstStart {
+                    showTutorial = firstStart
+                    firstStart = false
                 }
             }
             
