@@ -20,10 +20,10 @@
 
 // Content View
 "widget_news_headline" = "LINDLARER NEWS";
-"widget_news_loading" = "Derzeit gibt es hier keine Einträge.";
+"widget_news_loading" = "Nachrichten werden geladen...";
 
 "widget_village_headline" = "ANGEBOTE";
-"widget_village_teaser" = "Ehrenamtliche Dienste mobil nutzen – Nachbarschaftshilfe, LindlarMobil, Taschengeldbörse und mehr.";
+"widget_village_teaser" = "Ehrenamtliche Dienste mobil nutzen – Nachbarschaftshilfe, Lindlar mobil, Taschengeldbörse und mehr.";
 
 "widget_mobil_headline" = "MOBIL";
 "widget_mobil_teaser" = "Mit dem ÖPNV und Bürgerbus unterwegs in Lindlar.";
@@ -56,8 +56,8 @@
 // MobilView
 "mobil_navigation_title" = "Mobil";
 "mobil_placeholder_title" = "ES FÄHRT KEIN BUS?";
-"mobil_action" = "Wähle eine Haltestelle auf der Karte für Informationen zu den Busfahrzeiten";
-"mobil_placeholder_description" = "<span style=\"font-family: sans-serif; font-size: 12pt;\">Jetzt LindlarMobil buchen unter <br><a href=\"tel:+49 2266 440 72 04\">02266 440 72 04</a> <br>Der lindlarer Fahrservice mit Herz.</span>";
+"mobil_action" = "Tippen Sie auf der Karte auf eine Haltestelle für mehr Informationen. Jeder Buslinieneintrag öffnet den jeweiligen Mini-Fahrplan im PDF-Format. ";
+"mobil_placeholder_description" = "<span style=\"font-family: sans-serif; font-size: 12pt;\">Jetzt Lindlar mobil buchen unter <br><a href=\"tel:+49 2266 440 72 04\">02266 440 72 04</a> <br>Der Lindlarer Fahrservice mit Herz.</span>";
 
 // CouncilView
 "council_navigation_title" = "Rathaus";
@@ -87,7 +87,7 @@
 "pocket_money_desc" = "Schüler*innen helfen gegen ein Taschengeld bei leichten Arbeiten rund um Haus und Garten.";
 "pocket_money_form_spinner_1" = "Einkaufen";
 "pocket_money_form_spinner_2" = "Erledigungsgänge";
-"pocket_money_form_spinner_3" = "Haustierebetreuung";
+"pocket_money_form_spinner_3" = "Haustierbetreuung";
 "pocket_money_form_spinner_4" = "Auf- oder Abbauen von Möbeln";
 "pocket_money_form_spinner_5" = "Rasenmähen, Schneeräumen oder Kehrarbeiten";
 "pocket_money_form_spinner_6" = "Leichte Gartenarbeiten";
@@ -107,7 +107,7 @@
 "neighbour_form_spinner_8" = "... bei einer anderen Tätigkeit";
 
 // LiMoView
-"limo_navigation_title" = "Lindlar Mobil";
+"limo_navigation_title" = "Lindlar mobil";
 "limo_desc" = "Auf ehrenamtlicher Basis fahren wir Sie kostenfrei von der Haustür direkt zum Ort der Begegnung oder zum Einkaufen. Hilfen beim Ein- und Aussteigen, beim Gehen oder auch beim Einkauf sind selbstverständlich. \nLimo fährt umweltschonend mit einem E-Auto.";
 
 // Form Texte
@@ -116,13 +116,9 @@
 "form_address" = "Ihre Adresse";
 "form_phone" = "Ihre Telefon oder Mobilnummer";
 "form_mail" = "Ihre E-Mail-Adresse";
-"form_birthdate" = "Ihr Geburtsdatum";
 "form_topic" = "Bei welchem Themengebiet haben Sie Fragen/Wünschen Sie Unterstützung";
 "form_detail" = "Nicht dabei? Wobei können wir helfen?";
 "form_more" = "Erzählen Sie uns ein bisschen mehr zum Thema. So können wir den richtigen Experten für Sie finden.";
-"form_time_headline" = "In welchem Zeitraum sollte die Aufgabe erledigt werden?";
-"form_time_from" = "Von:";
-"form_time_until" = "Bis:";
 "form_location" = "Ist ein Vorort-Termin erwünscht?";
 "form_datapolicy" = "Hiermit erkläre ich mich einverstanden, dass meine in das Formular eingegebenen Daten elektronisch gespeichert und zum Zweck der Kontaktaufnahme verarbeitet und genutzt werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit wiederrufen kann.";
 "form_button" = "Absenden";
