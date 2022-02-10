@@ -29,6 +29,14 @@ struct AttributedText: UIViewRepresentable {
                 
         textView.backgroundColor = UIColor.clear
         
+        textView.linkTextAttributes = [
+            .foregroundColor : UIColor.black,
+            .underlineStyle : 0,
+            .underlineColor : UIColor.clear
+        ]
+        
+        textView.font = UIFont.boldSystemFont(ofSize: 16)
+        
         return textView
     }
     
@@ -89,6 +97,7 @@ struct MobilView: View {
                             .padding(10)
                         AttributedText(contextTitle == "" ? defaultDesc : contextDesc)
                             .font(Font.system(size: 16, weight: .light))
+                            .foregroundColor(.black)
                             .padding(10)
                         Spacer()
                             .frame(maxWidth: .infinity)

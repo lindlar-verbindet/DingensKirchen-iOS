@@ -124,8 +124,8 @@ class MapViewController: UIViewController {
         }
     }
     
-    private func getDeparturePlan(_ busID: String) -> String {
-        return "<a href=https://www.vrs.de/his/minifahrplan/de:vrs:\(busID)>\(busID)</a>"
+    private func getDeparturePlan(_ busID: String, content: String) -> String {
+        return "<a href=https://www.vrs.de/his/minifahrplan/de:vrs:\(busID)>\(content)</a>"
     }
     
     fileprivate func queryLineInfo(sender: UITapGestureRecognizer) {
@@ -136,13 +136,16 @@ class MapViewController: UIViewController {
                 try result.get().forEach { feature in
 //                    print("\(self.routesID): \(String(describing: feature.feature.properties))")
                     if let ref = feature.feature.properties?["ref"] {
-                        let busLink = self.getDeparturePlan(ref?.rawValue as! String)
                         let from = feature.feature.properties?["from"]
                         let to = feature.feature.properties?["to"]
+                        let content = "\(ref?.rawValue as! String): \(from??.rawValue as! String) -> \(to??.rawValue as! String)"
+                        
+                        let busLink = self.getDeparturePlan(ref?.rawValue as! String, content: content)
+                        
                         if desc == "" {
-                            desc.append("\(busLink): \(from??.rawValue as! String) -> \(to??.rawValue as! String)")
+                            desc.append("\(busLink)")
                         } else {
-                            desc.append("<br>\(busLink): \(from??.rawValue as! String) -> \(to??.rawValue as! String)")
+                            desc.append("<br><br>\(busLink)")
                         }
                     }
                     
