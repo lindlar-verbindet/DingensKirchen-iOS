@@ -9,62 +9,67 @@ import SwiftUI
 import WebView
 import WebKit
 
+class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void)
+    {
+        if navigationAction.targetFrame == nil {
+            webView.load(navigationAction.request)
+        }
+        
+        if navigationAction.request.url?.scheme == "tel" {
+            UIApplication.shared.open(navigationAction.request.url!,
+                                      options: [:],
+                                      completionHandler: nil)
+            decisionHandler(.cancel)
+        } else if navigationAction.request.url?.scheme == "mailto" {
+            UIApplication.shared.open(navigationAction.request.url!,
+                                      options: [:],
+                                      completionHandler: nil)
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
+        }
+    }
+}
+
+struct WebView: UIViewRepresentable {
+    
+    var urlString: String
+    var navTitle: String = ""
+    
+    func makeUIView(context: Context) -> some WKWebView {
+        guard let url = URL(string: urlString) else { return WKWebView() }
+        
+        let request = URLRequest(url: url)
+        let webView = WKWebView()
+        
+        webView.navigationDelegate = context.coordinator
+        webView.uiDelegate = context.coordinator
+        
+        webView.configuration.defaultWebpagePreferences.allowsContentJavaScript = true
+        webView.load(request)
+        
+        return webView
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
+    }
+    
+}
+
 struct DKWebView: View {
     
     @State var urlString: String
-    @StateObject var webViewStore = WebViewStore()
-    @State var hideBackButtons: Bool
+    
+    @State var navTitle:String = ""
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            WebView(webView: webViewStore.webView)
-        }
-//        .toolbar {
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Text("")
-//            }
-//            ToolbarItemGroup(placement: .bottomBar) {
-//                Spacer()
-//                Button(action: goBack) {
-//                    Image(systemName: "chevron.backward")
-//                        .accentColor(canGoBack() ? .tertiaryHighlight : .gray)
-//                }
-//                .disabled(!canGoBack())
-//                Button(action: goForward) {
-//                    Image(systemName: "chevron.forward")
-//                        .accentColor( canGoForward() ? .tertiaryHighlight : .gray)
-//                }
-//                .disabled(!canGoForward())
-//            }
-//        }
-        .onAppear {
-            let request = URLRequest(url: URL(string: urlString)!)
-            self.webViewStore.webView
-                .configuration.defaultWebpagePreferences.allowsContentJavaScript = true
-            self.webViewStore.webView
-                .load(request)
-            
-            
-        }
-        .navigationTitle(webViewStore.webView.title ?? "")
+        WebView(urlString: urlString)
+            .navigationTitle(WebView.navTitle)
     }
-    
-    private func canGoBack() -> Bool {
-        return webViewStore.webView.canGoBack
-    }
-    
-    private func goBack() {
-        webViewStore.webView.goBack()
-    }
-    
-    private func canGoForward() -> Bool {
-        return webViewStore.webView.canGoForward
-    }
-    
-    private func goForward() {
-        webViewStore.webView.goForward()
-    }
-    
     
 }
 

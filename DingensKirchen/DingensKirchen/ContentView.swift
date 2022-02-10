@@ -77,7 +77,7 @@ struct ContentView: View {
                         }
                         
                         if let news = newsViewModel.response {
-                            NavigationLink(destination: NewsView(news: news)) {
+                            NavigationLink(destination: NewsView(newsViewModel: newsViewModel)) {
                                 NewsWidget(date: news.first!.dateString,
                                            newsTitle: news.first!.title,
                                            newsDesc: news.first!.htmlFreeDesc)

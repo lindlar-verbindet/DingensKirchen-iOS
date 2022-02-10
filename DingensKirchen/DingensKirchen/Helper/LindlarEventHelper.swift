@@ -20,6 +20,7 @@ struct LindlarEventHelper {
         let currentTime = currentDate.split(separator: ".").first!
         
         let urlString: String = "https://lindlar.de/?eID=event_api&token=8_435!B!tV_9wuj-3P*e&mod=event&start=" + currentTime
+        print(currentTime)
         
         var result = [Event]()
         
@@ -28,7 +29,6 @@ struct LindlarEventHelper {
         let request = AF.request(urlString, headers: headers)
                         .validate()
         request.responseJSON { response in
-            
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "de_DE")
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -64,10 +64,11 @@ struct LindlarEventHelper {
                                         end: endTime,
                                         location: location,
                                         link: link)
-                    if (element["hidden"].bool! == false &&
-                        element["deleted"].bool! == false) {
+                    if (element["hidden"].bool == false &&
+                        element["deleted"].bool == false) {
                         result.append(event)
                         index += 1
+                        print("\(String(describing: element["id"].int!)) -> \(title)")
                     }
                 }
                 callback(result)

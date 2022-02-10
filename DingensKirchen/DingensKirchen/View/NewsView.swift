@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewsView: View {
     
-    @State var news: [News]
+    @State var newsViewModel = NewsViewModel()
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -28,7 +28,7 @@ struct NewsView: View {
             ScrollView(.vertical) {
                 Spacer()
                     .frame(height: 120)
-                ForEach(news, id: \.self) { n in
+                ForEach(newsViewModel.response ?? [News](), id: \.self) { n in
                     NavigationLink(destination: DKWebView(urlString: n.link, hideBackButtons: false)) {
                         NewsCell(index: n.index,
                                  title: n.title,
@@ -47,6 +47,6 @@ struct NewsView: View {
 
 struct NewsView_Previews: PreviewProvider {
     static var previews: some View {
-        NewsView(news: [News(index: 0, title: "title", desc: "desc", date: Date(), link: "pixelskull.de", imageURL: nil)])
+        NewsView(newsViewModel: NewsViewModel())
     }
 }
