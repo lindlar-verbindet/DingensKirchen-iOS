@@ -68,7 +68,6 @@ struct LindlarEventHelper {
                         element["deleted"].bool == false) {
                         result.append(event)
                         index += 1
-                        print("\(String(describing: element["id"].int!)) -> \(title)")
                     }
                 }
                 callback(result)

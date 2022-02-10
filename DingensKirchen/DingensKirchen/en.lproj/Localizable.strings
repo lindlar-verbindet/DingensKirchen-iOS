@@ -32,7 +32,7 @@
 "widget_council_teaser" = "Das digitale Rathaus - Onlineservices und Informationen mobil einsehen und nutzen.";
 
 "widget_events_headline" = "TERMINE";
-"widget_events_loading" = "Es gibt aktuell keine Termine.";
+"widget_events_loading" = "Termine werden geladen...";
 
 "widget_survey_title" = "MITMACHEN!";
 "widget_survey_desc" = "Nehmen Sie an Umfragen rund um das Leben in Lindlar teil.";

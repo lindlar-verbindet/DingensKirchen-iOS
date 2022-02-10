@@ -20,7 +20,6 @@ struct APIHelper {
             let data = try json.rawData()
             request.httpBody = data
             AF.request(request).responseJSON { response in
-                print(response)
                 let success = response.response?.statusCode == 200 ? true : false
                 callback(success, response.debugDescription)
             }

@@ -107,7 +107,7 @@ class MapViewController: UIViewController {
             var title = ""
             do {
                 try result.get().forEach { feature in
-                    print("\(self.stopsID): \(String(describing: feature.feature.properties))")
+//                    print("\(self.stopsID): \(String(describing: feature.feature.properties))")
                     if let name = feature.feature.properties?["name"] {
                         if title == "" {
                             title.append(name?.rawValue as! String)
@@ -134,7 +134,7 @@ class MapViewController: UIViewController {
             var desc = ""
             do {
                 try result.get().forEach { feature in
-                    print("\(self.routesID): \(String(describing: feature.feature.properties))")
+//                    print("\(self.routesID): \(String(describing: feature.feature.properties))")
                     if let ref = feature.feature.properties?["ref"] {
                         let busLink = self.getDeparturePlan(ref?.rawValue as! String)
                         let from = feature.feature.properties?["from"]
@@ -156,7 +156,7 @@ class MapViewController: UIViewController {
     }
     
     @objc func mapTaped(sender: UITapGestureRecognizer) {
-        print(sender.location(in: map))
+//        print(sender.location(in: map))
         queryStop(sender: sender)
         queryLineInfo(sender: sender)
     }
