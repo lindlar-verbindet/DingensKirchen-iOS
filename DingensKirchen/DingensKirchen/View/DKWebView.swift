@@ -68,13 +68,12 @@ struct DKWebView: View {
     
     var body: some View {
         WebView(urlString: urlString)
-            .navigationTitle(WebView.navTitle)
     }
     
 }
 
 struct WebView_Previews: PreviewProvider {
     static var previews: some View {
-        DKWebView(urlString: "https://pixelskull.de", hideBackButtons: false)
+        DKWebView(urlString: "https://pixelskull.de")
     }
 }

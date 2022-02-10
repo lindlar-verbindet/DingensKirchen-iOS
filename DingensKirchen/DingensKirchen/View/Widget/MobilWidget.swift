@@ -11,7 +11,7 @@ struct MobilWidget: View {
     
     let title: String = NSLocalizedString("widget_mobil_headline", comment: "")
     
-    @State var desc: String = NSLocalizedString("Mit dem Öffentlichen Personennahverkehr unterwegs in Lindlar.", comment: "")
+    @State var desc: String = NSLocalizedString("widget_mobil_teaser", comment: "")
     
     var body: some View {
         ZStack(alignment: .leading) {

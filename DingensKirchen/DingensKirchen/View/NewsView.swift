@@ -29,7 +29,7 @@ struct NewsView: View {
                 Spacer()
                     .frame(height: 120)
                 ForEach(newsViewModel.response ?? [News](), id: \.self) { n in
-                    NavigationLink(destination: DKWebView(urlString: n.link, hideBackButtons: false)) {
+                    NavigationLink(destination: DKWebView(urlString: n.link)) {
                         NewsCell(index: n.index,
                                  title: n.title,
                                  desc: n.htmlFreeDesc,

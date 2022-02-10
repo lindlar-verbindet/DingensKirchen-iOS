@@ -26,7 +26,7 @@ struct VillageCellSingleAction: View {
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 5, trailing: 15))
             HStack {
-                NavigationLink(destination: DKWebView(urlString: url, hideBackButtons: true), label: {
+                NavigationLink(destination: DKWebView(urlString: url), label: {
                     Text(btnTitle)
                 })
                 .foregroundColor(.black)

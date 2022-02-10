@@ -109,7 +109,7 @@ struct ContentView: View {
                                         title: NSLocalizedString("widget_events_loading", comment: ""),
                                         eventDesc: "")
                         }
-                        NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/umfrage", hideBackButtons: false)) {
+                        NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/umfrage")) {
                             SurveyWidget(title: NSLocalizedString("widget_survey_title", comment: ""),
                                          desc: NSLocalizedString("widget_survey_desc", comment: ""))
                                 .padding(.bottom, 40)
