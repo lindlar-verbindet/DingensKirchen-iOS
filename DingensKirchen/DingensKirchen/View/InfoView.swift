@@ -52,33 +52,47 @@ struct InfoView: View {
                     Rectangle()
                         .frame(maxWidth: .infinity, maxHeight: 1)
                         .padding(.top, 80)
-                    Text("info_owner_headline")
-                        .font(Font.system(size: 16, weight: .bold))
-                        .padding(EdgeInsets(top: 50, leading: 50, bottom: 0, trailing: 50))
-                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/")) {
-                        Text("info_owner")
-                            .font(Font.system(size: 16, weight: .light))
-                            .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
-                            .foregroundColor(.black)
-                    }
                     
-                    Text("info_concept_headline")
-                        .font(Font.system(size: 16, weight: .bold))
-                        .padding(EdgeInsets(top: 50, leading: 50, bottom: 0, trailing: 50))
-                    NavigationLink(destination: DKWebView(urlString: "https://pixelskull.de")) {
-                        Text("info_concept")
-                            .font(Font.system(size: 16, weight: .light))
-                            .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
-                            .foregroundColor(.black)
-                    }
-                    NavigationLink(destination: DKWebView(urlString: "https://github.com/lindlar-verbindet/DingensKirchen-iOS")) {
-                        Text("info_open")
+                    VStack(alignment: .leading) {
+                        Text("info_sponsor_headline")
                             .font(Font.system(size: 16, weight: .bold))
-                            .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
-                            .foregroundColor(.black)
-                    }
+                            .padding(EdgeInsets(top: 50, leading: 50, bottom: 0, trailing: 50))
+                        NavigationLink(destination: DKWebView(urlString: NSLocalizedString("info_sponsor_url", comment: ""))) {
+                            Text("info_sponsor")
+                                .font(Font.system(size: 16, weight: .light))
+                                .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
+                                .foregroundColor(.black)
+                        }
+                        
+                        Text("info_owner_headline")
+                            .font(Font.system(size: 16, weight: .bold))
+                            .padding(EdgeInsets(top: 50, leading: 50, bottom: 0, trailing: 50))
+                        NavigationLink(destination: DKWebView(urlString: NSLocalizedString("info_owner_url", comment: ""))) {
+                            Text("info_owner")
+                                .font(Font.system(size: 16, weight: .light))
+                                .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
+                                .foregroundColor(.black)
+                        }
+                        
+                        Text("info_concept_headline")
+                            .font(Font.system(size: 16, weight: .bold))
+                            .padding(EdgeInsets(top: 50, leading: 50, bottom: 0, trailing: 50))
+                        NavigationLink(destination: DKWebView(urlString: NSLocalizedString("info_concept_url", comment: ""))) {
+                            Text("info_concept")
+                                .font(Font.system(size: 16, weight: .light))
+                                .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
+                                .foregroundColor(.black)
+                        }
+                        
+                        NavigationLink(destination: DKWebView(urlString: NSLocalizedString("info_repo_url", comment: ""))) {
+                            Text("info_repo")
+                                .font(Font.system(size: 16, weight: .bold))
+                                .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
+                                .foregroundColor(.black)
+                        }
                     }
                     .padding(5)
+                }
                 Spacer()
             }
         }

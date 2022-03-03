@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>MeinLindlar</string>
+	<string>Lindlar App</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -30,7 +30,7 @@
 		<string>We temporarily require your precise location for an optimal experience.</string>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Die MeinLindlar-App benötigt Ihre Standort Daten um die aktuelle Position auf der Karte anzuzeigen.</string>
+	<string>Die Lindlar App benötigt Ihre Standort Daten um die aktuelle Position auf der Karte anzuzeigen.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

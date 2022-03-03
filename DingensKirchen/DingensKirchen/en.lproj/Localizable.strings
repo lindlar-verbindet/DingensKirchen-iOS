@@ -41,11 +41,17 @@
 "info_navigation_title" = "Informationen";
 "info_imprint" = "IMPRESSUM";
 "info_datapolicy" = "DATENSCHUTZ";
+"info_sponsor_headline" = "Gefördert durch";
+"info_sponsor" = "Stiftung Wohlfahrtspflege NRW";
+"info_sponsor_url" = "https://sw-nrw.de";
 "info_owner_headline" = "Herausgeber der App";
 "info_owner" = "Lindlar verbindet e.V.";
+"info_owner_url" = "https://lindlar-verbindet.de";
 "info_concept_headline" = "Entwicklung";
-"info_concept" = "pixelskull.de";
-"info_open" = "Diese App ist quelloffen und kann frei weiterentwickelt werden.";
+"info_concept" = "PixelSkull";
+"info_concept_url" = "https://pixelskull.de";
+"info_repo" = "Diese App ist quelloffen und kann frei weiterentwickelt werden.";
+"info_repo_url" = "https://github.com/lindlar-verbindet/DingensKirchen-iOS";
 
 // NewsView
 "news_navigation_title" = "Lindlarer News";
