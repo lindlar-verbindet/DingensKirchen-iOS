@@ -68,8 +68,18 @@ struct DKWebView: View {
     
     var body: some View {
         WebView(urlString: urlString)
+            .navigationBarItems(trailing: Button(action: {
+                openShareMenu()
+            }, label: {
+                Image(systemName: "square.and.arrow.up")
+            }))
     }
     
+    func openShareMenu() {
+        guard let data = URL(string: urlString) else { return }
+                let av = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+                UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+    }
 }
 
 struct WebView_Previews: PreviewProvider {
