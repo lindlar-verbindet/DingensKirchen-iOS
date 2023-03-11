@@ -10,7 +10,7 @@ import SwiftyJSON
 import Focuser
 
 fileprivate enum FormFields: FocusStateCompliant {
-    case givenname, name, phone, email
+    case givenname, name, date, time, destination, phone, email
     
     static var last: FormFields {
         .email
@@ -21,6 +21,12 @@ fileprivate enum FormFields: FocusStateCompliant {
         case .givenname:
             return .name
         case .name:
+            return .date
+        case .date:
+            return .time
+        case .time:
+            return .destination
+        case .destination:
             return .phone
         case .phone:
             return .email
@@ -39,9 +45,15 @@ struct LiMoView: View {
     
     @State var givenName: String = ""
     @State var name: String = ""
+    @State var date: String = ""
+    @State var time: String = ""
+    @State var destination: String = ""
     @State var phone: String = ""
     @State var email: String = ""
     @State var terms: Bool = false
+    
+    @State var nameHint: Bool = false
+    @State var phoneHint: Bool = false
     
     @State var requestSuccess: Bool = false
     @State var showAlert: Bool = false
@@ -65,14 +77,28 @@ struct LiMoView: View {
                     .foregroundColor(.primaryHighlight)
                     .frame(maxWidth: .infinity, maxHeight: 4)
                     .padding(.bottom, 20)
-                textField("form_givenname", contentType: .givenName, binding: $givenName)
-                    .focusedLegacy($focusedField, equals: .givenname)
-                textField("form_familyname", contentType: .familyName, binding: $name)
-                    .focusedLegacy($focusedField, equals: .name)
-                textField("form_phone", contentType: .telephoneNumber, binding: $phone)
-                    .focusedLegacy($focusedField, equals: .phone)
-                textField("form_mail", contentType: .emailAddress, keyboardType: .emailAddress, binding: $email)
-                    .focusedLegacy($focusedField, equals: .email)
+                VStack {
+                    textField("form_givenname", contentType: .givenName, binding: $givenName)
+                        .focusedLegacy($focusedField, equals: .givenname)
+                    textField("form_familyname",
+                              hint: nameHint ? "Pflichtfeld!" : nil,
+                              contentType: .familyName,
+                              binding: $name)
+                        .focusedLegacy($focusedField, equals: .name)
+                    textField("form_date", binding: $date)
+                        .focusedLegacy($focusedField, equals: .date)
+                    textField("form_time", binding: $time)
+                        .focusedLegacy($focusedField, equals: .time)
+                    textField("form_destination", binding: $destination)
+                        .focusedLegacy($focusedField, equals: .destination)
+                    textField("form_phone",
+                              hint: phoneHint ? "Pflichtfeld!" : nil,
+                              contentType: .telephoneNumber,
+                              binding: $phone)
+                        .focusedLegacy($focusedField, equals: .phone)
+                    textField("form_mail", contentType: .emailAddress, keyboardType: .emailAddress, binding: $email)
+                        .focusedLegacy($focusedField, equals: .email)
+                }
                 
                 Toggle(isOn: $terms, label: {
                     Text("form_datapolicy")
@@ -111,10 +137,15 @@ struct LiMoView: View {
     }
     
     private func sendForm() {
+        if !checkFields() { return }
+        
         var json = JSON()
         json["form"].string = "limo"
         json["name"].string = givenName
         json["nachname"].string = name
+        json["datum"].string = date
+        json["uhr"].string = time
+        json["ziel"].string = destination
         json["fon"].string = phone
         json["mail"].string = email
         json["datenschutz"].boolValue = terms
@@ -123,6 +154,19 @@ struct LiMoView: View {
             requestSuccess = success
             showAlert.toggle()
         }
+    }
+    
+    private func checkFields() -> Bool {
+        var ok = true
+        if givenName == "" {
+            nameHint = true
+            ok = false
+        }
+        if phone == "" {
+            phoneHint = true
+            ok = false
+        }
+        return ok
     }
 }
 

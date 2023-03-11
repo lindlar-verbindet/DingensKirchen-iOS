@@ -52,6 +52,9 @@ struct NeighbourView: View {
     @State var detailInfo: String   = ""
     @State var terms: Bool          = false
     
+    @State var nameHint: Bool = false
+    @State var phoneHint: Bool = false
+    
     @State var requestSuccess: Bool = false
     @State var showAlert: Bool      = false
   
@@ -198,6 +201,8 @@ struct NeighbourView: View {
     }
     
     private func sendForm() {
+        if !checkFields() { return }
+        
         var json = JSON()
         json["form"].string = "nachbarschaft"
         json["name"].string = givenName
@@ -215,6 +220,19 @@ struct NeighbourView: View {
             requestSuccess = success
             showAlert.toggle()
         }
+    }
+    
+    private func checkFields() -> Bool {
+        var ok = true
+        if givenName == "" {
+            nameHint = true
+            ok = false
+        } 
+        if phone == "" {
+            phoneHint = true
+            ok = false
+        }
+        return ok
     }
 }
 

@@ -15,11 +15,18 @@ extension View {
                    binding: Binding<String>) -> some View {
         VStack(alignment: .leading) {
             Text(NSLocalizedString(title, comment: ""))
-            TextField(hint != nil ? hint! : "", text: binding)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-                .textContentType(contentType != nil ? contentType : .none)
-                .keyboardType(keyboardType)
+            ZStack {
+                if (binding.wrappedValue == "") {
+                    Text(hint != nil ? hint! : "")
+                        .foregroundColor(Color.tertiaryHighlight)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                TextField("", text: binding) //hint != nil ? hint! :
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    .textContentType(contentType != nil ? contentType : .none)
+                    .keyboardType(keyboardType)
+            }
             Divider()
         }
     }

@@ -52,6 +52,9 @@ struct PocketMoneyView: View {
     @State var detailInfo: String   = ""
     @State var terms: Bool          = false
     
+    @State var nameHint: Bool = false
+    @State var phoneHint: Bool = false
+    
     @State var requestSuccess: Bool = false
     @State var showAlert: Bool = false
   
@@ -78,7 +81,10 @@ struct PocketMoneyView: View {
                     
                     textField("form_givenname", contentType: .givenName, binding: $givenName)
                         .focusedLegacy($focusedField, equals: .givenname)
-                    textField("form_familyname", contentType: .familyName, binding: $name)
+                    textField("form_familyname",
+                              hint: nameHint ? "Pflichtfeld!" : "",
+                              contentType: .familyName,
+                              binding: $name)
                         .focusedLegacy($focusedField, equals: .name)
                     textField("form_address", contentType: .streetAddressLine1, binding: $address)
                         .focusedLegacy($focusedField, equals: .address)
@@ -111,7 +117,10 @@ struct PocketMoneyView: View {
                     .onTapGesture {
                         focusedField = nil
                     }
-                    textField("form_phone", contentType: .telephoneNumber, binding: $phone)
+                    textField("form_phone",
+                              hint: phoneHint ? "Pflichtfeld!" : "",
+                              contentType: .telephoneNumber,
+                              binding: $phone)
                         .focusedLegacy($focusedField, equals: .phone)
                     textField("form_mail", contentType: .emailAddress, keyboardType: .emailAddress, binding: $email)
                         .focusedLegacy($focusedField, equals: .email)
@@ -197,6 +206,8 @@ struct PocketMoneyView: View {
     }
     
     private func sendForm() {
+        if !checkFields() { return }
+        
         var json = JSON()
         json["form"].string = "taschengeld"
         json["name"].string = givenName
@@ -214,6 +225,19 @@ struct PocketMoneyView: View {
             requestSuccess = success
             showAlert.toggle()
         }
+    }
+    
+    private func checkFields() -> Bool {
+        var ok = true
+        if givenName == "" {
+            nameHint = true
+            ok = false
+        }
+        if phone == "" {
+            phoneHint = true
+            ok = false
+        }
+        return ok
     }
 }
 

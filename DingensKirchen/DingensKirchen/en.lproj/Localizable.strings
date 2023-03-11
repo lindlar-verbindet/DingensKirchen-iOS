@@ -118,9 +118,12 @@
 
 // Form Texte
 "form_givenname" = "Ihr Vorname";
-"form_familyname" = "Ihr Nachname";
+"form_familyname" = "Ihr Nachname (Pflicht)";
+"form_date" = "Datum";
+"form_time" = "Uhrzeit";
+"form_destination" = "Ziel";
 "form_address" = "Ihre Adresse";
-"form_phone" = "Ihre Telefon oder Mobilnummer";
+"form_phone" = "Ihre Telefon oder Mobilnummer (Pflicht)";
 "form_mail" = "Ihre E-Mail-Adresse";
 "form_topic" = "Bei welchem Themengebiet haben Sie Fragen/Wünschen Sie Unterstützung";
 "form_detail" = "Nicht dabei? Wobei können wir helfen?";
