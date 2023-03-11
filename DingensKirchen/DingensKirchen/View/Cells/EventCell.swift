@@ -97,12 +97,14 @@ struct EventCell: View {
     }
     
     private func getEventDateString() -> String {
-        if start != end {
-            let startTime = start != "" ? " Von: " + start + " " : ""
-            let endTime = end != "" ? "Bis: " + end : ""
+        if (start == "" || start == "00:00") {
+            return date
+        } else if start != end {
+            let startTime = start != "" ? " von: " + start + " " : ""
+            let endTime = end != "" ? "bis: " + end : ""
             return date + startTime + endTime
         } else {
-            let startTime = start != "" ? " Ab: " + start : ""
+            let startTime = start != "" ? " ab: " + start : ""
             return date + startTime
         }
         
