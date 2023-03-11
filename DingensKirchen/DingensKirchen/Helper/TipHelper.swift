@@ -32,6 +32,7 @@ struct TipHelper {
                     result.append(tip)
                     index += 1
                 }
+                guard result.count != 0 else { return } 
                 callback(result[currentDay % result.count])
                 break
             case .failure(let error):
