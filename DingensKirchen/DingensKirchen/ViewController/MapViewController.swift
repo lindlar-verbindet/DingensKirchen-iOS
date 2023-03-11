@@ -36,8 +36,8 @@ class MapViewController: UIViewController {
     
     internal var cameraLocationConsumer: CameraLocationConsumer!
     
-    private let stopsID = "bus-map-data-250621-b0qi91"
-    private let routesID = "routes-map-data-250621-5ep1to"
+    private let stopsID = "bus_stop_map_data_10032023-9ojnxm"
+    private let routesID = "routes_map_data_10032023-0ko8a7"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +56,7 @@ class MapViewController: UIViewController {
     private func setupMapView() -> MapView {
         let resourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoicGl4ZWxza3VsbCIsImEiOiJja3B4dGVjOG0wNjcxMnJvNmkxMjgwNW5uIn0.X4Y1kWyTsmm6Y2yE2a2TUQ")
         
-        let styleURL = URL(string: "mapbox://styles/pixelskull/ckqc2n0m10gbv17mztnwa9eou")!
+        let styleURL = URL(string: "mapbox://styles/pixelskull/clf2k6tn9000g01lxbguj8j2t")!
         let styleURI = StyleURI(url: styleURL)
         
         let initOptions = MapInitOptions(resourceOptions: resourceOptions, styleURI: styleURI)
@@ -103,7 +103,7 @@ class MapViewController: UIViewController {
     }
     
     fileprivate func queryStop(sender: UITapGestureRecognizer) {
-        map?.mapboxMap.queryRenderedFeatures(at: sender.location(in: map), options: RenderedQueryOptions(layerIds: [stopsID], filter: .none)) { result in
+        map?.mapboxMap.queryRenderedFeatures(with: sender.location(in: map), options: RenderedQueryOptions(layerIds: [stopsID], filter: .none)) { result in
             var title = ""
             do {
                 try result.get().forEach { feature in
@@ -130,7 +130,7 @@ class MapViewController: UIViewController {
     
     fileprivate func queryLineInfo(sender: UITapGestureRecognizer) {
         let point = sender.location(in: map)
-        map?.mapboxMap.queryRenderedFeatures(in: CGRect(x: point.x-25, y: point.y-25, width: 50, height: 50), options: RenderedQueryOptions(layerIds: [routesID], filter: .none)) { result in
+        map?.mapboxMap.queryRenderedFeatures(with: CGRect(x: point.x-25, y: point.y-25, width: 50, height: 50), options: RenderedQueryOptions(layerIds: [routesID], filter: .none)) { result in
             var desc = ""
             do {
                 try result.get().forEach { feature in
