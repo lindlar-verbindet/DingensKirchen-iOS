@@ -131,6 +131,7 @@
 "form_location" = "Ist ein Vorort-Termin erwünscht?";
 "form_datapolicy" = "Hiermit erkläre ich mich einverstanden, dass meine in das Formular eingegebenen Daten elektronisch gespeichert und zum Zweck der Kontaktaufnahme verarbeitet und genutzt werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit wiederrufen kann.";
 "form_button" = "Absenden";
+"form_mandatory_hint" = "Pflichtfeld!";
 
 "form_alert_success_title" = "Geschafft!";
 "form_alert_success_text" = "Ihre Angaben wurden an Lindlar verbindet e.V. übermittelt.";

@@ -82,7 +82,7 @@ struct PocketMoneyView: View {
                     textField("form_givenname", contentType: .givenName, binding: $givenName)
                         .focusedLegacy($focusedField, equals: .givenname)
                     textField("form_familyname",
-                              hint: nameHint ? "Pflichtfeld!" : "",
+                              hint: nameHint ? NSLocalizedString("form_mandatory_hint", comment: "") : "",
                               contentType: .familyName,
                               binding: $name)
                         .focusedLegacy($focusedField, equals: .name)
@@ -118,7 +118,7 @@ struct PocketMoneyView: View {
                         focusedField = nil
                     }
                     textField("form_phone",
-                              hint: phoneHint ? "Pflichtfeld!" : "",
+                              hint: phoneHint ? NSLocalizedString("form_mandatory_hint", comment: "") : "",
                               contentType: .telephoneNumber,
                               binding: $phone)
                         .focusedLegacy($focusedField, equals: .phone)

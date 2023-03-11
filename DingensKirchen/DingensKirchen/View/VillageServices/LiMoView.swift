@@ -81,7 +81,7 @@ struct LiMoView: View {
                     textField("form_givenname", contentType: .givenName, binding: $givenName)
                         .focusedLegacy($focusedField, equals: .givenname)
                     textField("form_familyname",
-                              hint: nameHint ? "Pflichtfeld!" : nil,
+                              hint: nameHint ? NSLocalizedString("form_mandatory_hint", comment: "") : nil,
                               contentType: .familyName,
                               binding: $name)
                         .focusedLegacy($focusedField, equals: .name)
@@ -92,7 +92,7 @@ struct LiMoView: View {
                     textField("form_destination", binding: $destination)
                         .focusedLegacy($focusedField, equals: .destination)
                     textField("form_phone",
-                              hint: phoneHint ? "Pflichtfeld!" : nil,
+                              hint: phoneHint ? NSLocalizedString("form_mandatory_hint", comment: "") : nil,
                               contentType: .telephoneNumber,
                               binding: $phone)
                         .focusedLegacy($focusedField, equals: .phone)
