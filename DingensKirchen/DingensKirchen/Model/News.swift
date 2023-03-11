@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct News: Hashable {
+struct News: Hashable, Decodable {
     var index:  Int
     let title:  String
     let desc:   String

@@ -24,7 +24,7 @@ struct WPEventHelper {
         
         let request = AF.request(urlString, headers: headers)
                         .validate()
-        request.responseJSON { response in
+        request.responseDecodable(of: JSON.self) { response in
             
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "de_DE")
