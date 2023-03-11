@@ -23,7 +23,7 @@ struct News: Hashable, Decodable {
             let dateFormatter = DateFormatter()
 //            dateFormatter.calendar = Calendar(identifier: .iso8601)
             dateFormatter.locale = Locale(identifier: "de_DE")
-            dateFormatter.setLocalizedDateFormatFromTemplate("`dd-MMM`T`HH:mm`")
+            dateFormatter.setLocalizedDateFormatFromTemplate("`dd-MM-YYYY`")
             
             return dateFormatter.string(from: self.date)
         }

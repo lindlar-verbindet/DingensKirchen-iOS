@@ -30,10 +30,11 @@ struct NewsView: View {
                     .frame(height: 120)
                 ForEach(newsViewModel.response ?? [News](), id: \.self) { n in
                     NavigationLink(destination: DKWebView(urlString: n.link)) {
+                        let source = n.link.contains("lindlar-verbindet") ? " von lindlar-verbindet.de" : " von lindlar.de"
                         NewsCell(index: n.index,
                                  title: n.title,
                                  desc: n.htmlFreeDesc,
-                                 date: n.dateString,
+                                 date: n.dateString + source,
                                  imageURL: n.imageURL)
                             .padding(5)
                     }
