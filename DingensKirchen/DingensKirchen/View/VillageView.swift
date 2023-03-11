@@ -16,6 +16,10 @@ struct VillageView: View {
         ZStack(alignment: .leading) {
             VStack(alignment: .leading) {
                 HStack {
+                    Text("Hotline erreichbar: \nMo bis Fr von 9-16 Uhr")
+                        .font(.system(size: 18, weight: .bold))
+                        .padding(.top, 20)
+                        .padding(.leading, 10)
                     Spacer()
                     Image("ic_people")
                         .resizable()
