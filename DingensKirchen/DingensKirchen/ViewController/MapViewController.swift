@@ -36,8 +36,8 @@ class MapViewController: UIViewController {
     
     internal var cameraLocationConsumer: CameraLocationConsumer!
     
-    private let stopsID = "bus_stop_map_data_10032023-9ojnxm"
-    private let routesID = "routes_map_data_10032023-0ko8a7"
+    private let stopsID = "bus-stop-map-data-10032023-9ojnxm"
+    private let routesID = "routes-map-data-10032023-0ko8a7"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class MapViewController: UIViewController {
         cameraLocationConsumer = CameraLocationConsumer(mapView: map!)
         self.setupCamera(map!)
         self.setupOrnaments(map!)
-        map?.mapboxMap.onNext(.mapLoaded) { _ in
+        map?.mapboxMap.onNext(event: .mapLoaded) { _ in
             if let mapView = self.map {
                 self.setupLocation(mapView)
             }
@@ -107,7 +107,7 @@ class MapViewController: UIViewController {
             var title = ""
             do {
                 try result.get().forEach { feature in
-//                    print("\(self.stopsID): \(String(describing: feature.feature.properties))")
+                    print("\(self.stopsID): \(String(describing: feature.feature.properties))")
                     if let name = feature.feature.properties?["name"] {
                         if title == "" {
                             title.append(name?.rawValue as! String)
@@ -130,7 +130,7 @@ class MapViewController: UIViewController {
     
     fileprivate func queryLineInfo(sender: UITapGestureRecognizer) {
         let point = sender.location(in: map)
-        map?.mapboxMap.queryRenderedFeatures(with: CGRect(x: point.x-25, y: point.y-25, width: 50, height: 50), options: RenderedQueryOptions(layerIds: [routesID], filter: .none)) { result in
+        map?.mapboxMap.queryRenderedFeatures(with: CGRect(x: point.x-50, y: point.y-50, width: 100, height: 100), options: RenderedQueryOptions(layerIds: [routesID], filter: .none)) { result in
             var desc = ""
             do {
                 try result.get().forEach { feature in
