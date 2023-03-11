@@ -81,7 +81,10 @@ struct NeighbourView: View {
                         .padding(.bottom, 20)
                     textField("form_givenname", contentType: .givenName, binding: $givenName)
                         .focusedLegacy($focusedField, equals: .givenname)
-                    textField("form_familyname", contentType: .familyName, binding: $name)
+                    textField("form_familyname",
+                              hint: nameHint ? "Pflichtfeld!" : "",
+                              contentType: .familyName,
+                              binding: $name)
                         .focusedLegacy($focusedField, equals: .name)
                     textField("form_address", contentType: .streetAddressLine1, binding: $address)
                         .focusedLegacy($focusedField, equals: .address)
@@ -114,7 +117,10 @@ struct NeighbourView: View {
                     .onTapGesture {
                         focusedField = nil
                     }
-                    textField("form_phone", contentType: .telephoneNumber, binding: $phone)
+                    textField("form_phone",
+                              hint: phoneHint ? "Pflichtfeld!" : "",
+                              contentType: .telephoneNumber,
+                              binding: $phone)
                         .focusedLegacy($focusedField, equals: .phone)
                     textField("form_mail", contentType: .emailAddress, keyboardType: .emailAddress, binding: $email)
                         .focusedLegacy($focusedField, equals: .email)
@@ -227,7 +233,7 @@ struct NeighbourView: View {
         if givenName == "" {
             nameHint = true
             ok = false
-        } 
+        }
         if phone == "" {
             phoneHint = true
             ok = false
