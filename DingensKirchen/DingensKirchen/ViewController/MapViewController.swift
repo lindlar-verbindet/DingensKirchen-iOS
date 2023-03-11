@@ -134,21 +134,18 @@ class MapViewController: UIViewController {
             var desc = ""
             do {
                 try result.get().forEach { feature in
-//                    print("\(self.routesID): \(String(describing: feature.feature.properties))")
+                    print("\(self.routesID): \(String(describing: feature.feature.properties))")
                     if let ref = feature.feature.properties?["ref"] {
                         let from = feature.feature.properties?["from"]
                         let to = feature.feature.properties?["to"]
                         let content = "\(ref?.rawValue as! String): \(from??.rawValue as! String) -> \(to??.rawValue as! String)"
-                        
                         let busLink = self.getDeparturePlan(ref?.rawValue as! String, content: content)
-                        
                         if desc == "" {
                             desc.append("\(busLink)")
                         } else {
-                            desc.append("<br><br>\(busLink)")
+                            desc.append("<br>\(busLink)")
                         }
                     }
-                    
                 }
                 self.mobilView?.contextDesc = desc
             } catch {

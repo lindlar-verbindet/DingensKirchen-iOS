@@ -99,8 +99,6 @@ struct MobilView: View {
                             .font(Font.system(size: 16, weight: .light))
                             .foregroundColor(.black)
                             .padding(10)
-                        Spacer()
-                            .frame(maxWidth: .infinity)
                     }
                 }
                 .padding(EdgeInsets(top: view.safeAreaInsets.top, leading: 0, bottom: 0, trailing: 0))
@@ -114,5 +112,31 @@ struct MobilView: View {
 struct MobilView_Previews: PreviewProvider {
     static var previews: some View {
         MobilView()
+    }
+}
+
+
+extension String {
+
+    func textHeightFrom(width: CGFloat, fontName: String = "System Font", fontSize: CGFloat = 16.0) -> CGFloat {
+
+        #if os(macOS)
+
+        typealias UXFont = NSFont
+        let text: NSTextField = .init(string: self)
+        text.font = NSFont.init(name: fontName, size: fontSize)
+
+        #else
+
+        typealias UXFont = UIFont
+        let text: UILabel = .init()
+        text.text = self
+        text.numberOfLines = 0
+
+        #endif
+
+        text.font = UXFont.init(name: fontName, size: fontSize)
+        text.lineBreakMode = .byWordWrapping
+        return text.sizeThatFits(CGSize.init(width: width, height: .infinity)).height
     }
 }
