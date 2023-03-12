@@ -28,7 +28,7 @@ struct LindlarEventHelper {
         
         let request = AF.request(urlString, headers: headers)
                         .validate()
-        request.responseDecodable(of: Event.self) { response in
+        request.responseData { response in
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "de_DE")
             dateFormatter.dateFormat = "yyyy-MM-dd"
