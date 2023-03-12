@@ -45,7 +45,7 @@ struct EventWidget: View {
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                Text(String(htmlEncodedString: eventTitle) ?? "")
+                Text(eventTitle)
                     .font(Font.system(size: 16))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
