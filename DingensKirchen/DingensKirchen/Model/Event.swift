@@ -7,16 +7,23 @@
 
 import Foundation
 
-struct Event: Hashable {
+struct Event: Hashable, Decodable {
     var index:      Int
+    
     let title:      String
+    var urlTitle: String {
+        get {
+            return title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+        }
+    }
     let desc:       String
     var htmlFreeDesc: String {
         get {
             let linkfree = desc.replacingOccurrences(of: "<figcaption>Favicon</figcaption>", with: "")
-            return linkfree.replacingOccurrences(of: "<[^>]+>", with: "",options: .regularExpression)
+            return linkfree.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression)
         }
     }
+    
     let date:       Date
     var dateString: String {
         get{

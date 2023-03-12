@@ -180,8 +180,8 @@ struct ContentView: View {
             MobilWidget()
         case .event:
             EventWidget(date: eventViewModel.response?.first?.dateString ?? "",
-                        title: eventViewModel.response?.first?.title ?? "",
-                        eventDesc: eventViewModel.response?.first?.desc ?? "")
+                        title: eventViewModel.response?.first?.urlTitle ?? "",
+                        eventDesc: eventViewModel.response?.first?.htmlFreeDesc ?? "")
         case .council:
             CouncilWidget()
         }

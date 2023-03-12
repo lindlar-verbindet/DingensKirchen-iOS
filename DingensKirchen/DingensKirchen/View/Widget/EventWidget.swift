@@ -35,7 +35,7 @@ struct EventWidget: View {
                     .opacity(0.2)
             }
             VStack(alignment: .leading) {
-                Text(title.uppercased())
+                Text(title)
                     .font(Font.system(size: 26, weight: .light))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
@@ -45,7 +45,7 @@ struct EventWidget: View {
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                Text(eventTitle)
+                Text(String(htmlEncodedString: eventTitle) ?? "")
                     .font(Font.system(size: 16))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)

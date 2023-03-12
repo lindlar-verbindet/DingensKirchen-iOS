@@ -44,4 +44,9 @@ extension String {
         self.init(attributedString.string)
 
     }
+    
+    func unicodeToUtf8() -> String {
+        let data = self.data(using: .unicode)
+        return String(data: data!, encoding: .utf8) ?? ""
+    }
 }
