@@ -30,10 +30,16 @@ struct InfoView: View {
                 VStack(alignment: .leading) {
                     Spacer()
                         .frame(height: 120)
+                    NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-digital.de")) {
+                        Text("info_project")
+                            .font(Font.system(size: 20, weight: .light))
+                            .padding(EdgeInsets(top: 40, leading: 50, bottom: 0, trailing: 50))
+                            .foregroundColor(.black)
+                    }
                     NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/impressum/")) {
                         Text("info_imprint")
                             .font(Font.system(size: 20, weight: .light))
-                            .padding(EdgeInsets(top: 40, leading: 50, bottom: 0, trailing: 50))
+                            .padding(EdgeInsets(top: 10, leading: 50, bottom: 0, trailing: 50))
                             .foregroundColor(.black)
                     }
                     NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/datenschutz/")) {

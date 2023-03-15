@@ -39,6 +39,7 @@
 
 // InfoView
 "info_navigation_title" = "Informationen";
+"info_project" = "PROJEKTWEBSEITE";
 "info_imprint" = "IMPRESSUM";
 "info_datapolicy" = "DATENSCHUTZ";
 "info_sponsor_headline" = "Gefördert durch";
