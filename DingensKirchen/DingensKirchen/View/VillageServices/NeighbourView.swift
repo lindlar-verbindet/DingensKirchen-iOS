@@ -230,7 +230,7 @@ struct NeighbourView: View {
     
     private func checkFields() -> Bool {
         var ok = true
-        if givenName == "" {
+        if name == "" {
             nameHint = true
             ok = false
         }
