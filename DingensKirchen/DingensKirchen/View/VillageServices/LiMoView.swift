@@ -10,7 +10,7 @@ import SwiftyJSON
 import Focuser
 
 fileprivate enum FormFields: FocusStateCompliant {
-    case givenname, name, date, time, destination, phone, email
+    case givenname, name, date, phone, email // time, destination,
     
     static var last: FormFields {
         .email
@@ -23,10 +23,10 @@ fileprivate enum FormFields: FocusStateCompliant {
         case .name:
             return .date
         case .date:
-            return .time
-        case .time:
-            return .destination
-        case .destination:
+//            return .time
+//        case .time:
+//            return .destination
+//        case .destination:
             return .phone
         case .phone:
             return .email
@@ -46,8 +46,8 @@ struct LiMoView: View {
     @State var givenName: String = ""
     @State var name: String = ""
     @State var date: String = ""
-    @State var time: String = ""
-    @State var destination: String = ""
+//    @State var time: String = ""
+//    @State var destination: String = ""
     @State var phone: String = ""
     @State var email: String = ""
     @State var terms: Bool = false
@@ -85,12 +85,12 @@ struct LiMoView: View {
                               contentType: .familyName,
                               binding: $name)
                         .focusedLegacy($focusedField, equals: .name)
-                    textField("form_date", binding: $date)
+                    textField("form_date", keyboardType: .numbersAndPunctuation, binding: $date)
                         .focusedLegacy($focusedField, equals: .date)
-                    textField("form_time", binding: $time)
-                        .focusedLegacy($focusedField, equals: .time)
-                    textField("form_destination", binding: $destination)
-                        .focusedLegacy($focusedField, equals: .destination)
+//                    textField("form_time", binding: $time)
+//                        .focusedLegacy($focusedField, equals: .time)
+//                    textField("form_destination", binding: $destination)
+//                        .focusedLegacy($focusedField, equals: .destination)
                     textField("form_phone",
                               hint: phoneHint ? NSLocalizedString("form_mandatory_hint", comment: "") : nil,
                               contentType: .telephoneNumber,
@@ -144,8 +144,8 @@ struct LiMoView: View {
         json["name"].string = givenName
         json["nachname"].string = name
         json["datum"].string = date
-        json["uhr"].string = time
-        json["ziel"].string = destination
+//        json["uhr"].string = time
+//        json["ziel"].string = destination
         json["fon"].string = phone
         json["mail"].string = email
         json["datenschutz"].boolValue = terms

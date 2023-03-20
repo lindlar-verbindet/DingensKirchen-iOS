@@ -9,8 +9,13 @@ import SwiftUI
 import SWXMLHash
 
 struct VillageView: View {
-    
-    @State var file = Bundle.main.url(forResource: "village_services", withExtension: "xml")
+    // @State
+    static let file = Bundle.main.url(forResource: "village_services", withExtension: "xml")
+//    var entries: [VillageService]
+//
+//    init() {
+//        entries = VillageView.loadData()
+//    }
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -38,7 +43,7 @@ struct VillageView: View {
                 VStack(alignment: .leading) {
                     Spacer()
                         .frame(height: 120)
-                    ForEach(loadData(), id: \.self) { element in
+                    ForEach(VillageView.loadData(), id: \.self) { element in
                         if element.type == 1 {
                             VillageCellDoubleAction(title: element.name,
                                                     desc: element.desc,
@@ -62,7 +67,7 @@ struct VillageView: View {
         .navigationBarTitle("village_navigation_title", displayMode: .inline)
     }
     
-    private func loadData() -> [VillageService] {
+    private static func loadData() -> [VillageService] {
         var result: [VillageService] = [VillageService]()
         if let file = file {
             if let data = try? Data(contentsOf: file, options: .alwaysMapped) {

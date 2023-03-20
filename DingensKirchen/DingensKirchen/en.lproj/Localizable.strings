@@ -119,7 +119,7 @@
 // Form Texte
 "form_givenname" = "Ihr Vorname";
 "form_familyname" = "Ihr Nachname (Pflicht)";
-"form_date" = "Datum";
+"form_date" = "Datum der Fahrt";
 "form_time" = "Uhrzeit";
 "form_destination" = "Ziel";
 "form_address" = "Ihre Adresse";

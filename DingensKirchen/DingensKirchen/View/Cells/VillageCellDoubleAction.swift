@@ -57,7 +57,6 @@ struct VillageCellDoubleAction: View {
                             Text(btn2Title)
                         }
                     }
-                    
                 })
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity, minHeight: 30)
