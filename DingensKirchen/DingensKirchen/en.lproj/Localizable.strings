@@ -63,7 +63,7 @@
 // MobilView
 "mobil_navigation_title" = "Mobil";
 "mobil_placeholder_title" = "ES FÄHRT KEIN BUS?";
-"mobil_action" = "Tippen Sie auf der Karte auf eine Haltestelle für mehr Informationen. Jeder Buslinieneintrag öffnet den jeweiligen Mini-Fahrplan im PDF-Format.<br>Datenquelle: OpenStreetMap";
+"mobil_action" = "Tippen Sie auf der Karte auf eine Haltestelle für mehr Informationen. Jeder Buslinieneintrag öffnet den jeweiligen Mini-Fahrplan im PDF-Format.\nDatenquelle: OpenStreetMap";
 "mobil_placeholder_description" = "<span style=\"font-family: sans-serif; font-size: 12pt;\">Jetzt Lindlar mobil buchen unter <br><a href=\"tel:+49 2266 440 72 04\">02266 440 72 04</a> <br>Der Lindlarer Fahrservice mit Herz.</span>";
 
 // CouncilView
