@@ -40,8 +40,12 @@ struct DKAlertView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .multilineTextAlignment(.leading)
             Spacer()
-            Button("tipp_button") {
+            Button {
                 shown = false
+            } label: {
+                Text("tipp_button")
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .contentShape(RoundedRectangle(cornerRadius: 5))
             }
             .frame(width: screen.width - 100, height: 40)
             .background(Color.primaryHighlight)
@@ -49,14 +53,13 @@ struct DKAlertView: View {
             .cornerRadius(5)
             .padding(.bottom, 30)
         }
-        .frame(width: screen.width - 50, height: 300)
+        .frame(width: screen.width - 50, height: 340, alignment: .topLeading)
         .background(Color.white)
-//        .cornerRadius(15)
     }
 }
 
 struct DKAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        DKAlertView(shown: .constant(false), title: "test", content: "some lorem ipsum")
+        DKAlertView(shown: .constant(false), title: "test", content: "Qui aliqua ullamco anim labore officia sint quis minim id velit amet consectetur cupidatat quis qui adipisicing dolore ex aute fugiat enim minim elit cillum irure nostrud Lorem Lorem consequat ex irure in sint sunt aute aliquip in aliqua exercitation consectetur consequat nostrud dolore aute aliqua nulla eiusmod in ad eu deserunt commodo ullamco sunt ea aliquip incididunt ea officia veniam velit cupidatat laboris veniam in do cillum Lorem adipisicing in elit deserunt dolore mollit labore ipsum in occaecat pariatur irure velit nostrud aute eiusmod elit ex nulla duis irure sunt fugiat tempor est non in consectetur et proident sint.")
     }
 }
