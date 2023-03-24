@@ -30,6 +30,8 @@ struct CouncilCell: View {
             Button(action: {}, label: {
                 NavigationLink(destination: DKWebView(urlString: targetLink)) {
                     Text(buttonTitle)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .contentShape(RoundedRectangle(cornerRadius: 5))
                 }
             })
             .foregroundColor(.black)
