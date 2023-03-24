@@ -48,12 +48,8 @@ struct VillageCellDoubleAction: View {
                         NavigationLink(destination: PocketMoneyView()) {
                             Text(btn2Title)
                         }
-                    } else if title == "Nachbarschaftshilfe" {
-                        NavigationLink(destination: NeighbourView()) {
-                            Text(btn2Title)
-                        }
                     } else {
-                        NavigationLink(destination: LiMoView()) {
+                        NavigationLink(destination: NeighbourView()) {
                             Text(btn2Title)
                         }
                     }
