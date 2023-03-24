@@ -35,7 +35,7 @@ struct RSSNewsHelper {
                 var index = 0
                 xml["rss"]["channel"]["item"].all.forEach { item in
                     let title = item["title"].element?.text ?? ""
-                    let desc = item["content:encoded"].element?.text ?? ""
+                    let desc = item["content:encoded"].element?.text.replacingOccurrences(of: "&nbsp;", with: "") ?? ""
                     let date = formatter.date(from: item["pubDate"].element!.text)
                     let link = item["link"].element?.text ?? ""
                     let imageURL = ImageURLGetter.getImageURL(content: desc)
