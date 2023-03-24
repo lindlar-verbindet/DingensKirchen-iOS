@@ -29,11 +29,15 @@ struct VillageCellDoubleAction: View {
                 .multilineTextAlignment(.leading)
                 .padding(EdgeInsets(top: 0, leading: 15, bottom: 5, trailing: 15))
             HStack {
-                Button(btn1Title) {
+                Button(action: {
                     if let url = URL(string: "telprompt://\(tel!)"), UIApplication.shared.canOpenURL(url) {
                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     }
-                }
+                }, label: {
+                    Text(btn1Title)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .contentShape(RoundedRectangle(cornerRadius: 5))
+                })
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity, minHeight: 30)
                 .background(Color.primaryTextColor)
@@ -43,14 +47,20 @@ struct VillageCellDoubleAction: View {
                     if title == "Digitalbegleitung" {
                         NavigationLink(destination: DigitalView()) {
                             Text(btn2Title)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .contentShape(RoundedRectangle(cornerRadius: 5))
                         }
                     } else if title == "Taschengeldbörse" {
                         NavigationLink(destination: PocketMoneyView()) {
                             Text(btn2Title)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .contentShape(RoundedRectangle(cornerRadius: 5))
                         }
                     } else {
                         NavigationLink(destination: NeighbourView()) {
                             Text(btn2Title)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .contentShape(RoundedRectangle(cornerRadius: 5))
                         }
                     }
                 })
