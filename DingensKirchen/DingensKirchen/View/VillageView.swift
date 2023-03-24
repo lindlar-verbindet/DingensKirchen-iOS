@@ -52,11 +52,15 @@ struct VillageView: View {
                                                     btn2Title: element.actionbtn,
                                                     index: element.index)
                         } else {
+                            let callOnly = element.actionbtn == ""
+                            let btnTitle = callOnly ? element.callbtn : element.actionbtn
+                            let target = callOnly ? element.tel : element.link
                             VillageCellSingleAction(title: element.name,
                                                     desc: element.desc,
-                                                    btnTitle: element.actionbtn,
+                                                    btnTitle: btnTitle,
                                                     index: element.index,
-                                                    url: element.link)
+                                                    target: target,
+                                                    callOnly: callOnly)
                         }
                     }
                     .padding(5)
