@@ -59,7 +59,7 @@ struct EventCell: View {
                         .font(Font.system(size: 28, weight: .light))
                         .multilineTextAlignment(.leading)
                     if desc != "" {
-                        Text(String(htmlEncodedString: desc) ?? "")
+                      Text(String(htmlEncodedString: desc)?.cutoffIfNeeded(maxChars: 180) ?? "")
                             .font(Font.system(size: 16, weight: .light))
                             .foregroundColor(.black)
                             .multilineTextAlignment(.leading)
