@@ -109,11 +109,17 @@ struct ContentView: View {
                                         title: NSLocalizedString("widget_events_loading", comment: ""),
                                         eventDesc: "")
                         }
-                        NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/umfrage")) {
-                            SurveyWidget(title: NSLocalizedString("widget_survey_title", comment: ""),
-                                         desc: NSLocalizedString("widget_survey_desc", comment: ""))
-                                .padding(.bottom, 40)
-                        }
+//                        NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/umfrage")) {
+//                            SurveyWidget(title: NSLocalizedString("widget_survey_title", comment: ""),
+//                                         desc: NSLocalizedString("widget_survey_desc", comment: ""))
+//                                .padding(.bottom, 40)
+//                        }
+                      NavigationLink(destination: DKWebView(urlString: "https://www.lindlar-verbindet.de/ausflug-aktion")) {
+                          ActionsWidget(title: NSLocalizedString("widget_actions_title", comment: ""),
+                                       desc: NSLocalizedString("widget_actions_desc", comment: ""))
+                              .padding(.bottom, 40)
+                      }
+
                         Image(uiImage: UIImage(named: "ic_skyline")!)
                             .resizable()
                             .scaledToFit()
