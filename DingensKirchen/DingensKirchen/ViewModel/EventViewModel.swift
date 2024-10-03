@@ -23,6 +23,5 @@ class EventViewModel: ObservableObject {
                 self.response?[i].index = i
             }
         }
-        
     }
 }

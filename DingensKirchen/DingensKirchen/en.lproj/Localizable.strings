@@ -37,6 +37,9 @@
 "widget_survey_title" = "MITMACHEN!";
 "widget_survey_desc" = "Nehmen Sie an Umfragen rund um das Leben in Lindlar teil.";
 
+"widget_actions_title" = "AUSFLÜGE UND AKTIONEN";
+"widget_actions_desc" = "Sehenswürdigkeiten, Wissenswertes und Abenteuerliches in unserer Gemeinde";
+
 // InfoView
 "info_navigation_title" = "Informationen";
 "info_project" = "PROJEKTWEBSEITE";
@@ -102,13 +105,13 @@
 
 // NeighbourView
 "neighbour_navigation_title" = "Nachbarschaftshilfe";
-"neighbour_desc" = "Lindlarer Bürger*innen helfen sich untereinander. Wir vermitteln gelegentliche Hilfen, um Menschen im Alltag zu unterstützen: \n•  Einkaufshilfe \n•  Auf- oder Abbau von Möbeln \n•  Austausch von Glühbirnen oder Batterien \n•  Ausfüllen von Formularen \n•  Rasenmähen oder Schneeräumen \n•  Gartenarbeit \n•  uvm.";
-"neighbour_form_spinner_1" = "Einkaufen";
+"neighbour_desc" = "Lindlarer Bürger*innen helfen sich untereinander. Wir vermitteln gelegentliche Hilfen, um Menschen im Alltag zu unterstützen:\n\n•  Einkaufshilfe\n•  Erledigungsgänge\n•  Haustierbetreuung\n•  Auf- oder Abbau von Kleinmöbeln\n•  Ausfüllen von Formularen\n•  Kleinigkeiten im Haushalt\n•  u. v. m.";
+"neighbour_form_spinner_1" = "Einkaufshilfe";
 "neighbour_form_spinner_2" = "Erledigungsgänge";
-"neighbour_form_spinner_3" = "Haustiere";
-"neighbour_form_spinner_4" = "Auf- oder Abbauen von Möbeln";
-"neighbour_form_spinner_5" = "Ausfüllen von Fomularen";
-"neighbour_form_spinner_6" = "Rasenmähen, Schneeräumen oder Kehrarbeiten";
+"neighbour_form_spinner_3" = "Haustierbetreuung";
+"neighbour_form_spinner_4" = "Auf- oder Abbau von Kleinmöbeln";
+"neighbour_form_spinner_5" = "Ausfüllen von Formularen";
+"neighbour_form_spinner_6" = "Kleinigkeiten im Haushalt";
 "neighbour_form_spinner_7" = "Leichte Gartenarbeiten";
 "neighbour_form_spinner_8" = "... bei einer anderen Tätigkeit";
 

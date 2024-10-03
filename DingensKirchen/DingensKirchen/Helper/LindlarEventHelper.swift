@@ -20,7 +20,6 @@ struct LindlarEventHelper {
         let currentTime = currentDate.split(separator: ".").first!
         
         let urlString: String = "https://lindlar.de/?eID=event_api&token=8_435!B!tV_9wuj-3P*e&mod=event&start=" + currentTime
-        print(currentTime)
         
         var result = [Event]()
         
