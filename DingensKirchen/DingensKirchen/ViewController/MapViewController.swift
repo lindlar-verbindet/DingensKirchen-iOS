@@ -84,7 +84,7 @@ class MapViewController: UIViewController {
     private func setupLocation(_ mapView: MapView) {
         mapView.location.requestTemporaryFullAccuracyPermissions(withPurposeKey: "de.lindlarverbindet.dingeskirchen.location")
         mapView.location.options.puckType = .puck2D()
-        mapView.location.options.puckBearingSource = .heading
+        mapView.location.options.puckBearing = .heading
     }
     
     private func setupCamera(_ mapView: MapView) {

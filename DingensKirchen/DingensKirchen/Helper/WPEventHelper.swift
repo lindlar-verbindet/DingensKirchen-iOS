@@ -39,8 +39,8 @@ struct WPEventHelper {
                     let content = element
                     let title = content["data"]["title"].string
                     let desc = content["data"]["content"].string
-                    let start = content["data"]["time"]["start_raw"].string ?? ""
-                    let end = content["data"]["time"]["end_raw"].string ?? ""
+                    let start = content["data"]["time"]["start"].string ?? ""
+                    let end = content["data"]["time"]["end"].string ?? ""
                     var location = ""
                     for loc in content["data"]["locations"] {
                         location = loc.1["name"].string!
