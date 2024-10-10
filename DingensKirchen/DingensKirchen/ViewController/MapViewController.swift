@@ -36,8 +36,8 @@ class MapViewController: UIViewController {
     
     internal var cameraLocationConsumer: CameraLocationConsumer!
     
-    private let stopsID = "bus-stop-map-data-10032023-9ojnxm"
-    private let routesID = "routes-map-data-10032023-0ko8a7"
+    private let stopsID = "bus-stop-map-data-03102024-8stepn"
+    private let routesID = "routes-map-data-03102024-1a5n5j"
     
     override func viewDidLoad() {
         super.viewDidLoad()
