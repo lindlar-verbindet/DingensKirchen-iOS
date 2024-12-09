@@ -7,7 +7,7 @@
 
 import SwiftUI
 import WebView
-import WebKit
+@preconcurrency import WebKit
 
 class Coordinator: NSObject, WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void)
